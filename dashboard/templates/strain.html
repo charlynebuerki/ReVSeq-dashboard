@@ -84,13 +84,24 @@ var selectStrain = document.getElementById('strain');
 </div>
 
 {%if strain_name == "SARS-CoV-2"%}
-<h2>Phylogenetic tree</h2>
+<h2></h2>
 <object type="text/html" data="http://localhost:4000/SARS-CoV-2" style="width:100%; aspect-ratio: 16/9"></object>
 {%endif%}
 {%if strain_name == "RSV - A/B"%}
-<h2>Phylogenetic tree - RSV A</h2>
+<h2>RSV A</h2>
 <object type="text/html" data="http://localhost:4000/RSV-A" style="width:100%; aspect-ratio: 16/9"></object>
+<h2>RSV B</h2>
+<object type="text/html" data="http://localhost:4000/RSV-B" style="width:100%; aspect-ratio: 16/9"></object>
 {%endif%}
-
+{%if strain_name == "Influenza A"%}
+<h2>H1N1 segment 4 (HA)</h2>
+<object type="text/html" data="http://localhost:4000/Influenza-A-H1N1-HA" style="width:100%; aspect-ratio: 16/9"></object>
+<h2>H1N1 segment 6 (NA)</h2>
+<object type="text/html" data="http://localhost:4000/Influenza-A-H1N1-NA" style="width:100%; aspect-ratio: 16/9"></object>
+<h2>H3N2 segment 4 (HA)</h2>
+<object type="text/html" data="http://localhost:4000/Influenza-A-H3N2-HA" style="width:100%; aspect-ratio: 16/9"></object>
+<h2>H3N2 segment 6 (NA)</h2>
+<object type="text/html" data="http://localhost:4000/Influenza-A-H3N2-NA" style="width:100%; aspect-ratio: 16/9"></object>
+{%endif%}
 </body>
 </html>
