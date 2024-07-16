@@ -56,6 +56,7 @@
   <option value="/strain/coronavirus_HKU1" >coronavirus HKU1</option>
   <option value="/strain/coronavirus_NL63" >coronavirus NL63</option>
   <option value="/strain/coronavirus_OC43" >coronavirus OC43</option>
+  <option value="/mixed" >Mixed</option>
 </select>
 <script>
 var selectStrain = document.getElementById('strain');
@@ -82,7 +83,45 @@ var selectStrain = document.getElementById('strain');
 {% endautoescape %}
 </div>
 </div>
-
+<h2></h2>
+{%if strain_name == "Influenza A" or strain_name == "Influenza B"%}
+<div class="column">
+<h3>PB1</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_PB1.png' %}" style="width:100%">
+</div>
+<div class="column">
+<h3>PB2</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_PB2.png' %}" style="width:100%">
+</div>
+{%if strain_name == "Influenza A"%}
+<div class="column">
+<h3>PA</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_PA.png' %}" style="width:100%">
+</div>
+{%endif%}
+<div class="column">
+<h3>HA</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_HA.png' %}" style="width:100%">
+</div>
+<div class="column">
+<h3>NP</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_NP.png' %}" style="width:100%">
+</div>
+<div class="column">
+<h3>NA</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_NA.png' %}" style="width:100%">
+</div>
+<div class="column">
+<h3>MP</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_MP.png' %}" style="width:100%">
+</div>
+<div class="column">
+<h3>NS</h3>
+<img src="{% static 'pileup/'|add:strain|add:'_NS.png' %}" style="width:100%">
+</div>
+{%else%}
+<img src="{% static 'pileup/'|add:strain|add:'.png' %}" style="width:100%">
+{%endif%}
 {%if strain_name == "SARS-CoV-2"%}
 <h2></h2>
 <object type="text/html" data="http://localhost:4000/SARS-CoV-2" style="width:100%; aspect-ratio: 16/9"></object>

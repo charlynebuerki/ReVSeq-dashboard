@@ -1,0 +1,132 @@
+LOCUS       NC_031757               4564 bp    DNA     circular VRL 13-AUG-2018
+DEFINITION  Polyomavirus sp. isolate poly-CA1, complete genome.
+ACCESSION   NC_031757
+VERSION     NC_031757.1
+DBLINK      BioProject: PRJNA485481
+KEYWORDS    RefSeq.
+SOURCE      Polyomavirus sp.
+  ORGANISM  Polyomavirus sp.
+            Viruses; Monodnaviria; Shotokuvirae; Cossaviricota;
+            Papovaviricetes; Sepolyvirales; Polyomaviridae.
+REFERENCE   1  (bases 1 to 4564)
+  AUTHORS   Li,L., Pesavento,P. and Delwart,E.
+  TITLE     Novel polyomavirus and amdoparvovirus found in Red panda with
+            systemic inflammation
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 4564)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-NOV-2016) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 4564)
+  AUTHORS   Li,L., Pesavento,P. and Delwart,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (06-OCT-2015) Department of Laboratory Medicine, UCSF,
+            Blood Systems Research Institute, 270 Masonic Ave, San Francisco,
+            CA 94122, USA
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence is identical to KT878838.
+            
+            ##Assembly-Data-START##
+            Assembly Method       :: Geneious v. 7
+            Sequencing Technology :: Sanger dideoxy sequencing; Illumina
+            ##Assembly-Data-END##
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     gene            1..966
+                     /locus_tag="BMR74_gp1"
+                     /db_xref="GeneID:30090147"
+                     /gene="VP2"
+     gene            932..2011
+                     /locus_tag="BMR74_gp2"
+                     /db_xref="GeneID:30090144"
+                     /gene="VP1"
+     gene            complement(join(2052..3779,4054..4290))
+                     /locus_tag="BMR74_gp3"
+                     /db_xref="GeneID:30090145"
+                     /gene="large T antigen"
+     gene            complement(3799..4290)
+                     /locus_tag="BMR74_gp4"
+                     /db_xref="GeneID:30090146"
+                     /gene="small T antigen"
+
+ORIGIN      
+        1 atgtttttac ttttaggaat gggagcactg cttgctgttt ttgctgaagt tattgattta
+       61 gcagctgcta cgggacttgg aattgatgct attctctcag cagaagctat aactacttct
+      121 gaggctctag aggccttaat tactaatcta gtcacactag agggattttc agaggcagag
+      181 gcactcaccg ctgcaggcct aactgctcag gcctctgccg catttgctga attaggttct
+      241 ttgtatcccc aaattcttta tgctcttgct tttgattcat taactgttgg tactgcggta
+      301 gctgcggctc ttgctcctaa ctcctttgat caccctacac caatagctaa tcttaatatg
+      361 gctcttgtaa gatgggtgcc tgattttgat tttctttttc ctggatttag gcatttagct
+      421 agatttataa attacattga ccccacaaat tgggctcctg atctgtatga gaccctaggg
+      481 agatatgttt gggaaggttt acaaaggcgt ggagaaagat tcattgatga acaaattgga
+      541 aatatagaac atgttggaag ggaagcagct ataagaacag tagaaacatt cacagaggcc
+      601 ttagcaagat attttgaaaa tgcaagatgg gcagttagct atattccaca ccatatctat
+      661 agtggcctag agaaatatta tactcaatta ccccctctaa atccaataca gattagagat
+      721 gtatcaagaa ggacaggtct tccaattcca gacagaactg ttggtcctaa tggtgagaat
+      781 gtaaaatcag ctcaatatgt agaaaagcca gaatccccag gaggagcaat gcagcgttca
+      841 actcctgact ggatgcttcc tttgatttta ggattatacg gagacgtttc acccagctgg
+      901 ggtgaaactc ttcaggattt agaaaatcag gatggccccc tcaaaaaaag gaagaaaacc
+      961 cactgaagta cccagactga tcataagtgg tggcatagag gtgctcagcg tgaggactgg
+     1021 accagattcc ataactcaaa tagaagccta cctcaaccca cgcatgggac agcctactga
+     1081 ctctgatttc tatggttata gtgacaatat aactgtctct ggagatgtcc attcagatac
+     1141 accaaggctt aaagaattgc cttattatag tatggcaaaa ataaaccttc caatgcttaa
+     1201 tgaagacatt acatgcaatg aaatattcat gtgggaggct gtaagtgtta aaactgaggt
+     1261 ggtgggaata tcctctttaa ctaatgtaca ttctgctgta actagagaat atggtaatac
+     1321 taatacagat ggtgctggcc ttcctatcca aggaatgaat tttcattttt tttctgttgg
+     1381 tggggaacct ttagatatac aaatgttagt ggggaattat ttggcaaatt atccagatga
+     1441 ggcaaatgtt tttagaagtc caccaaaaaa tgcacaggtc ctaaatccca gtttaaaaac
+     1501 caaactacta agggatggga cctatccagt tgaggcttgg tgtgcagacc cagccaagaa
+     1561 tgaaaacact agatactttg ggtcctatac tggaggcctt actactcccc ctgtgttaca
+     1621 attcactaat acagttacta ctattctgtt aaatgaaaat ggtgtgggac ccctttgtaa
+     1681 aggtgattgc ttattcttag ctagtgcaga tattgtgggc tttagaactc aacagaatca
+     1741 taacatgcat tttagaggac tgccaagata tttcaatgtt actttaagaa aaagactggt
+     1801 aaaaaatcca tatcctgtta gtagtctgct taatacattg ttttcaaaaa tgcaaccaag
+     1861 aatagaaggt cagaatatgg aggggtcggg ggcacaagtg gaggaagtta gagtttatga
+     1921 tggcgttgag ccacttcctg gtgatcctga tgtgataaga tatagaaatc aactggggga
+     1981 agaaatcaca aagataccaa gtaatgatta aattttttat ttttccaaat tgtaatttca
+     2041 catgcaaaag cttaataaat gattgagtca tctacaatgt ttgtgtcctc tgtattttgt
+     2101 gaaccttcac caggagtgtc aagcatgcag ttaccccctt cacagcgctc tttcattaac
+     2161 aaatatttgc tgtctccaac ctcttcatct attctttgct tccattttac aactaatttc
+     2221 tgcaagctct cttcaaattc ttctgtttcg caatgatata ttaacagtaa taacaatgta
+     2281 atgccatttt gtaggactct atatcttgat aattgtggtg ttctttttag ggcaaaaaac
+     2341 tggtttctat taaagctgaa cctaagtttt ctgcagaacc tgactcttaa agttactgga
+     2401 atgtaatact cattacaagt cactatgcct gggggaaaaa tttgtgtttt cttgtttagg
+     2461 tgtttctttt ccaaattaac tttaacagct ccatctaaat ggtctctaag attgtcaagg
+     2521 ttattaattc cttgaccagt tggtaagtct ttattatcac ttttggaccc ctttacatcc
+     2581 tcaaagacca ctaagaactg atctatagca acacccaact caaaattaat cttatcaaaa
+     2641 ggcatattaa cattaaggga ctttcctcca cataagtcta gtaacgcagc agccaacgtg
+     2701 gtttttcctg tgttgacggg cccaataaaa agccaaaacc ttctttttgg gatattatct
+     2761 accatacatt ctaaaaattc taatatcaga tccttaatat cctgtcctgg gaataaacat
+     2821 tgaaaccaag ctacacctgc catataataa ttgagatcta ctgaacttct agcaccaaat
+     2881 aacagttcca ttttttcaaa gtggtttttg aatcttcttt ctaattgctc cttcctagtt
+     2941 aattgagacg tttctactct tttctgtgca agtacaccat ccacagcttg ctgacatata
+     3001 gctttttgat ttttgcaatc aacaaaaaga actgcattac tatgatggtc tttatggtac
+     3061 tcaaaatggt cagatacaat cttttcatca catttcttac aactagccac ttcatttgca
+     3121 aattctaaat ataggccaag caaaagaaag acatcatcac aaccaatatt actggcatat
+     3181 tctgcaatca ttttccaaga cacatttttt tgtgcttctt ctggggcatc aaaaaattca
+     3241 gtacttaaac ctccctttat attttcttgc attaatatgt atggatctcc acaaagtcta
+     3301 gtatatagag catattcctt attaactcct tttacaataa tgaagcttac agaacagaag
+     3361 tttgcacaaa aattatatat agcagatact ctatgcttag aaggggtaat caaataaacc
+     3421 aagccatttc catgcagctt atgtctacta atgaatgtag ccttaaattt ttgcatgagc
+     3481 ttagaataca gtaaagtact tttctcaaga gttgtgaaaa tcagaaagca agtgatggtt
+     3541 ttattactaa gaatagcatt acttaagtat tctgcaagat cttctggcat atctctgtgc
+     3601 tcctcccgtg gtttcttagg tggagtagct tgggagtctt catcatcatg ggattgggat
+     3661 ctctttcttg gaatctcttc atcatctgaa tctggaattt cttcatcaca ataaatatca
+     3721 aagtctttat taaaattctg ccaccattgt tcccactcag gagtcccata gggaggaatc
+     3781 tgaaaaaaac agacttacct aaatatttaa tgttgaaaat ggtagttttg caataattgc
+     3841 ttgccagctc tgggcgatga agtatgtata ctccagtcca aaccaagcaa tatagcattc
+     3901 aaagcaaaag cagctgcccc agcattttgg cttagacccc cttctcctat gggagtcccg
+     3961 cagcagacaa aataaacata tgcaaacttc tgtgcctttc aggcaactgg accaatccct
+     4021 caaataaaaa acaaaagaat cagatacacc cacctgctct gttgtaaaag aatcatttgg
+     4081 attgagaggt gggattactg cttccagttt tcgatagagg ctaataagct ccttagccaa
+     4141 ttctgcatta ccccccttat caggatgaag aactttgcat tgctcaagga aagctcttct
+     4201 cataagagga aaattgccat attgctccat ggggagtttt aggagttgca ttaacttaac
+     4261 tgactcttct ctagtcaaag catgatccat ttctgctctt ttttcaggaa tttgcaagcc
+     4321 tcaaaaaagc ctcgccagaa gcctctcaaa agcctccgcc gcctcagcaa gcctctccct
+     4381 ttttcctcgg aataaggtag gggcaagaag cctcaagcct cttaataata taggaaaaaa
+     4441 aggaacagta ggtggcacca tggtgtcctt ttgtgcccct tgtttccatc ttaagatgca
+     4501 gagggacctt atagaagaag tgtctgagtg gtgtgatcgc atcaaagccc tgtttcctta
+     4561 aggt
+//
+

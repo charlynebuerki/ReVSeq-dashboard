@@ -38,8 +38,7 @@
 
 <h2>Infections in Switzerland</h2>
 
-<div class="row">
-<div class="column">
+
 <select name="strain" id="strain">
   <option value="" selected>Select strain</option>
   <option value="/home" selected>All strains</option>
@@ -59,6 +58,7 @@
   <option value="/strain/coronavirus_HKU1" >coronavirus HKU1</option>
   <option value="/strain/coronavirus_NL63" >coronavirus NL63</option>
   <option value="/strain/coronavirus_OC43" >coronavirus OC43</option>
+  <option value="/mixed" >Mixed</option>
 </select>
 
 <script>
@@ -71,23 +71,19 @@ var selectStrain = document.getElementById('strain');
       };
 </script>
 
-</div>
-<div class="column">
-<iframe src="{% static 'map.html' %}" width="100%" height="500px" frameborder="0"></iframe>
-</script>
-</div>
 <div class="row">
 <div class="column">
 <!--<img src="{% static 'histogram_seq.png' %}" alt="histogram_seq">-->
 {% autoescape off %}
         {{ barplot_seq }}
 {% endautoescape %}
-</div>
-<div class="column">
 <!--<img src="{% static 'histogram_PCR.png' %}" alt="histogram_PCR">-->
 {% autoescape off %}
         {{ barplot_pcr }}
 {% endautoescape %}
+</div>
+<div class="column">
+<iframe src="{% static 'map.html' %}" width="100%" height="500px" frameborder="0"></iframe>
 </div>
 </div>
 
