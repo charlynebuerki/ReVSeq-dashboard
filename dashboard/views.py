@@ -11,7 +11,9 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
 from dna_features_viewer import BiopythonTranslator
+import matplotlib
 from matplotlib import pyplot as plt
+matplotlib.use('agg')
 import json
 
 color_dict = {
