@@ -1,0 +1,74 @@
+LOCUS       KC866607                1189 bp    cRNA    linear   VRL 19-JUN-2013
+DEFINITION  Influenza B virus (B/Brisbane/60/2008) segment 7 matrix protein 1
+            (M1) and BM2 protein (BM2) genes, complete cds.
+ACCESSION   KC866607
+VERSION     KC866607.1
+KEYWORDS    .
+SOURCE      Influenza B virus (B/Brisbane/60/2008)
+  ORGANISM  Influenza B virus (B/Brisbane/60/2008)
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Betainfluenzavirus; Betainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1189)
+  AUTHORS   Dormitzer,P.R., Suphaphiphat,P., Gibson,D.G., Wentworth,D.E.,
+            Stockwell,T.B., Algire,M.A., Alperovich,N., Barro,M., Brown,D.M.,
+            Craig,S., Dattilo,B.M., Denisova,E.A., De Souza,I., Eickmann,M.,
+            Dugan,V.G., Ferrari,A., Gomila,R.C., Han,L., Judge,C., Mane,S.,
+            Matrosovich,M., Merryman,C., Palladino,G., Palmer,G.A., Spencer,T.,
+            Strecker,T., Trusheim,H., Uhlendorff,J., Wen,Y., Yee,A.C.,
+            Zaveri,J., Zhou,B., Becker,S., Donabedian,A., Mason,P.W.,
+            Glass,J.I., Rappuoli,R. and Venter,J.C.
+  TITLE     Synthetic generation of influenza vaccine viruses for rapid
+            response to pandemics
+  JOURNAL   Sci Transl Med 5 (185), 185RA68 (2013)
+   PUBMED   23677594
+REFERENCE   2  (bases 1 to 1189)
+  AUTHORS   Dormitzer,P. and Suphaphiphat,P.
+  TITLE     Synthetic influenza vaccine viruses for rapid pandemic response
+  JOURNAL   Unpublished
+REFERENCE   3  (bases 1 to 1189)
+  AUTHORS   Dormitzer,P.R., Suphaphiphat,P., Gibson,D., Wentworth,D.E.,
+            Stockwell,T.B., Algire,M.A., Alperovich,N., Barro,M., Brown,D.M.,
+            Craig,S., Dattilo,B.M., Denisova,E.A., De Souza,I., Eickmann,M.,
+            Dugan,V.G., Ferrari,A., Gomila,R.C., Han,L., Judge,C., Mane,S.,
+            Matrosovich,M., Merryman,C., Palladino,G., Palmer,G.A., Spencer,T.,
+            Trusheim,H., Uhlendorff,J., Wen,Y., Yee,A.C., Zaveri,J., Zhou,B.,
+            Becker,S., Donabedian,A., Mason,P.W., Glass,J.I., Rappuoli,R. and
+            Venter,J.C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-APR-2013) Research, Novartis Vaccines & Diagnostics,
+            45 Sidney St., Cambridge, MA 02139, USA
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Sequencher v. 4.0
+            Sequencing Technology :: Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     gene            25..771
+                     /gene="M1"
+     gene            771..1100
+                     /gene="M2"
+
+ORIGIN      
+        1 agcagaagca cgcactttct taaaatgtcg ctgtttggag acacaattgc ctacctgctt
+       61 tcattgacag aagatggaga aggcaaagca gaactagcag aaaaattaca ctgttggttt
+      121 ggtgggaaag aatttgacct agactctgcc ttggaatgga taaaaaacaa aagatgctta
+      181 actgatatac aaaaagcact aattggtgcc tctatatgct ttttaaaacc caaagaccag
+      241 gaaagaaaaa gaagattcat cacagagccc ttatcaggaa tgggaacaac agcaacaaaa
+      301 aagaaaggcc tgattctggc tgagagaaaa atgagaagat gtgtgagctt tcatgaagca
+      361 tttgaaatag cagaaggcca tgaaagctca gcgctactat actgtctcat ggtcatgtac
+      421 ctgaatcctg gaaattattc aatgcaagta aaactaggaa cgctctgtgc tttatgcgag
+      481 aaacaagcat cacattcaca cagggctcat agcagagcag cgagatcttc agtgcctgga
+      541 gtgagacgag aaatgcagat ggtctcagct atgaacacag caaaaacaat gaatggaatg
+      601 ggaaaaggag aagacgtcca aaagctggca gaagagttgc aaagcaacat tggagtgctg
+      661 agatctcttg gggcaagcca aaagaatggg gaagggattg caaaggatgt aatggaagtg
+      721 ctaaagcaga gctccatggg aaattcagct cttgtgaaga aatatctata atgctcgaac
+      781 catttcagat tcttacaatt tgttctttta tcttatcagc tctccatttc atggcttgga
+      841 caatagggca tttgaatcaa ataaaaagag gaataaacat gaaaatacga ataaaaggtc
+      901 caaacaaaga gacaataaac agagaggtat caattttgag acacagttac caaaaagaaa
+      961 tccaggccaa agaaacaatg aaggaagtac tctctgacaa catggaggta ttgaatgacc
+     1021 acataataat tgaggggctt tctgccgaag agataataaa aatgggtgaa acagttttgg
+     1081 agatagaaga attgcattaa attcaatttt actgtatttc ttactatgca tttaagcaaa
+     1141 ttgtaatcaa tgtcagcaaa taaactggaa aaagtgcgtt gtttctact
+//
+

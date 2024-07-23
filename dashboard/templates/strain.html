@@ -68,7 +68,7 @@ var selectStrain = document.getElementById('strain');
       };
 </script>
 
-
+<h3 style="border: 1px solid #000; padding: 10px; width: 20%">Total no. of samples: {{no_samples}}</h3>
 <div class="row">
 <div class="column">
 <!--img src="{%static dir|add:'/histogram_seq.png' %}" alt="histogram_seq"-->
@@ -84,43 +84,56 @@ var selectStrain = document.getElementById('strain');
 </div>
 </div>
 <h2></h2>
+{%if substrains|length > 1%}
+<div class="row">
+<select name="substrain" id="substrain">
+<option value="all" selected>All substrains</option>
+{% for substrain in substrains %}
+<option value="{{substrain}}">{{substrain}}</option>
+{% endfor %}
+</select>
+</div>
+{% endif %}
 {%if strain_name == "Influenza A" or strain_name == "Influenza B"%}
-<div class="column">
-<h3>PB1</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_PB1.png' %}" style="width:100%">
-</div>
-<div class="column">
-<h3>PB2</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_PB2.png' %}" style="width:100%">
-</div>
-{%if strain_name == "Influenza A"%}
-<div class="column">
-<h3>PA</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_PA.png' %}" style="width:100%">
-</div>
-{%endif%}
-<div class="column">
-<h3>HA</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_HA.png' %}" style="width:100%">
-</div>
-<div class="column">
-<h3>NP</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_NP.png' %}" style="width:100%">
-</div>
-<div class="column">
-<h3>NA</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_NA.png' %}" style="width:100%">
-</div>
-<div class="column">
-<h3>MP</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_MP.png' %}" style="width:100%">
-</div>
-<div class="column">
-<h3>NS</h3>
-<img src="{% static 'pileup/'|add:strain|add:'_NS.png' %}" style="width:100%">
-</div>
+<div id= pileup_plt></div>
+<script>
+let segments;
+if ("{{strain_name}}" == "Influenza A") {
+    segments = ['HA','NA','PB1', 'PB2','PA','NP', 'MP','NS'];
+} else {
+    segments = ['HA','NA','PB1', 'PB2','NP', 'MP','NS'];
+}
+var pileup = '';
+for (i in segments) { 
+ pileup += '<div class=\"column\">'
+ pileup += '<h3>' + segments[i] + '</h3>' 
+ pileup += '<img id=\"'+segments[i] + '\" src=\"/static/pileup/'+ '{{strain}}'+'_' + segments[i] + '_all.png\" style=\"width:100%\">';
+ pileup += '</div>'
+}
+document.getElementById('pileup_plt').innerHTML = pileup;
+
+if ("{{strain_name}}" == "Influenza A") {
+    var selectSubstrain = document.getElementById('substrain');
+          selectSubstrain.onchange = function(){
+              var substrain = this.value;
+              for (i in segments) { 
+                    document.getElementById(segments[i]).src = '/static/pileup/'+ '{{strain}}' + '_' + segments[i]+ '_'+ substrain.split('(')[2].split(')')[0] +'.png';
+            }
+          };
+}
+</script>
+
 {%else%}
-<img src="{% static 'pileup/'|add:strain|add:'.png' %}" style="width:100%">
+<img id="pileup_plt" src="{% static 'pileup/'|add:strain|add:'_all.png' %}" style="width:100%">
+{%if substrains|length > 1%}
+<script>
+var selectSubstrain = document.getElementById('substrain');
+      selectSubstrain.onchange = function(){
+          var substrain = this.value;
+          document.getElementById('pileup_plt').src = '/static/pileup/'+ '{{strain}}' + '_' + substrain.split(' ').join('_') +'.png';          
+      };
+</script>
+{%endif%}
 {%endif%}
 {%if strain_name == "SARS-CoV-2"%}
 <h2></h2>

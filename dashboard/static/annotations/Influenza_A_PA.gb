@@ -1,0 +1,82 @@
+LOCUS       KU509702                2151 bp    cRNA    linear   VRL 24-AUG-2017
+DEFINITION  Influenza A virus (A/Michigan/45/2015(H1N1)) segment 3 polymerase
+            PA (PA) and PA-X protein (PA-X) genes, complete cds.
+ACCESSION   KU509702
+VERSION     KU509702.1
+KEYWORDS    .
+SOURCE      Influenza A virus (A/Michigan/45/2015(H1N1))
+  ORGANISM  Influenza A virus (A/Michigan/45/2015(H1N1))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 2151)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Influenza Sequencing Activity group
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 2151)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-JAN-2016) WHO Collaborating Center for Surveillance,
+            Epidemiology and Control of Influenza, Influenza Division, Centers
+            for Disease Control and Prevention, 1600 Clifton Road, N.E.,
+            Atlanta, GA 30333, USA
+COMMENT     ##FluData-START##
+            EPI_ISOLATE_ID   :: EPI_ISL_200780
+            NAME             :: A/Michigan/45/2015
+            TYPE             :: H1N1
+            Segment_name     :: PA
+            PASSAGE          :: E1 (2015-10-08)
+            LOCATION         :: United States / Michigan
+            COLLECT_DATE     :: 07-Sep-2015
+            Lineage          :: A(H1N1)pdm09
+            SPECIMEN_ID      :: CL15-430392 ORIGINAL
+            SENDER_LAB       :: Michigan Department of Community Health
+            SEQLAB_SAMPLE_ID :: 3000413709
+            EPI_SEQUENCE_ID  :: EPI668423
+            ##FluData-END##
+FEATURES             Location/Qualifiers
+     gene            1..2151
+                     /gene="PA"
+     gene            1..700
+                     /gene="PA-X"
+
+ORIGIN      
+        1 atggaagact ttgtgcgaca atgcttcaat ccaatgatcg tcgagcttgc ggaaaaggca
+       61 atgaaagaat atggggaaga tcccaaaatc gaaactaata agtttgctgc aatttgcaca
+      121 catttggaag tttgtttcat gtattcggat ttccatttca ttgatgaacg gggtgaatca
+      181 ataattgtag aatctggtga tccaaatgca ctattgaagc accgatttga gataattgaa
+      241 ggaagagacc gaatcatggc ctggacagtg gtgaacagta tatgtaacac aacagggata
+      301 gagaagccta aatttcttcc tgatttgtat gattacaaag agaaccggtt cattgaaatt
+      361 ggagtaacac ggagagaagt ccacatatat tacctagaga aagccaacaa aataaaatct
+      421 gagaagacac acattcacat cttttcattc actggagagg agatggccac caaagcggac
+      481 tacacccttg acgaagagag cagagcaaga atcaaaacta ggcttttcac tataagacaa
+      541 gaaatggcca gtaggagtct atgggattcc tttcgtcagt ccgaaagagg cgaagagaca
+      601 attgaagaaa agtttgagat tacaggaact atgcgcaagc ttgccgacca aagtctccca
+      661 ccaaacttct ccagccttga aaacttcaga gcctatgtag atggattcga gccgaacggc
+      721 tgcattgagg gcaagctttc ccaaatgtca aaagaagtga acgccaaaat tgaaccattc
+      781 ttgaggacga caccacgccc cctcagatta cctgatggac ctctttgcca tcagcggtca
+      841 aagttcctgc tgatggatgc tctgaaatta agcattgaag acccgagtca cgagggggaa
+      901 ggaataccac tatatgatgc aatcaaatgc atgaagacat tctttggctg gaaagagcct
+      961 aaaatagtca aaccacatga gaaaggcgta aatcccaatt acctcatggc ttggaagcag
+     1021 gtgctagcag agctacagga cattgaaaat gaagagaaga tcccaaggac aaagaacatg
+     1081 aagaaaacaa gccaattgaa gtgggcactc ggtgaaaata tggcaccaga aaaagtggac
+     1141 tttgatgact gtaaagatgt tggagacctt aaacagtatg acagtgatga gccagagccc
+     1201 agatctctag caagctgggt ccaaaatgaa ttcaataagg catgtgaatt gactgattca
+     1261 agctggatag aacttgatga aataggagaa gatgttgccc cgattgaaca tatcgcaagc
+     1321 atgaggagga actattttac agcagaagtg tcccactgca gggctactga atacataatg
+     1381 aagggagtgt acataaatac ggccttgctt aatgcatcct gtgcagccat ggatgacttt
+     1441 cagctgattc caatgataag caaatgtagg accaaagaag gaagacggaa aacaaacctg
+     1501 tatgggttca ttataaaagg aaggtctcat ttgagaaatg atactgatgt agtgaacttt
+     1561 gtaagtatgg agttctcact cactgatcca agactggaac cacacaaatg ggaaaaatac
+     1621 tgtgttcttg aaataggaga catgctattg aggactgcga taggtcaagt gtcgaggccc
+     1681 atgttcctat atgtgagaac caatggaacc tccaagatca agatgaaatg gggcatggaa
+     1741 atgaggcgct gccttcttca atctcttcag cagattgaga gcatgattga agccgagtct
+     1801 tctgtcaaag agaaagacat gaccaaggaa ttctttgaaa acaaatcgga aacatggcca
+     1861 atcggagagt cacccagggg agtggaggaa ggctctattg gaaaggtgtg cagaacctta
+     1921 ctggcaaaat ctgtgttcaa cagtctatat gcgtctccac aacttgaggg gttttcggct
+     1981 gaatcaagaa aattgcttct cattgttcag gcacttaggg acaacctgga acctggaacc
+     2041 ttcgatcttg gggggctata tgaagcaatc gaggagtgcc tgattaatga tccctgggtt
+     2101 ttgcttaatg catcttggtt caactccttc ctcacacatg cactgaagta g
+//
+

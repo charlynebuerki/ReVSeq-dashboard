@@ -1,0 +1,62 @@
+LOCUS       KU509706                 982 bp    cRNA    linear   VRL 24-AUG-2017
+DEFINITION  Influenza A virus (A/Michigan/45/2015(H1N1)) segment 7 matrix
+            protein 2 (M2) and matrix protein 1 (M1) genes, complete cds.
+ACCESSION   KU509706
+VERSION     KU509706.1
+KEYWORDS    .
+SOURCE      Influenza A virus (A/Michigan/45/2015(H1N1))
+  ORGANISM  Influenza A virus (A/Michigan/45/2015(H1N1))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 982)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Influenza Sequencing Activity group
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 982)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-JAN-2016) WHO Collaborating Center for Surveillance,
+            Epidemiology and Control of Influenza, Influenza Division, Centers
+            for Disease Control and Prevention, 1600 Clifton Road, N.E.,
+            Atlanta, GA 30333, USA
+COMMENT     ##FluData-START##
+            EPI_ISOLATE_ID   :: EPI_ISL_200780
+            NAME             :: A/Michigan/45/2015
+            TYPE             :: H1N1
+            Segment_name     :: M
+            PASSAGE          :: E1 (2015-10-08)
+            LOCATION         :: United States / Michigan
+            COLLECT_DATE     :: 07-Sep-2015
+            Lineage          :: A(H1N1)pdm09
+            SPECIMEN_ID      :: CL15-430392 ORIGINAL
+            SENDER_LAB       :: Michigan Department of Community Health
+            SEQLAB_SAMPLE_ID :: 3000413709
+            EPI_SEQUENCE_ID  :: EPI668422
+            ##FluData-END##
+FEATURES             Location/Qualifiers
+     gene            join(1..26,715..982)
+                     /gene="M2"
+     gene            1..759
+                     /gene="M1"
+ORIGIN      
+        1 atgagtcttc taaccgaggt cgaaacgtac gttctttcta tcatcccgtc aggccccctc
+       61 aaagccgaga tcgcacagag actggaaagt gtctttgcag gaaagaacac agatcttgag
+      121 gctctcatgg aatggctaaa gacaagacca atcttgtcac ctctgactaa gggaatttta
+      181 ggatttgtgt tcacgctcac cgtgcccagt gagcgaggac tgcagcgtag acgctttatc
+      241 caaaatgccc taaatgggaa tggggacccg aacaacatgg atagagcagt taaactatac
+      301 aagaagctca aaagagaaat aacgttccat ggggccaagg aggtgtcact aagctattca
+      361 actggtgcac ttgccagttg catgggcctc atatacaaca ggatgggaac agtgaccaca
+      421 gaagctgctt ttggtctagt gtgtgccact tgtgaacaga ttgctgattc acagcatcgg
+      481 tctcacagac aaatggctac taccaccaat ccactaatca ggcatgaaaa cagaatggtg
+      541 ctggctagca ctacggcaaa ggctatggaa caggtggctg gatcgagtga acaggcagca
+      601 gaggccatgg aggttgctaa taagactagg cagatggtac atgcaatgag aactattggg
+      661 actcatccta gctccagtgc tggtctgaga gatgaccttc ttgaaaattt gcaggcctac
+      721 cagaagcgaa tgggagtgca gatgcagcgg ttcaagtgat cctctcgtca ttgcagcaaa
+      781 catcattggg atcttgcacc tgatattgtg gattactgat cgtctttttt tcaaatgcat
+      841 ttatcgtcgc tttaaatacg gtttgaaaag agggccttct acggaaggag tgcctgagtc
+      901 catgagggaa gaatatcaac aggagcagca gagtgctgtg gatgttgacg atggtcattt
+      961 tgtcaacata gagctagagt aa
+//
+

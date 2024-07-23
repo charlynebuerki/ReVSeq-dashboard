@@ -1,0 +1,68 @@
+LOCUS       KU509704                1497 bp    cRNA    linear   VRL 24-AUG-2017
+DEFINITION  Influenza A virus (A/Michigan/45/2015(H1N1)) segment 5 nucleocapsid
+            protein (NP) gene, complete cds.
+ACCESSION   KU509704
+VERSION     KU509704.1
+KEYWORDS    .
+SOURCE      Influenza A virus (A/Michigan/45/2015(H1N1))
+  ORGANISM  Influenza A virus (A/Michigan/45/2015(H1N1))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1497)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Influenza Sequencing Activity group
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1497)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-JAN-2016) WHO Collaborating Center for Surveillance,
+            Epidemiology and Control of Influenza, Influenza Division, Centers
+            for Disease Control and Prevention, 1600 Clifton Road, N.E.,
+            Atlanta, GA 30333, USA
+COMMENT     ##FluData-START##
+            EPI_ISOLATE_ID   :: EPI_ISL_200780
+            NAME             :: A/Michigan/45/2015
+            TYPE             :: H1N1
+            Segment_name     :: NP
+            PASSAGE          :: E1 (2015-10-08)
+            LOCATION         :: United States / Michigan
+            COLLECT_DATE     :: 07-Sep-2015
+            Lineage          :: A(H1N1)pdm09
+            SPECIMEN_ID      :: CL15-430392 ORIGINAL
+            SENDER_LAB       :: Michigan Department of Community Health
+            SEQLAB_SAMPLE_ID :: 3000413709
+            EPI_SEQUENCE_ID  :: EPI668420
+            ##FluData-END##
+FEATURES             Location/Qualifiers
+     gene            1..1497
+                     /gene="NP"
+ORIGIN      
+        1 atggcgtctc aaggcaccaa acgatcatat gaacaaatgg agactggtgg ggagcgccag
+       61 gataccacag aaatcagagc atctgttgga agaatgattg gtggaatcgg gagattctac
+      121 atccaaatgt gcactgaact caaactcagt gattatgatg gacgactaat ccagaatagc
+      181 ataacaatag agaggatggt gctttctgct tttgatgaga gaagaaataa atacctagaa
+      241 gagcatccaa gtgctgggaa ggaccctaag aaaacaggag gacccatcta tagaagaata
+      301 gacggaaaat ggacgagaga actcatcctt tatgacaaag aagaaataag gagagtttgg
+      361 cgccaagcaa acaatggcga agatgcaaca gcaggtctta ctcatatcat gatttggcat
+      421 tccaacctga atgatgccac atatcagagg acaagagcac ttgttcgcac tggaatggat
+      481 cccagaatgt gctctctaat gcaaggttca acacttccca gaaggtctgg tgccgcaggt
+      541 gctgcagtga aaggagttgg aacaatagct atggagttaa tcagaatgat caaacgtgga
+      601 atcaatgacc gaaatttctg gaggggtgaa aatggacgaa ggacaagagt tgcttatgaa
+      661 agaatgtgca atatcctcaa aggaaaattt caaacagctg cccagagggc aatgatggat
+      721 caagtaagag aaagtcgaaa cccaggaaac gctgagattg aagacctcat tttcctggca
+      781 cggtcagcac tcattctgag aggatcagtt gcacataaat cctgcctgcc tgcttgtgtg
+      841 tatgggcttg cagtagcaag tggccatgac tttgaaaggg aagggtactc actggtcggg
+      901 atagacccat tcaaattact ccaaaacagt caagtggtca gcctgatgag accaaatgaa
+      961 aatccagctc acaagagtca attggtatgg atggcatgcc actctgctgc atttgaagat
+     1021 ttaagagtat caagtttcat aagaggaaag aaagtgatcc caagaggaaa gctttccaca
+     1081 agaggggttc agattgcttc aaatgagaat gtggaaacca tggactccaa taccctggaa
+     1141 ctaagaagca gatactgggc cataagaacc aggagtggag gaaataccaa tcaacagaag
+     1201 gcatccgcag gccagatcag tgtgcagcct acattctcag tgcagcgaaa tctccctttt
+     1261 gaaagagcaa ccgttatggc agcattcagc gggaacaatg aaggacggac atccgacatg
+     1321 agaacagaag ttataagaat gatggaaagt gcaaagccag aggatttgtc cttccagggg
+     1381 cggggagtct tcgagctctc ggacgaaaag gcaacgaacc cgatcgtgcc ttcctttgac
+     1441 atgagtaatg aagggtctta tttcttcgga gacaatgcag aggagtatga caattga
+//
+

@@ -1,0 +1,72 @@
+LOCUS       KU509703                1701 bp    cRNA    linear   VRL 24-AUG-2017
+DEFINITION  Influenza A virus (A/Michigan/45/2015(H1N1)) segment 4
+            hemagglutinin (HA) gene, complete cds.
+ACCESSION   KU509703
+VERSION     KU509703.1
+KEYWORDS    .
+SOURCE      Influenza A virus (A/Michigan/45/2015(H1N1))
+  ORGANISM  Influenza A virus (A/Michigan/45/2015(H1N1))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 1701)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Influenza Sequencing Activity group
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1701)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-JAN-2016) WHO Collaborating Center for Surveillance,
+            Epidemiology and Control of Influenza, Influenza Division, Centers
+            for Disease Control and Prevention, 1600 Clifton Road, N.E.,
+            Atlanta, GA 30333, USA
+COMMENT     ##FluData-START##
+            EPI_ISOLATE_ID   :: EPI_ISL_200780
+            NAME             :: A/Michigan/45/2015
+            TYPE             :: H1N1
+            Segment_name     :: HA
+            PASSAGE          :: E1 (2015-10-08)
+            LOCATION         :: United States / Michigan
+            COLLECT_DATE     :: 07-Sep-2015
+            Lineage          :: A(H1N1)pdm09
+            SPECIMEN_ID      :: CL15-430392 ORIGINAL
+            SENDER_LAB       :: Michigan Department of Community Health
+            SEQLAB_SAMPLE_ID :: 3000413709
+            EPI_SEQUENCE_ID  :: EPI668427
+            ##FluData-END##
+FEATURES             Location/Qualifiers
+     gene            1..1701
+                     /gene="HA"
+ORIGIN      
+        1 atgaaggcaa tactagtagt tctgctatat acatttacaa ccgcaaatgc agacacatta
+       61 tgtataggtt atcatgcgaa caattcaaca gacactgtag acacagtact agaaaagaat
+      121 gtaacagtaa cacactctgt taaccttctg gaagacaagc ataacggaaa actatgcaaa
+      181 ctaagagggg tagccccatt gcatttgggt aaatgtaaca ttgctggctg gatcctggga
+      241 aatccagagt gtgaatcact ctccacagca agttcatggt cctacattgt ggaaacatct
+      301 aattcagaca atggaacgtg ttacccagga gatttcatca attatgagga gctaagagag
+      361 caattgagct cagtgtcatc atttgaaagg tttgagatat tccccaagac aagttcatgg
+      421 cccaatcatg astcgaacaa aggtgtaacg gcagcatgtc ctcacgctgg agcaaaaagc
+      481 ttctacaaaa acttgatatg gctagttaaa aaaggaaatt catacccaaa gcttaaccaa
+      541 tcctacatta atgataaagg gaaagaagtc ctcgtgctgt ggggcattca ccatccatct
+      601 actactgctg accaacaaag tmtctatcag aatgcagatg catatgtttt tgtggggaca
+      661 tcaagataca gcaagaagtt caagccggaa atagcaacaa gacccaaagt gagggatcaa
+      721 gaagggagaa tgaactatta ctggacacta gtagagccgg gagacaaaat aacattcgaa
+      781 gcaactggaa atctagtggt accgagatat gcattcacaa tggaaagaaa tgctggatct
+      841 ggtattatca tttcagatac accagtccac gattgcaata caacttgtca gacacccgag
+      901 ggtgctataa acaccagcct cccatttcag aatatacatc cgatcacaat tggaaaatgt
+      961 ccaaagtatg taaaaagcac aaaattgaga ctggccacag gattgaggaa tgttccgtct
+     1021 attcaatcta gaggcctatt cggggccatt gccggcttca ttgaaggggg gtggacaggg
+     1081 atggtagatg gatggtacgg ttatcaccat caaaatgagc aggggtcagg atatgcagcc
+     1141 gacctgaaga gcacacaaaa tgccattgac aagattacta acaaagtaaa ttctgttatt
+     1201 gaaaagatga atacacagtt cacagcagtg ggtaaagagt tcaaccacct ggaaaaaaga
+     1261 atagagaatc taaataaaaa agttgatgat ggtttcctgg acatttggac ttacaatgcc
+     1321 gaactgttgg ttctattgga aaatgaaaga actttggact atcacgattc aaatgtgaag
+     1381 aacttgtatg aaaaagtaag aaaccagtta aaaaacaatg ccaaggaaat tggaaacggc
+     1441 tgctttgaat tttaccacaa atgcgataac acgtgcatgg aaagtgtcaa aaatgggact
+     1501 tatgactacc caaaatactc agaggaagca aaattaaaca gagaaaaaat agatggggta
+     1561 aagctggaat caacaaggat ttaccagatt ttggcgatct attcaactgt cgccagttca
+     1621 ttggtactgg tagtctccct gggggcaatc agcttctgga tgtgctctaa tgggtctcta
+     1681 cagtgtagaa tatgtattta a
+//
+

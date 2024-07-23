@@ -1,0 +1,62 @@
+LOCUS       KU509707                 863 bp    cRNA    linear   VRL 24-AUG-2017
+DEFINITION  Influenza A virus (A/Michigan/45/2015(H1N1)) segment 8 nuclear
+            export protein (NEP) and nonstructural protein 1 (NS1) genes,
+            complete cds.
+ACCESSION   KU509707
+VERSION     KU509707.1
+KEYWORDS    .
+SOURCE      Influenza A virus (A/Michigan/45/2015(H1N1))
+  ORGANISM  Influenza A virus (A/Michigan/45/2015(H1N1))
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Insthoviricetes; Articulavirales;
+            Orthomyxoviridae; Alphainfluenzavirus; Alphainfluenzavirus
+            influenzae.
+REFERENCE   1  (bases 1 to 863)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Influenza Sequencing Activity group
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 863)
+  AUTHORS   Jernigan,D., Wentworth,D., Katz,J., Barnes,J., Garten,R. and Xu,X.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-JAN-2016) WHO Collaborating Center for Surveillance,
+            Epidemiology and Control of Influenza, Influenza Division, Centers
+            for Disease Control and Prevention, 1600 Clifton Road, N.E.,
+            Atlanta, GA 30333, USA
+COMMENT     ##FluData-START##
+            EPI_ISOLATE_ID   :: EPI_ISL_200780
+            NAME             :: A/Michigan/45/2015
+            TYPE             :: H1N1
+            Segment_name     :: NS
+            PASSAGE          :: E1 (2015-10-08)
+            LOCATION         :: United States / Michigan
+            COLLECT_DATE     :: 07-Sep-2015
+            Lineage          :: A(H1N1)pdm09
+            SPECIMEN_ID      :: CL15-430392 ORIGINAL
+            SENDER_LAB       :: Michigan Department of Community Health
+            SEQLAB_SAMPLE_ID :: 3000413709
+            EPI_SEQUENCE_ID  :: EPI668421
+            ##FluData-END##
+FEATURES             Location/Qualifiers
+     gene            1..838
+                     /gene="NEP"
+                     /gene_synonym="NS2"
+     gene            1..660
+                     /gene="NS1"
+ORIGIN      
+        1 atggaatcca acaccatgtc aagctttcag gtagactgtt ttctttggca tattcgcaag
+       61 cgatttgcag acaatggatt gggtgatgcc ccattccttg atcggctacg ccgagatcaa
+      121 aagtccttaa aaggaagagg caacaccctt ggcctcgaca tcaaaacagc cactcttgtt
+      181 gggaaacaaa ttatggaatg gattttgaaa gaggaatcca gcgagacact tagaatgaca
+      241 attgcatctg tacctacttc gcgttacatt tctgacatga ccctcgagga aatgtcacga
+      301 gactggttca tgcttatgcc taggcaaaag ataataggcc ctctttgcgt gcgattggac
+      361 caggcggtca tggataagaa catagtactg gaagcaaact tcagtgtaat cttcaaccga
+      421 ttagagacct tgatactact aagggctttc actgaggagg gagcaatagt tggagaaatt
+      481 tcaccattac cttctcttcc aggacatact tatgaggatg tcaaaaatgc agttggggtc
+      541 ctcatcggag gacttgagtg gaatggtaac acggttcgag tctctgaaaa tatacagaga
+      601 ttcgcttgga gaagctgtga tgagaatggg agaccttcac tacctccaga gcagaaatga
+      661 gaagtggcgg gaacaattgg gacagaaatt tgaggaaata aggtggttaa ttgaagaaat
+      721 acggcacaga ttgaaagcga cagagaatag tttcgaacaa ataacattta tgcaagcctt
+      781 acaactactg cttgaagtag agcaagagat aagagctttc tcgtttcagc ttatttaatg
+      841 ataaaaaaca cccttgtttc tac
+//
+

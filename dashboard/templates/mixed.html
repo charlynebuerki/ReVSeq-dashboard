@@ -67,19 +67,54 @@ var selectStrain = document.getElementById('strain');
           
       };
 </script>
-<div class="row">
-<div class="column">
+<h3 style="border: 1px solid #000; padding: 10px; width: 20%">Total no. of co-infections: {{no_co_infections}}</h3>
 {% autoescape off %}
         {{ co_inf_mat }}
 {% endautoescape %}
+<div class="row">
+<select name="substrain" id="substrain">
+<option value="all" selected>All strains</option>
+{% for strain in strains %}
+<option value="{{strain}}">{{strain}}</option>
+{% endfor %}
+</select>
 </div>
-<div class="column"></div>
-</div>
+<div id = 'pileup_plt'>
 {% for p in pairs %}
 <div class="column">
-    <h2>{{p.title}}</h2>
-    <img src="{% static p.plot %}" style="width:100%;border: 1px solid #000; padding: 10px">
+    <h2>{{p.first}} & {{p.second}}</h2>
+    <img src="{% static 'mixed/pileup_'|add:p.first_clean|add:'_'|add:p.second_clean|add:'.png' %}" style="width:100%;border: 1px solid #000; padding: 10px">
 </div>
 {% endfor %}
+<script>
+
+var selectSubstrain = document.getElementById('substrain');
+      selectSubstrain.onchange = function(){
+        var substrain = this.value;
+        pileup=''
+        let pairs = {{ pairs|safe }}
+        let selectedPairs
+        if(substrain=='all'){
+            selectedPairs = pairs;
+        } else {
+              selectedPairs= pairs.filter(function(item) {
+              if (item.first == substrain || item.second == substrain)
+                return true;
+              return false;
+            });
+        }
+
+        for (i in selectedPairs){
+         pileup += '<div class=\"column\">'
+         pileup += '<h2>' + selectedPairs[i].first + ' \& ' + selectedPairs[i].second+ '</h2>' 
+         pileup += '<img src=\"/static/mixed/pileup_'+ selectedPairs[i].first_clean + '_' + selectedPairs[i].second_clean + '.png\" style=\"width:100%;border: 1px solid #000; padding: 10px\">';
+         pileup += '</div>'
+        
+            document.getElementById('pileup_plt').innerHTML = pileup;
+        }
+          
+      };
+</script>
+</div>
 </body>
 </html>
