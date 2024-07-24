@@ -37,7 +37,30 @@ color_dict = {
     "Mixed": "darkblue"
 }
 
-
+def pileup_plot(coverage_file, annotation_file, out_file, figsize=(20, 5), height_ratios=[4, 1.5]):
+    coverage=pd.read_csv(coverage_file)
+    fig, (ax1, ax2) = plt.subplots(
+        2, 1,  figsize=figsize, sharex=True, gridspec_kw={"height_ratios": height_ratios}
+    )
+    ax1.plot(coverage['idx'], coverage['mean'])
+    ax1.fill_between(coverage['idx'], coverage['ci_lower'], coverage['ci_upper'], color='b', alpha=.15)
+    ax1.set_ylim(bottom=0)
+    ax1.set_ylabel("Sequencing Depth", fontsize = 10)
+    ax1.set_title("Sequencing Depth" ,fontsize = 15, loc='left' ,pad=20)
+    ax1.set_yscale("log")
+    ax1.set_ylim(ymin=1)
+    ax1.get_xaxis().set_visible(False)
+    ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+    ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
+    ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+    ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
+    
+    graphic_record = BiopythonTranslator().translate_record(annotation_file)
+    graphic_record.plot(ax=ax2, strand_in_label_threshold=4, with_ruler=True)
+    ax2.set_xlabel("Position")
+    ax2.get_yaxis().set_visible(False)
+    
+    fig.savefig(out_file, bbox_inches='tight')
 
 def home(request):
     
@@ -52,7 +75,7 @@ def home(request):
     df = df.drop_duplicates(subset='pseudonymized_id')
     
     no_samples = len(df)
-
+    '''
     grouped_df = df.groupby(['week','strain_name']).size().reset_index(name='count')
 
     fig = px.bar(grouped_df, x="week", y="count", color="strain_name",
@@ -62,7 +85,6 @@ def home(request):
                      "count": "No. infections",
                      "strain_name": "Strain"
                  },
-                title="Sequencing",
                 color_discrete_map= color_dict,
                 category_orders = {"strain_name": color_dict.keys()},
                 template = "simple_white"
@@ -70,7 +92,8 @@ def home(request):
     fig.update_xaxes(categoryorder='array', categoryarray= grouped_df['week'])
     fig.update_yaxes(showgrid=True)
 
-    bar_seq = plot(fig, output_type="div")
+    #bar_seq = plot(fig, output_type="div")
+    fig.write_html('dashboard/static/histogram_seq.html')
 
     grouped_df = df.groupby(['week','strains_PCR']).size().reset_index(name='count')
 
@@ -81,7 +104,6 @@ def home(request):
                      "count": "No. infections",
                      "strains_PCR": "Strain"
                  },
-            title="PCR",
             color_discrete_map= color_dict,
             category_orders = {"strains_PCR": color_dict.keys()},
             template = "simple_white"
@@ -89,9 +111,9 @@ def home(request):
     fig.update_xaxes(categoryorder='array', categoryarray= grouped_df['week'])
     fig.update_yaxes(showgrid=True)
 
-    bar_pcr = plot(fig, output_type="div")
+    #bar_pcr = plot(fig, output_type="div")
+    fig.write_html('dashboard/static/histogram_pcr.html')
 
-    '''
     f="dashboard/static/swissBOUNDARIES3D_1_5_TLM_KANTONSGEBIET.shx"
     shapes = gpd.read_file(f, engine="pyogrio")
 
@@ -162,7 +184,7 @@ def home(request):
     #map_plt = plot(fig, output_type="div")
     '''
     
-    return render(request, 'home.html', {'barplot_seq': bar_seq, 'barplot_pcr': bar_pcr, 'no_samples': no_samples }) 
+    return render(request, 'home.html', {'no_samples': no_samples }) # 'barplot_seq': bar_seq, 'barplot_pcr': bar_pcr, 
 
 def strain_view(request, strain_name):
 
@@ -303,64 +325,17 @@ def strain_view(request, strain_name):
 
                 for seg in segments:
                     for substrain in ['all', 'H1N1', 'H3N2']:
-                        coverage=pd.read_csv('dashboard/static/pileup/Influenza_A_'+seg+'_'+substrain+'.csv')
-
-                        fig, (ax1, ax2) = plt.subplots(
-                            2, 1,  figsize=(20, 5), sharex=True, gridspec_kw={"height_ratios": [4, 1.5]}
-                        )
+                        pileup_plot('dashboard/static/pileup/Influenza_A_'+seg+'_'+substrain+'.csv', 'dashboard/static/annotations/Influenza_A_'+seg+'.gb', 'dashboard/static/pileup/Influenza_A_'+seg+'_'+substrain+'.png')
                         
-                        ax1.plot(coverage['idx'], coverage['mean'])
-                        ax1.fill_between(coverage['idx'], coverage['ci_lower'], coverage['ci_upper'], color='b', alpha=.15)
-                        ax1.set_ylim(bottom=0)
-                        ax1.set_ylabel("Sequencing Depth", fontsize = 10)
-                        ax1.set_title("Sequencing Depth" ,fontsize = 15, loc='left' ,pad=20)
-                        ax1.set_yscale("log")
-                        ax1.set_ylim(ymin=1)
-                        ax1.get_xaxis().set_visible(False)
-                        ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
-                        ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                        ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
-                        ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
-                        
-                        graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/Influenza_A_'+seg+'.gb')
-                        graphic_record.plot(ax=ax2, strand_in_label_threshold=4, with_ruler=True)
-                        ax2.set_xlabel("Position")
-                        ax2.get_yaxis().set_visible(False)
-                        
-                        fig.savefig('dashboard/static/pileup/Influenza_A_'+seg+'_'+substrain+'.png', bbox_inches='tight')
         case 'Influenza B':
             if not os.path.isfile('dashboard/static/pileup/Influenza_B_PB1.png'):
                 
                 segments = ['PB2','PB1','HA','NP', 'NA','MP','NS']
 
                 for seg in segments:
-                    coverage=pd.read_csv('dashboard/static/pileup/Influenza_B_'+seg+'_all.csv')
-
-                    fig, (ax1, ax2) = plt.subplots(
-                        2, 1,  figsize=(20, 5), sharex=True, gridspec_kw={"height_ratios": [4, 1.5]}
-                    )
+                    pileup_plot('dashboard/static/pileup/Influenza_B_'+seg+'_all.csv', 'dashboard/static/annotations/Influenza_B_'+seg+'.gb', 'dashboard/static/pileup/Influenza_B_'+seg+'_all.png')
                     
-                    ax1.plot(coverage['idx'], coverage['mean'])
-                    ax1.fill_between(coverage['idx'], coverage['ci_lower'], coverage['ci_upper'], color='b', alpha=.15)
-                    ax1.set_ylim(bottom=0)
-                    ax1.set_ylabel("Sequencing Depth", fontsize = 10)
-                    ax1.set_title("Sequencing Depth" ,fontsize = 15, loc='left' ,pad=20)
-                    ax1.set_yscale("log")
-                    ax1.set_ylim(ymin=1)
-                    ax1.get_xaxis().set_visible(False)
-                    ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
-                    ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                    ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
-                    ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
-                    
-                    graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/Influenza_B_'+seg+'.gb')
-                    graphic_record.plot(ax=ax2, strand_in_label_threshold=4, with_ruler=True)
-                    ax2.set_xlabel("Position")
-                    ax2.get_yaxis().set_visible(False)
-                    
-                    fig.savefig('dashboard/static/pileup/Influenza_B_'+seg+'_all.png', bbox_inches='tight')
         case _:
-            coverage=pd.read_csv('dashboard/static/pileup/'+strain_name+'_all.csv')
             if strain_name == 'Adenovirus': 
                 figsize = (20, 6.5)
                 height_ratios = [4, 2.5]
@@ -368,57 +343,11 @@ def strain_view(request, strain_name):
                 figsize = (20, 5)
                 height_ratios = [4, 1]
 
-            fig, (ax1, ax2) = plt.subplots(
-                2, 1,  figsize=figsize, sharex=True, gridspec_kw={"height_ratios": height_ratios}
-            )
-            
-            ax1.plot(coverage['idx'], coverage['mean'])
-            ax1.fill_between(coverage['idx'], coverage['ci_lower'], coverage['ci_upper'], color='b', alpha=.15)
-            ax1.set_ylim(bottom=0)
-            ax1.set_ylabel("Sequencing Depth", fontsize = 10)
-            ax1.set_title("Sequencing Depth" ,fontsize = 15, loc='left' ,pad=20)
-            ax1.set_yscale("log")
-            ax1.set_ylim(ymin=1)
-            ax1.get_xaxis().set_visible(False)
-            ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
-            ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-            ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
-            ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
-
-            graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/'+strain_name+'.gb')
-            graphic_record.plot(ax=ax2, strand_in_label_threshold=4, with_ruler=True)
-            ax2.set_xlabel("Position")
-            ax2.get_yaxis().set_visible(False)
-
-            fig.savefig('dashboard/static/pileup/'+strain_name+'_all.png', bbox_inches='tight')
+            pileup_plot('dashboard/static/pileup/'+strain_name+'_all.csv', 'dashboard/static/annotations/'+strain_name+'.gb', 'dashboard/static/pileup/'+strain_name+'_all.png', figsize=figsize, height_ratios=height_ratios)
 
             if len(substrains) > 1:
                 for substrain in substrains:
-                    coverage=pd.read_csv('dashboard/static/pileup/'+strain_name+'_'+substrain.replace(' ' ,'_')+'.csv')
-
-                    fig, (ax1, ax2) = plt.subplots(
-                        2, 1,  figsize=figsize, sharex=True, gridspec_kw={"height_ratios": height_ratios}
-                    )
-                    
-                    ax1.plot(coverage['idx'], coverage['mean'])
-                    ax1.fill_between(coverage['idx'], coverage['ci_lower'], coverage['ci_upper'], color='b', alpha=.15)
-                    ax1.set_ylim(bottom=0)
-                    ax1.set_ylabel("Sequencing Depth", fontsize = 10)
-                    ax1.set_title("Sequencing Depth" ,fontsize = 15, loc='left' ,pad=20)
-                    ax1.set_yscale("log")
-                    ax1.set_ylim(ymin=1)
-                    ax1.get_xaxis().set_visible(False)
-                    ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
-                    ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                    ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
-                    ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
-
-                    graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/'+strain_name+'.gb')
-                    graphic_record.plot(ax=ax2, strand_in_label_threshold=4, with_ruler=True)
-                    ax2.set_xlabel("Position")
-                    ax2.get_yaxis().set_visible(False)
-
-                    fig.savefig('dashboard/static/pileup/'+strain_name+'_'+substrain.replace(' ' ,'_')+'.png', bbox_inches='tight')
+                    pileup_plot('dashboard/static/pileup/'+strain_name+'_'+substrain.replace(' ' ,'_')+'.csv', 'dashboard/static/annotations/'+strain_name+'.gb', 'dashboard/static/pileup/'+strain_name+'_'+substrain.replace(' ' ,'_')+'.png', figsize=figsize, height_ratios=height_ratios)
 
     '''
     fig = go.Figure([
@@ -465,11 +394,16 @@ def mixed_view(request):
     
     mat = pd.pivot_table(df, index='pseudonymized_id', columns='strain_name', values='substrain_name', aggfunc='count', fill_value=0).astype(int)
     co_infections = mat.T.dot(mat)
-    np.fill_diagonal(co_infections.values,0)
+
+    co_infections_np = co_infections.values.astype(float)
+    co_infections_np[np.triu_indices(len(co_infections_np))] = np.nan
 
     no_co_infections = int(co_infections.values.sum()/2)
 
-    fig = ff.create_annotated_heatmap(co_infections.values[::-1], x=co_infections.columns.tolist(), y=co_infections.columns.tolist()[::-1], colorscale='Viridis') 
+    fig = go.Figure(go.Heatmap(z=co_infections_np[1:,:-1][::-1], x=co_infections.columns.tolist()[:-1], y=co_infections.columns.tolist()[1:][::-1], colorscale='Viridis'))
+    fig.update_layout({"paper_bgcolor": "rgba(0, 0, 0, 0)","plot_bgcolor": "rgba(0, 0, 0, 0)"})
+    fig = fig.update_traces(text=co_infections.values[1:,:-1][::-1].astype(str), texttemplate="%{text}", hovertemplate=None, showscale=False)
+
     co_inf_mat = plot(fig, output_type="div")
 
     df=df[~df['strain_name'].isin(['Influenza A', 'Influenza B'])]
