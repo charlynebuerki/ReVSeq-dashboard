@@ -1,2 +1,4 @@
 #png files for pileup
 static/pileup/*.png
+static/barplots/*.png
+static/mixed
