@@ -2,3 +2,5 @@
 static/pileup/*.png
 static/barplots/*.png
 static/mixed
+
+*.cpython-311.pyc
