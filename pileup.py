@@ -24,6 +24,9 @@ for strain in strains:
         case 'Influenza A':
             segments = {'PB2': ['KU509700.1', 'KJ942623.1'], 'PB1': ['KU509701.1', 'KJ942622.1'], 'PA': ['KU509702.1', 'KJ942621.1'], 'HA': ['KU509703.1', 'KJ942616.1'],'NP': ['KU509704.1', 'KJ942619.1'], 'NA': ['KU509705.1', 'KJ942618.1'],'MP': ['KU509706.1', 'KJ942617.1'], 'NS': ['KU509707.1', 'KJ942620.1']}
             for seg in segments.keys():
+                print(seg)
+                #col_test = [s for s in coverage.columns if (s.split('_')[1] in segments[seg])]
+                #print(coverage[col_test])
                 cols=[s for s in coverage.columns if (s.split('_')[0] in df_strain['pseudonymized_id'].tolist()) and  (s.split('_')[1] in segments[seg])] 
                 coverage_strain=coverage[cols].fillna(0)
                 coverage_strain=coverage_strain[:np.where(coverage_strain.sum(axis=1))[0][-1]]
@@ -73,7 +76,7 @@ for strain in strains:
                         coverage_substrain=coverage_substrain[:np.where(coverage_substrain.sum(axis=1))[0][-1]]
                         pileup= pd.DataFrame({'idx': coverage_substrain.index+1, 'mean': coverage_substrain.mean(axis=1), 'ci_lower': coverage_substrain.mean(axis=1) - 1.96 *coverage_substrain.std(axis=1)/ np.sqrt(len(coverage_substrain.columns)), 'ci_upper': coverage_substrain.mean(axis=1) + 1.96 *coverage_substrain.std(axis=1)/ np.sqrt(len(coverage_substrain.columns))})
                         pileup.to_csv('dashboard/static/pileup/'+strain_name+'_'+substrain.replace(' ', '_')+ '.csv', index=False)
-                elif len(cols) <= 10:
+                elif len(cols) <= 25:
                     coverage_strain.columns = [s.split('_')[0]  for s in cols] 
                     coverage_strain.index = coverage_strain.index + 1
                     coverage_strain.to_csv('dashboard/static/pileup/'+strain_name+'_all_indiv.csv')

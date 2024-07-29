@@ -51,9 +51,9 @@ def pileup_plot(coverage_file, annotation_file, out_file, figsize=(20, 5), heigh
     ax1.set_yscale("log")
     ax1.set_ylim(ymin=1)
     ax1.get_xaxis().set_visible(False)
-    ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+    #ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
     ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-    ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+    #ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
     ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
     
     graphic_record = BiopythonTranslator().translate_record(annotation_file)
@@ -228,7 +228,7 @@ def strain_view(request, strain_name):
 
     if not os.path.isfile('dashboard/static/barplots/'+ strain_name + '_seq.html'):
 
-        if(strain_name not in ['Bocavirus', 'Parainfluenza_4']):
+        if(strain_name not in ['Bocavirus', 'Parainfluenza_4', 'Polyomavirus']):
 
             grouped_df = df_pcr.groupby('week').agg({"pseudonymized_id": ["count"], "match_PCR_sequencing": ["sum"]}).reset_index()
             grouped_df.columns = ['week', 'count', 'match']
@@ -404,7 +404,7 @@ def strain_view(request, strain_name):
             if len(substrains) > 1:
                 for substrain in substrains:
                     pileup_plot('dashboard/static/pileup/'+strain_name+'_'+substrain.replace(' ' ,'_')+'.csv', 'dashboard/static/annotations/'+strain_name+'.gb', 'dashboard/static/pileup/'+strain_name+'_'+substrain.replace(' ' ,'_')+'.png', figsize=figsize, height_ratios=height_ratios)
-            elif no_samples <= 10:
+            elif no_samples <= 25:
                 coverage=pd.read_csv('dashboard/static/pileup/'+strain_name + '_all_indiv.csv', index_col=0)
                 fig, (ax1, ax2) = plt.subplots(
                     2, 1,  figsize=figsize, sharex=True, gridspec_kw={"height_ratios": height_ratios}
@@ -415,9 +415,9 @@ def strain_view(request, strain_name):
                 ax1.set_yscale("log")
                 ax1.set_ylim(ymin=1)
                 ax1.get_xaxis().set_visible(False)
-                ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+                #ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
                 ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+                #ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
                 ax1.legend(title='Sample', bbox_to_anchor=(1, 1), loc='upper left')
                                 
                 graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/'+strain_name+'.gb')
@@ -535,9 +535,9 @@ def mixed_view(request):
                     ax1.set_yscale("log")
                     ax1.set_ylim(ymin=1)
                     ax1.get_xaxis().set_visible(False)
-                    ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+                    #ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
                     ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                    ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+                    #ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
                     ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
 
                     graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/'+strain_name+'.gb')
@@ -568,9 +568,9 @@ def mixed_view(request):
                     ax3.set_yscale("log")
                     ax3.set_ylim(ymin=1)
                     ax3.get_xaxis().set_visible(False)
-                    ax3.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+                    #, color = 'b', linestyle = '--', label = "DP5")
                     ax3.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                    ax3.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+                    #ax3.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
                     ax3.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
 
                     graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/'+strain_name+'.gb')
@@ -608,9 +608,9 @@ def mixed_view(request):
                     ax1.set_yscale("log")
                     ax1.set_ylim(ymin=1)
                     ax1.get_xaxis().set_visible(False)
-                    ax1.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+                    #, color = 'b', linestyle = '--', label = "DP5")
                     ax1.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                    ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+                    #ax1.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
                     ax1.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
 
                     graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/Influenza_A_HA.gb')
@@ -632,9 +632,9 @@ def mixed_view(request):
                     ax3.set_yscale("log")
                     ax3.set_ylim(ymin=1)
                     ax3.get_xaxis().set_visible(False)
-                    ax3.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+                    #ax3.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
                     ax3.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                    ax3.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+                    #ax3.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
                     ax3.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
 
                     graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/Influenza_A_NA.gb')
@@ -664,9 +664,9 @@ def mixed_view(request):
                     ax5.set_yscale("log")
                     ax5.set_ylim(ymin=1)
                     ax5.get_xaxis().set_visible(False)
-                    ax5.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
+                    #ax5.axhline(y = 5, color = 'b', linestyle = '--', label = "DP5")
                     ax5.axhline(y = 10, color = 'b', linestyle = '-', label = "DP10")
-                    ax5.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
+                    #ax5.axhline(y = 20, color = 'b', linestyle = ':', label = "DP20")
                     ax5.legend(bbox_to_anchor = (1, 1), loc = 'upper left')
 
                     graphic_record = BiopythonTranslator().translate_record('dashboard/static/annotations/'+strain_name+'.gb')
