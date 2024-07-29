@@ -4,3 +4,4 @@ static/barplots/*.png
 static/mixed
 
 *.cpython-311.pyc
+*.DS_Store
