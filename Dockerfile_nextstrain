@@ -1,0 +1,17 @@
+# Use the official node image from the Docker hub
+FROM node:22
+
+# Set the working directory in the container
+WORKDIR /app
+
+
+# Copy the entire Django project to the container
+COPY . .
+
+# Expose the port the Django app runs on
+EXPOSE 4000
+
+# Run the Django dashboard using your custom command
+RUN npm install -g auspice-revseq
+ENV HOST=0.0.0.0
+CMD ["npx", "auspice-revseq", "view" ,"--datasetDir"  ,"dashboard/static/auspice" ]

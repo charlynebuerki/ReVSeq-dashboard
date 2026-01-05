@@ -131,6 +131,7 @@ def home(request):
     #bar_pcr = plot(fig, output_type="div")
     fig.write_html('dashboard/static/histogram_pcr.html')
     
+    
     f="dashboard/static/swissBOUNDARIES3D_1_5_TLM_KANTONSGEBIET.shx"
     shapes = gpd.read_file(f, engine="pyogrio")
 
@@ -228,7 +229,7 @@ def strain_view(request, strain_name):
 
     if not os.path.isfile('dashboard/static/barplots/'+ strain_name + '_seq.html'):
 
-        if(strain_name not in ['Bocavirus', 'Parainfluenza_4', 'Polyomavirus']):
+        if(strain_name not in ['Bocavirus', 'Parainfluenza_4', 'Polyomavirus',]):
 
             grouped_df = df_pcr.groupby('week').agg({"pseudonymized_id": ["count"], "match_PCR_sequencing": ["sum"]}).reset_index()
             grouped_df.columns = ['week', 'count', 'match']

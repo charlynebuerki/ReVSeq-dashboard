@@ -5,3 +5,16 @@ static/mixed
 
 *.cpython-311.pyc
 *.DS_Store
+
+# pycache in subdirectories
+**/__pycache__/
+**/*.pyc
+
+#ignore static files barplots
+dashboard/static/barplots/*.html
+
+#ignore pileup folder with png
+dashboard/static/pileup/*.png
+
+#inore mixed folder with png
+dashboard/static/mixed/*.png

@@ -17,3 +17,14 @@ nexstrain view dashboard/static -> changed to: npx auspice-revseq view --dataset
 ```
 
 The home view will be at: [http://localhost:8000/home](http://localhost:8000/home).
+
+## ReVSeq Dashboard Docker Images
+
+### revseq-dashboard
+
+You can pull the `revseq-dashboard` image from GitHub Container Registry using:
+
+```bash
+docker pull ghcr.io/charlynebuerki/revseq-dashboard:latest
+
+docker pull ghcr.io/charlynebuerki/revseq-dashboard_nextstrain:latest
