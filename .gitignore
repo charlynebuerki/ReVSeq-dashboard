@@ -18,3 +18,34 @@ dashboard/static/pileup/*.png
 
 #inore mixed folder with png
 dashboard/static/mixed/*.png
+
+#ignore nextstrain-pipelines for now
+Nextstrain-pipelines/
+
+#ignore extract-pileup for now
+Extract-pileup/
+
+#ignore files in dashboard/data, except for the .empty file
+dashboard/static/data/*
+!dashboard/static/data/.empty_data
+
+#ignore auspice trees, exept for the .empty file
+dashboard/static/auspice/*
+!dashboard/static/auspice/.empty_tree
+
+#ignore tracked auspice JSON exports
+dashboard/static/auspice/*.json
+
+#ignore all pileup artifacts (csv/png/others)
+dashboard/static/pileup/**
+
+#ignore generated plot html files
+dashboard/static/map*.html
+dashboard/static/histogram_*.html
+dashboard/static/barplots/*.html
+
+#ignore bulky local data dumps in static root
+dashboard/static/pileup_all_old.csv
+dashboard/static/pileup_coinfections_old.csv
+dashboard/static/example_data.csv
+dashboard/static/example_data_old.csv
