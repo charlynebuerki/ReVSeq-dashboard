@@ -4,216 +4,326 @@
 <html>
 
 <head>
-   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-   <script>
-      function redirect(goto){
-          if (goto != '') {
-              window.location = goto;
-          }
+  <script>
+    function redirect(goto) {
+      if (goto != '') {
+        window.location = goto;
       }
-   </script>
-   <style>
-         .column {
-            float: left;
-            width: 50%;
-            padding: 0px;
-            box-sizing: border-box;
-         }
-         .row::after {
-            content: "";
-            clear: both;
-            display: table;
-         }
-         .wrapper {
-          display: flex;
-          padding: 4px;
-          background-color: lightgrey;
-        }
-         .custom-input {
-          flex-grow: 1;
-        }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --card: #ffffff;
+      --ink: #16212f;
+      --muted: #5b6b7f;
+      --accent: #0f7aa7;
+      --accent-2: #1d3f72;
+      --line: #d6dce5;
+    }
 
-        .custom-input input[type=radio] {
-          display: none;
-        }
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: radial-gradient(circle at top right, #d7edf5, #f3f5f8 45%);
+      color: var(--ink);
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    }
 
-        .custom-input label {
-          display: block;
-          padding: 6px 8px;
-          color: #fff;
-          font-weight: bold;
-          text-align: center;
-          transition : all .4s 0s ease;
-        }
+    .banner {
+      background: linear-gradient(115deg, var(--accent-2), var(--accent));
+      color: #fff;
+      padding: 28px 34px;
+      box-shadow: 0 6px 18px rgba(16, 42, 79, 0.24);
+    }
 
-        .custom-input input[type=radio]:checked + label {
-          background-color: #f5f5f5;
-          color: #000;
-          border-radius: 4px;
-        }
-      </style>
+    .banner h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .banner p {
+      margin: 6px 0 0;
+      opacity: 0.9;
+    }
+
+    .page {
+      max-width: 1300px;
+      margin: 24px auto;
+      padding: 0 20px 36px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: var(--card);
+      font-weight: 600;
+    }
+
+    .module-subtitle {
+      margin: 18px 0 10px;
+      color: var(--muted);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .column {
+      float: left;
+      width: 50%;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .wrapper {
+      display: flex;
+      padding: 4px;
+      background-color: #d4dce7;
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+    .custom-input {
+      flex-grow: 1;
+    }
+
+    .custom-input input[type=radio] {
+      display: none;
+    }
+
+    .custom-input label {
+      display: block;
+      padding: 6px 8px;
+      color: #2f3f54;
+      font-weight: bold;
+      text-align: center;
+      transition: all .4s 0s ease;
+    }
+
+    .custom-input input[type=radio]:checked+label {
+      background-color: #fff;
+      color: #102748;
+      border-radius: 4px;
+    }
+
+    iframe,
+    object,
+    img {
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+  </style>
 
 </head>
 
 <body>
+  <header class="banner">
+    <h1>ReVSeq Dashboard</h1>
+    <p>Respiratory virus surveillance in Switzerland</p>
+  </header>
+  <main class="page">
+  <h2>Infections in Switzerland - {{strain_name}}</h2>
 
-<h1>ReVSeq Dashboard</h1>
-
-
-<h2>Infections in Switzerland - {{strain_name}}</h2>
-
-
-<select name="strain" id="strain">
-  <option value="" selected>Select strain</option>
-  <option value="/home">All strains</option>
-  <option value="/strain/Adenovirus">Adenovirus</option>
-  <option value="/strain/Bocavirus">Bocavirus</option>
-  <option value="/strain/Influenza_A">Influenza A</option>
-  <option value="/strain/Influenza_B">Influenza B</option>
-  <option value="/strain/Metapneumovirus">Metapneumovirus</option>
-  <option value="/strain/Parainfluenza_2">Parainfluenza 2</option>
-  <option value="/strain/Parainfluenza_3">Parainfluenza 3</option>
-  <option value="/strain/Parainfluenza_4">Parainfluenza 4</option>
-  <option value="/strain/Polyomavirus" >Polyomavirus</option>
-  <option value="/strain/RSV">RSV - A/B</option>
-  <option value="/strain/SARS-CoV-2" >SARS-CoV-2</option>
-  <option value="/strain/Enterovirus">Rhino- / Enterovirus</option>
-  <option value="/strain/coronavirus_229E" >coronavirus 229E</option>
-  <option value="/strain/coronavirus_HKU1" >coronavirus HKU1</option>
-  <option value="/strain/coronavirus_NL63" >coronavirus NL63</option>
-  <option value="/strain/coronavirus_OC43" >coronavirus OC43</option>
-  <option value="/mixed" >Mixed</option>
-</select>
-<script>
-var selectStrain = document.getElementById('strain');
-
-      selectStrain.onchange = function(){
-          var goto = this.value;
-          redirect(goto);
-          
-      };
-</script>
-
-<h3 style="border: 1px solid #000; padding: 10px; width: 20%">Total no. of samples: {{no_samples}}</h3>
-<div class="row">
-<div class="column">
-<!--img src="{%static dir|add:'/histogram_seq.png' %}" alt="histogram_seq"-->
-<div class="wrapper">
-<div class="custom-input">
-    <input type="radio" id="seq" name="source" onclick= "document.getElementById('histogram').src = '/static/barplots/'+'{{strain}}'+'_seq.html';" checked>
-    <label for="seq">Sequencing</label>
+  <div class="controls">
+    <select name="strain" id="strain">
+      <option value="" selected>Select strain</option>
+      {% for option in strain_options %}
+      <option value="{{ option.value }}">{{ option.label }}</option>
+      {% endfor %}
+    </select>
+    <div class="metric">Total no. of samples: {{no_samples}}</div>
   </div>
-  <div class="custom-input">
-    <input type="radio" id="pcr" name="source" onclick= "document.getElementById('histogram').src = '/static/barplots/'+'{{strain}}'+'_pcr.html';">
-    <label for="pcr">PCR</label>
-  </div>
-</div>
-<iframe id ='histogram' src="{% static 'barplots/'|add:strain|add:'_seq.html' %}" width="100%" height="450px" frameborder="0"></iframe>
-</div>
-<div class="column">
-<!--img src="{% static dir|add:'/map.png' %}" alt="map"-->
-{% autoescape off %}
-        {{ map }}
-{% endautoescape %}
-</div>
-</div>
-<h2></h2>
-{%if substrains|length > 1%}
-<div class="row">
-<select name="substrain" id="substrain">
-<option value="all" selected>All substrains</option>
-{% for substrain in substrains %}
-<option value="{{substrain}}">{{substrain}}</option>
-{% endfor %}
-</select>
-</div>
-{%else%}
-{%if no_samples <= 25 %}
-<div class="column">
-<div class="wrapper">
-<div class="custom-input">
-    <input type="radio" name="view" id="aggregated" onclick= "change_view(true)" checked>
-    <label for="aggregated">Aggregated</label>
-  </div>
-  <div class="custom-input">
-    <input type="radio" name="view" id="individual" onclick= "change_view(false)">
-    <label for="individual">Individual</label>
-  </div>
-</div>
-<div class="column"></div>
-</div>
-<script>
-function change_view(aggregated){
-    if (aggregated) {
-        document.getElementById('pileup_plt').src = '/static/pileup/'+'{{strain}}'+'_all.png';
-    } else {
-        document.getElementById('pileup_plt').src = '/static/pileup/'+'{{strain}}'+'_all_indiv.png';
+  <script>
+    var selectStrain = document.getElementById('strain');
+
+    selectStrain.onchange = function () {
+      var goto = this.value;
+      redirect(goto);
+
+    };
+  </script>
+
+  {% if modules.histogram_sequencing or modules.histogram_pcr or modules.map %}
+  <script>
+    function updateDashboardSource(source) {
+      var histogram = document.getElementById('histogram');
+      var mapFrame = document.getElementById('map_frame');
+      var histogramHasSeq = {{ modules.histogram_sequencing|yesno:"true,false" }};
+      var histogramHasPcr = {{ modules.histogram_pcr|yesno:"true,false" }};
+
+      if (histogram) {
+        var histogramSource = source;
+        if (histogramSource === 'seq' && !histogramHasSeq) histogramSource = 'pcr';
+        if (histogramSource === 'pcr' && !histogramHasPcr) histogramSource = 'seq';
+        histogram.src = '/static/barplots/' + '{{strain}}' + '_' + histogramSource + '.html?v={{ asset_version }}';
+      }
+
+      if (mapFrame) {
+        mapFrame.src = '/static/barplots/' + '{{strain}}' + '_map_' + source + '.html?v={{ asset_version }}';
+      }
     }
-}
-</script>
-{% endif %}
-{% endif %}
-{%if strain_name == "Influenza A" or strain_name == "Influenza B"%}
-<div id= pileup_plt></div>
-<script>
-let segments;
-if ("{{strain_name}}" == "Influenza A") {
-    segments = ['HA','NA','PB1', 'PB2','PA','NP', 'MP','NS'];
-} else {
-    segments = ['HA','NA','PB1', 'PB2','NP', 'MP','NS'];
-}
-var pileup = '';
-for (i in segments) { 
- pileup += '<div class=\"column\">'
- pileup += '<h3>' + segments[i] + '</h3>' 
- pileup += '<img id=\"'+segments[i] + '\" src=\"/static/pileup/'+ '{{strain}}'+'_' + segments[i] + '_all.png\" style=\"width:100%\">';
- pileup += '</div>'
-}
-document.getElementById('pileup_plt').innerHTML = pileup;
+  </script>
 
-if ("{{strain_name}}" == "Influenza A") {
-    var selectSubstrain = document.getElementById('substrain');
-          selectSubstrain.onchange = function(){
-              var substrain = this.value;
-              for (i in segments) { 
-                    document.getElementById(segments[i]).src = '/static/pileup/'+ '{{strain}}' + '_' + segments[i]+ '_'+ substrain.split('(')[2].split(')')[0] +'.png';
+  <div class="wrapper">
+    <div class="custom-input">
+      <input type="radio" id="source_seq" name="dashboard_source"
+        onclick="updateDashboardSource('seq');"
+        {% if default_source == "seq" %}checked{% endif %}>
+      <label for="source_seq">Sequencing</label>
+    </div>
+    <div class="custom-input">
+      <input type="radio" id="source_pcr" name="dashboard_source"
+        onclick="updateDashboardSource('pcr');"
+        {% if default_source == "pcr" %}checked{% endif %}>
+      <label for="source_pcr">PCR</label>
+    </div>
+  </div>
+
+  <div class="row">
+    {% if modules.histogram_sequencing or modules.histogram_pcr %}
+    <div class="column">
+      <h3 class="module-subtitle">Histogram</h3>
+      <iframe id='histogram'
+        src="{% if default_histogram == 'seq' %}{% static 'barplots/'|add:strain|add:'_seq.html' %}{% else %}{% static 'barplots/'|add:strain|add:'_pcr.html' %}{% endif %}?v={{ asset_version }}"
+        width="100%" height="450px"
+        frameborder="0"></iframe>
+    </div>
+    {% endif %}
+    {% if modules.map %}
+    <div class="column">
+      <h3 class="module-subtitle">Map</h3>
+      <iframe id="map_frame"
+        src="{% if default_map == 'seq' %}{% static 'barplots/'|add:strain|add:'_map_seq.html' %}{% else %}{% static 'barplots/'|add:strain|add:'_map_pcr.html' %}{% endif %}?v={{ asset_version }}"
+        width="100%" height="450px"
+        frameborder="0"></iframe>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% if modules.pileup %}
+  <h3 class="module-subtitle">Pileup</h3>
+  <h2></h2>
+  {%if substrains|length > 1%}
+  <div class="row">
+    <select name="substrain" id="substrain">
+      <option value="all" selected>All substrains</option>
+      {% for substrain in substrains %}
+      <option value="{{substrain}}">{{substrain}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {%else%}
+  {%if no_samples <= 25 %} <div class="column">
+    <div class="wrapper">
+      <div class="custom-input">
+        <input type="radio" name="view" id="aggregated" onclick="change_view(true)" checked>
+        <label for="aggregated">Aggregated</label>
+      </div>
+      <div class="custom-input">
+        <input type="radio" name="view" id="individual" onclick="change_view(false)">
+        <label for="individual">Individual</label>
+      </div>
+    </div>
+    <div class="column"></div>
+    </div>
+    <script>
+      function change_view(aggregated) {
+        if (aggregated) {
+          document.getElementById('pileup_plt').src = '/static/pileup/' + '{{strain}}' + '_all.png';
+        } else {
+          document.getElementById('pileup_plt').src = '/static/pileup/' + '{{strain}}' + '_all_indiv.png';
+        }
+      }
+    </script>
+    {% endif %}
+    {% endif %}
+    {%if strain_name == "Influenza A" or strain_name == "Influenza B"%}
+    <div id=pileup_plt></div>
+    <script>
+      let segments;
+      if ("{{strain_name}}" == "Influenza A") {
+        segments = ['HA', 'NA', 'PB1', 'PB2', 'PA', 'NP', 'MP', 'NS'];
+      } else {
+        segments = ['HA', 'NA', 'PB1', 'PB2', 'NP', 'MP', 'NS'];
+      }
+      var pileup = '';
+      for (i in segments) {
+        pileup += '<div class=\"column\">'
+        pileup += '<h3>' + segments[i] + '</h3>'
+        pileup += '<img id=\"' + segments[i] + '\" src=\"/static/pileup/' + '{{strain}}' + '_' + segments[i] + '_all.png\" style=\"width:100%\">';
+        pileup += '</div>'
+      }
+      document.getElementById('pileup_plt').innerHTML = pileup;
+
+      if ("{{strain_name}}" == "Influenza A") {
+        var selectSubstrain = document.getElementById('substrain');
+        if (selectSubstrain) {
+          selectSubstrain.onchange = function () {
+            var substrain = this.value;
+            var subtype = 'all';
+            var subtypeMatch = substrain.match(/H1N1|H3N2/i);
+            if (subtypeMatch) {
+              subtype = subtypeMatch[0].toUpperCase();
+            } else if (substrain.toLowerCase() === 'all') {
+              subtype = 'all';
+            }
+            for (i in segments) {
+              document.getElementById(segments[i]).src = '/static/pileup/' + '{{strain}}' + '_' + segments[i] + '_' + subtype + '.png';
             }
           };
-}
-</script>
+        }
+      }
+    </script>
 
-{%else%}
-<img id="pileup_plt" src="{% static 'pileup/'|add:strain|add:'_all.png' %}" style="width:100%">
-{%if substrains|length > 1%}
-<script>
-var selectSubstrain = document.getElementById('substrain');
-      selectSubstrain.onchange = function(){
-          var substrain = this.value;
-          document.getElementById('pileup_plt').src = '/static/pileup/'+ '{{strain}}' + '_' + substrain.split(' ').join('_') +'.png';          
+    {%else%}
+    <img id="pileup_plt" src="{% static 'pileup/'|add:strain|add:'_all.png' %}" style="width:100%">
+    {%if substrains|length > 1%}
+    <script>
+      var selectSubstrain = document.getElementById('substrain');
+      selectSubstrain.onchange = function () {
+        var substrain = this.value;
+        document.getElementById('pileup_plt').src = '/static/pileup/' + '{{strain}}' + '_' + substrain.split(' ').join('_') + '.png';
       };
-</script>
-{%endif%}
-{%endif%}
-{%if strain_name == "SARS-CoV-2"%}
-<h2></h2>
-<object type="text/html" data="http://{{ request.get_host|slice:":-4" }}4000/SARS-CoV-2" style="width:100%; aspect-ratio: 16/9"></object>
-{%endif%}
-{%if strain_name == "RSV - A/B"%}
-<h2>RSV A</h2>
-<object type="text/html" data="http://{{ request.get_host|slice:":-4" }}4000/RSV-A" style="width:100%; aspect-ratio: 16/9"></object>
-<h2>RSV B</h2>
-<object type="text/html" data="http://{{ request.get_host|slice:":-4" }}4000/RSV-B" style="width:100%; aspect-ratio: 16/9"></object>
-{%endif%}
-{%if strain_name == "Influenza A"%}
-<h2>H1N1 segment 4 (HA)</h2>
-<object type="text/html" data="http://{{ request.get_host|slice:":-4" }}4000/Influenza-A-H1N1-HA" style="width:100%; aspect-ratio: 16/9"></object>
-<h2>H1N1 segment 6 (NA)</h2>
-<object type="text/html" data="http://{{ request.get_host|slice:":-4" }}4000/Influenza-A-H1N1-NA" style="width:100%; aspect-ratio: 16/9"></object>
-<h2>H3N2 segment 4 (HA)</h2>
-<object type="text/html" data="http://{{ request.get_host|slice:":-4" }}4000/Influenza-A-H3N2-HA" style="width:100%; aspect-ratio: 16/9"></object>
-<h2>H3N2 segment 6 (NA)</h2>
-<object type="text/html" data="http://{{ request.get_host|slice:":-4" }}4000/Influenza-A-H3N2-NA" style="width:100%; aspect-ratio: 16/9"></object>
-{%endif%}
+    </script>
+    {%endif%}
+    {%endif%}
+    {% endif %}
+    {% if modules.tree %}
+    <h3 class="module-subtitle">Phylogenetic Tree</h3>
+    {% with nextstrain_filter="?f_Node%20type=New" %}
+    {% for tree in tree_sources %}
+    <h2>{{ tree.title }}</h2>
+    <object type="text/html" data="http://{{ nextstrain_host }}/{{ tree.dataset }}{{ nextstrain_filter }}"
+      style="width:100%; aspect-ratio: 16/9"></object>
+    {% endfor %}
+    {% endwith %}
+    {% endif %}
+  </main>
 </body>
+
 </html>

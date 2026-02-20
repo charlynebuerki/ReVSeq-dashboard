@@ -4,6 +4,9 @@
 <html>
 
 <head>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
    <script>
@@ -14,10 +17,79 @@
       }
    </script>
    <style>
+         :root {
+            --bg: #f3f5f8;
+            --card: #ffffff;
+            --ink: #16212f;
+            --muted: #5b6b7f;
+            --accent: #0f7aa7;
+            --accent-2: #1d3f72;
+            --line: #d6dce5;
+         }
+
+         body,
+         html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            background: radial-gradient(circle at top right, #d7edf5, #f3f5f8 45%);
+            color: var(--ink);
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+         }
+
+         .banner {
+            background: linear-gradient(115deg, var(--accent-2), var(--accent));
+            color: #fff;
+            padding: 28px 34px;
+            box-shadow: 0 6px 18px rgba(16, 42, 79, 0.24);
+         }
+
+         .banner h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 0.02em;
+         }
+
+         .banner p {
+            margin: 6px 0 0;
+            opacity: 0.9;
+         }
+
+         .page {
+            max-width: 1300px;
+            margin: 24px auto;
+            padding: 0 20px 36px;
+         }
+
+         .controls {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+         }
+
+         .metric {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 10px 14px;
+            background: var(--card);
+            font-weight: 600;
+         }
+
+         .module-subtitle {
+            margin: 18px 0 10px;
+            color: var(--muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+         }
+
          .column {
             float: left;
             width: 50%;
-            padding: 50px;
+            padding: 24px 16px;
             box-sizing: border-box;
          }
          .row::after {
@@ -25,39 +97,32 @@
             clear: both;
             display: table;
          }
+
+         img {
+            border-radius: 10px;
+            border: 1px solid var(--line);
+         }
       </style>
 
 </head>
 
 <body>
-
-<h1>ReVSeq Dashboard</h1>
-
-
+<header class="banner">
+  <h1>ReVSeq Dashboard</h1>
+  <p>Respiratory virus surveillance in Switzerland</p>
+</header>
+<main class="page">
 <h2>Co-infections</h2>
 
-
-<select name="strain" id="strain">
-  <option value="" selected>Select strain</option>
-  <option value="/home">All strains</option>
-  <option value="/strain/Adenovirus">Adenovirus</option>
-  <option value="/strain/Bocavirus">Bocavirus</option>
-  <option value="/strain/Influenza_A">Influenza A</option>
-  <option value="/strain/Influenza_B">Influenza B</option>
-  <option value="/strain/Metapneumovirus">Metapneumovirus</option>
-  <option value="/strain/Parainfluenza_2">Parainfluenza 2</option>
-  <option value="/strain/Parainfluenza_3">Parainfluenza 3</option>
-  <option value="/strain/Parainfluenza_4">Parainfluenza 4</option>
-  <option value="/strain/Polyomavirus" >Polyomavirus</option>
-  <option value="/strain/RSV">RSV - A/B</option>
-  <option value="/strain/SARS-CoV-2" >SARS-CoV-2</option>
-  <option value="/strain/Enterovirus">Rhino- / Enterovirus</option>
-  <option value="/strain/coronavirus_229E" >coronavirus 229E</option>
-  <option value="/strain/coronavirus_HKU1" >coronavirus HKU1</option>
-  <option value="/strain/coronavirus_NL63" >coronavirus NL63</option>
-  <option value="/strain/coronavirus_OC43" >coronavirus OC43</option>
-  <option value="/mixed" >Mixed</option>
-</select>
+<div class="controls">
+  <select name="strain" id="strain">
+    <option value="" selected>Select strain</option>
+    {% for option in strain_options %}
+    <option value="{{ option.value }}">{{ option.label }}</option>
+    {% endfor %}
+  </select>
+  <div class="metric">Total no. of co-infections: {{no_co_infections}}</div>
+</div>
 <script>
 var selectStrain = document.getElementById('strain');
 
@@ -67,10 +132,11 @@ var selectStrain = document.getElementById('strain');
           
       };
 </script>
-<h3 style="border: 1px solid #000; padding: 10px; width: 20%">Total no. of co-infections: {{no_co_infections}}</h3>
+<h3 class="module-subtitle">Co-infection Heatmap</h3>
 {% autoescape off %}
         {{ co_inf_mat }}
 {% endautoescape %}
+<h3 class="module-subtitle">Pair Pileups</h3>
 <div class="row">
 <select name="substrain" id="substrain">
 <option value="all" selected>All strains</option>
@@ -80,12 +146,14 @@ var selectStrain = document.getElementById('strain');
 </select>
 </div>
 <div id = 'pileup_plt'>
-{% for p in pairs %}
-<div class="column">
-    <h2>{{p.first}} & {{p.second}}</h2>
-    <img src="{% static 'mixed/pileup_'|add:p.first_clean|add:'_'|add:p.second_clean|add:'.png' %}" style="width:100%;border: 1px solid #000; padding: 10px">
-</div>
-{% endfor %}
+{% if show_pair_plots %}
+  {% for p in pairs %}
+  <div class="column">
+      <h2>{{p.first}} & {{p.second}}</h2>
+      <img src="{% static 'mixed/pileup_'|add:p.first_clean|add:'_'|add:p.second_clean|add:'.png' %}" style="width:100%;border: 1px solid #000; padding: 10px">
+  </div>
+  {% endfor %}
+{% endif %}
 <script>
 
 var selectSubstrain = document.getElementById('substrain');
@@ -107,7 +175,9 @@ var selectSubstrain = document.getElementById('substrain');
         for (i in selectedPairs){
          pileup += '<div class=\"column\">'
          pileup += '<h2>' + selectedPairs[i].first + ' \& ' + selectedPairs[i].second+ '</h2>' 
+         {% if show_pair_plots %}
          pileup += '<img src=\"/static/mixed/pileup_'+ selectedPairs[i].first_clean + '_' + selectedPairs[i].second_clean + '.png\" style=\"width:100%;border: 1px solid #000; padding: 10px\">';
+         {% endif %}
          pileup += '</div>'
         
             document.getElementById('pileup_plt').innerHTML = pileup;
@@ -116,5 +186,6 @@ var selectSubstrain = document.getElementById('substrain');
       };
 </script>
 </div>
+</main>
 </body>
 </html>
