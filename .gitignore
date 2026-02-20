@@ -53,3 +53,6 @@ dashboard/static/example_data_old.csv
 # Python cache
 **/__pycache__/
 *.pyc
+
+#ignore sqlite
+db.sqlite3
