@@ -49,3 +49,7 @@ dashboard/static/pileup_all_old.csv
 dashboard/static/pileup_coinfections_old.csv
 dashboard/static/example_data.csv
 dashboard/static/example_data_old.csv
+
+# Python cache
+**/__pycache__/
+*.pyc
