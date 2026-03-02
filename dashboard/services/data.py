@@ -71,6 +71,13 @@ def _normalize_canton_column(df: pd.DataFrame, canton_col: str = "canton") -> pd
     return df.dropna(subset=[canton_col])
 
 
+def _normalize_match_flag(series: pd.Series) -> pd.Series:
+    """Normalize match flags to integer 0/1 for aggregations."""
+    lowered = series.astype(str).str.strip().str.lower()
+    truthy = {"1", "true", "t", "yes", "y"}
+    return lowered.isin(truthy).astype(int)
+
+
 def load_sequencing_metadata(path: Path | None = None) -> pd.DataFrame:
     path = path or SEQ_METADATA_PATH
     df = _read_tsv(path)
@@ -87,6 +94,10 @@ def load_sequencing_metadata(path: Path | None = None) -> pd.DataFrame:
     df = _add_week(df)
     df = _harmonize_column(df, "virus_identified_sequencing")
     df = _normalize_canton_column(df, "canton")
+    if "Match_PCR" in df.columns:
+        df["match_pcr"] = _normalize_match_flag(df["Match_PCR"])
+    else:
+        df["match_pcr"] = 0
     df["substrain"] = df["display_label"]
     return df
 
@@ -107,6 +118,10 @@ def load_pcr_metadata(path: Path | None = None) -> pd.DataFrame:
     df = _add_week(df)
     df = _harmonize_column(df, "virus_identified_pcr")
     df = _normalize_canton_column(df, "canton")
+    if "Match_Sequencing" in df.columns:
+        df["match_sequencing"] = _normalize_match_flag(df["Match_Sequencing"])
+    else:
+        df["match_sequencing"] = 0
     # PCR plots should stay at canonical strain level.
     df["substrain"] = df["display_label"]
     return df

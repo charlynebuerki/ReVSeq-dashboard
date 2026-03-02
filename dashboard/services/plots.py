@@ -35,14 +35,23 @@ def pileup_plot(coverage_file, annotation_file, out_file, figsize=(20, 5), heigh
 
 
 
-def make_weekly_strain_figure(df: pd.DataFrame, strain_col: str, title: str):
+def make_weekly_strain_figure(
+    df: pd.DataFrame, strain_col: str, title: str, match_label: str | None = None
+):
+    hover_data = {"count": True}
+    labels = {"week_start": "Week", "count": "No. infections", strain_col: "Strain"}
+    if "match_over_total" in df.columns and match_label:
+        hover_data["match_over_total"] = True
+        labels["match_over_total"] = f"{match_label} / weekly total"
+
     fig = px.bar(
         df,
         x="week_start",
         y="count",
         color=strain_col,
+        hover_data=hover_data,
         barmode="stack",
-        labels={"week_start": "Week", "count": "No. infections", strain_col: "Strain"},
+        labels=labels,
         color_discrete_map=COLOR_BY_STRAIN,
         template="simple_white",
         title=title,
@@ -60,15 +69,24 @@ def make_weekly_strain_figure(df: pd.DataFrame, strain_col: str, title: str):
 
 
 
-def make_weekly_substrain_figure(df: pd.DataFrame, substrain_col: str, title: str):
+def make_weekly_substrain_figure(
+    df: pd.DataFrame, substrain_col: str, title: str, match_label: str | None = None
+):
+    hover_data = {"count": True}
+    labels = {"week_start": "Week", "count": "No. infections", substrain_col: "Substrain"}
+    if "match_over_total" in df.columns and match_label:
+        hover_data["match_over_total"] = True
+        labels["match_over_total"] = f"{match_label} / weekly total"
+
     if df[substrain_col].nunique() > 1:
         fig = px.bar(
             df,
             x="week_start",
             y="count",
             color=substrain_col,
+            hover_data=hover_data,
             barmode="stack",
-            labels={"week_start": "Week", "count": "No. infections", substrain_col: "Substrain"},
+            labels=labels,
             template="simple_white",
             title=title,
         )
@@ -77,7 +95,8 @@ def make_weekly_substrain_figure(df: pd.DataFrame, substrain_col: str, title: st
             df,
             x="week_start",
             y="count",
-            labels={"week_start": "Week", "count": "No. infections"},
+            hover_data=hover_data,
+            labels={"week_start": "Week", "count": "No. infections", "match_over_total": (f"{match_label} / weekly total" if match_label else "Matches / total")},
             template="simple_white",
             title=title,
         )

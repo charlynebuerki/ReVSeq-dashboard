@@ -3,12 +3,15 @@ import re
 import unicodedata
 
 DEFAULT_MODULES = {
-    "histogram_pcr": True,
-    "histogram_sequencing": True,
+    "barplot_pcr": True,
+    "barplot_sequencing": True,
     "map": True,
     "pileup": True,
     "tree": False,
 }
+
+DEFAULT_PILEUP_LEVELS = ["all", "substrain", "individual"]
+DEFAULT_PILEUP_MAX_INDIVIDUAL_TRACES = 30
 
 STRAIN_CONFIG = {
     "Adenovirus": {
@@ -20,13 +23,25 @@ STRAIN_CONFIG = {
     "Bocavirus": {
         "label": "Bocavirus",
         "data_name": "Bocavirus",
-        "modules": {"histogram_pcr": False},
+        "modules": {"barplot_pcr": False},
         "trees": [],
     },
     "Influenza_A": {
         "label": "Influenza A",
         "data_name": "Influenza A",
         "modules": {"tree": True},
+        "pileup_data_prefix": "flu-a",
+        "pileup_segments": [
+            {"value": "PB2", "label": "PB2", "annotation": "Influenza_A_PB2.gb"},
+            {"value": "PB1", "label": "PB1", "annotation": "Influenza_A_PB1.gb"},
+            {"value": "PA", "label": "PA", "annotation": "Influenza_A_PA.gb"},
+            {"value": "HA", "label": "HA", "annotation": "Influenza_A_HA.gb"},
+            {"value": "NP", "label": "NP", "annotation": "Influenza_A_NP.gb"},
+            {"value": "NA", "label": "NA", "annotation": "Influenza_A_NA.gb"},
+            {"value": "MP", "label": "MP", "annotation": "Influenza_A_MP.gb"},
+            {"value": "NS", "label": "NS", "annotation": "Influenza_A_NS.gb"},
+        ],
+        "pileup_default_segment": "HA",
         "trees": [
             {"title": "H1N1 segment 4 (HA)", "dataset": "Influenza-A-H1N1-HA"},
             {"title": "H3N2 segment 4 (HA)", "dataset": "Influenza-A-H3N2-HA"},
@@ -36,6 +51,17 @@ STRAIN_CONFIG = {
         "label": "Influenza B",
         "data_name": "Influenza B",
         "modules": {"tree": True},
+        "pileup_data_prefix": "flu-b",
+        "pileup_segments": [
+            {"value": "PB2", "label": "PB2", "annotation": "Influenza_B_PB2.gb"},
+            {"value": "PB1", "label": "PB1", "annotation": "Influenza_B_PB1.gb"},
+            {"value": "HA", "label": "HA", "annotation": "Influenza_B_HA.gb"},
+            {"value": "NP", "label": "NP", "annotation": "Influenza_B_NP.gb"},
+            {"value": "NA", "label": "NA", "annotation": "Influenza_B_NA.gb"},
+            {"value": "MP", "label": "MP", "annotation": "Influenza_B_MP.gb"},
+            {"value": "NS", "label": "NS", "annotation": "Influenza_B_NS.gb"},
+        ],
+        "pileup_default_segment": "HA",
         "trees": [
             {"title": "Influenza B segment 4 (HA)", "dataset": "Influenza-B"},
         ],
@@ -44,6 +70,7 @@ STRAIN_CONFIG = {
         "label": "Metapneumovirus",
         "data_name": "Metapneumovirus",
         "modules": {"tree": True},
+        "pileup_data_prefix": "hmpv",
         "trees": [
             {"title": "", "dataset": "HMPV"},
         ],
@@ -52,30 +79,34 @@ STRAIN_CONFIG = {
         "label": "Parainfluenza 1",
         "data_name": "Parainfluenza 1",
         "modules": {"tree": True},
+        "pileup_data_prefix": "hpiv-1",
         "trees": [{"title": "", "dataset": "HPIV-1"}],
     },
     "Parainfluenza_2": {
         "label": "Parainfluenza 2",
         "data_name": "Parainfluenza 2",
         "modules": {"tree": True},
+        "pileup_data_prefix": "hpiv-2",
         "trees": [{"title": "", "dataset": "HPIV-2"}],
     },
     "Parainfluenza_3": {
         "label": "Parainfluenza 3",
         "data_name": "Parainfluenza 3",
         "modules": {"tree": True},
+        "pileup_data_prefix": "hpiv-3",
         "trees": [{"title": "", "dataset": "HPIV-3"}],
     },
     "Parainfluenza_4a": {
         "label": "Parainfluenza 4a",
         "data_name": "Parainfluenza 4a",
-        "modules": {"pileup": False, "tree": True},
+        "modules": {"tree": True},
+        "pileup_data_prefix": "hpiv-4a",
         "trees": [{"title": "", "dataset": "HPIV-4a"}],
     },
     "Polyomavirus": {
         "label": "Polyomavirus",
         "data_name": "Polyomavirus",
-        "modules": {"histogram_pcr": False, "pileup": False},
+        "modules": {"barplot_pcr": False, "pileup": False},
         "trees": [],
     },
     "RSV": {
@@ -91,6 +122,7 @@ STRAIN_CONFIG = {
         "label": "SARS-CoV-2",
         "data_name": "SARS-CoV-2",
         "modules": {"tree": True},
+        "pileup_data_prefix": "sars-cov-2",
         "trees": [{"title": "", "dataset": "SARS-CoV-2"}],
     },
     "Enterovirus": {
@@ -103,24 +135,28 @@ STRAIN_CONFIG = {
         "label": "coronavirus 229E",
         "data_name": "coronavirus 229E",
         "modules": {"tree": True},
+        "pileup_data_prefix": "cov-229e",
         "trees": [{"title": "", "dataset": "Coronavirus-229E"}],
     },
     "coronavirus_HKU1": {
         "label": "coronavirus HKU1",
         "data_name": "coronavirus HKU1",
         "modules": {"tree": True},
+        "pileup_data_prefix": "cov-hku1",
         "trees": [{"title": "", "dataset": "Coronavirus-HKU1"}],
     },
     "coronavirus_NL63": {
         "label": "coronavirus NL63",
         "data_name": "coronavirus NL63",
         "modules": {"tree": True},
+        "pileup_data_prefix": "cov-nl63",
         "trees": [{"title": "", "dataset": "Coronavirus-NL63"}],
     },
     "coronavirus_OC43": {
         "label": "coronavirus OC43",
         "data_name": "coronavirus OC43",
         "modules": {"tree": True},
+        "pileup_data_prefix": "cov-oc43",
         "trees": [{"title": "", "dataset": "Coronavirus-OC43"}],
     },
 }
@@ -335,9 +371,26 @@ def get_strain_config(slug):
 
     result = deepcopy(config)
     result["slug"] = slug
+    raw_modules = result.get("modules", {})
+    # Backward compatibility: accept legacy histogram module keys.
+    if "histogram_pcr" in raw_modules and "barplot_pcr" not in raw_modules:
+        raw_modules["barplot_pcr"] = raw_modules["histogram_pcr"]
+    if (
+        "histogram_sequencing" in raw_modules
+        and "barplot_sequencing" not in raw_modules
+    ):
+        raw_modules["barplot_sequencing"] = raw_modules["histogram_sequencing"]
+    raw_modules.pop("histogram_pcr", None)
+    raw_modules.pop("histogram_sequencing", None)
     modules = DEFAULT_MODULES.copy()
-    modules.update(result.get("modules", {}))
+    modules.update(raw_modules)
     result["modules"] = modules
+    result["pileup_levels"] = result.get("pileup_levels", DEFAULT_PILEUP_LEVELS.copy())
+    result["pileup_max_individual_traces"] = result.get(
+        "pileup_max_individual_traces", DEFAULT_PILEUP_MAX_INDIVIDUAL_TRACES
+    )
+    result["pileup_annotation"] = result.get("pileup_annotation", f"{slug}.gb")
+    result["pileup_data_prefix"] = result.get("pileup_data_prefix", slug)
     return result
 
 

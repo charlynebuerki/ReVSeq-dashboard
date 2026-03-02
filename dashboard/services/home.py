@@ -31,11 +31,21 @@ def _asset_version(input_paths: list[str | Path]) -> str:
 
 
 
-def _aggregate_by_week(df: pd.DataFrame, strain_col: str = "canonical_strain") -> pd.DataFrame:
+def _aggregate_by_week(
+    df: pd.DataFrame, strain_col: str = "canonical_strain", match_col: str | None = None
+) -> pd.DataFrame:
     if df.empty:
-        return pd.DataFrame(columns=["week", strain_col, "count", "week_start"])
+        return pd.DataFrame(columns=["week", strain_col, "count", "week_start", "match_count", "match_over_total"])
 
     grouped = df.groupby(["week", strain_col]).size().reset_index(name="count")
+    if match_col and match_col in df.columns:
+        matches = df.groupby(["week", strain_col])[match_col].sum().reset_index(name="match_count")
+        grouped = grouped.merge(matches, on=["week", strain_col], how="left")
+    else:
+        grouped["match_count"] = 0
+    grouped["match_count"] = grouped["match_count"].fillna(0).astype(int)
+    grouped["count"] = grouped["count"].fillna(0).astype(int)
+    grouped["match_over_total"] = grouped["match_count"].astype(str) + "/" + grouped["count"].astype(str)
     grouped["week_start"] = pd.to_datetime(grouped["week"] + "/1", format="%Y/%W/%w")
     return grouped
 
@@ -44,20 +54,24 @@ def _aggregate_by_week(df: pd.DataFrame, strain_col: str = "canonical_strain") -
 def build_home_assets(bundle):
     plot_code_path = "dashboard/services/plots.py"
     config_path = "dashboard/config.py"
-    seq_output = "dashboard/static/histogram_seq.html"
-    pcr_output = "dashboard/static/histogram_pcr.html"
+    seq_output = "dashboard/static/barplot_seq.html"
+    pcr_output = "dashboard/static/barplot_pcr.html"
     map_seq_output = "dashboard/static/map_seq.html"
     map_pcr_output = "dashboard/static/map_pcr.html"
 
     # Pre-render static HTML plots used by iframe embeds.
     if _asset_is_stale(seq_output, [SEQ_METADATA_PATH, plot_code_path, config_path]):
-        seq_grouped = _aggregate_by_week(bundle.sequencing)
-        fig_seq = make_weekly_strain_figure(seq_grouped, "canonical_strain", "Sequencing")
+        seq_grouped = _aggregate_by_week(bundle.sequencing, match_col="match_pcr")
+        fig_seq = make_weekly_strain_figure(
+            seq_grouped, "canonical_strain", "Sequencing", match_label="Match PCR"
+        )
         fig_seq.write_html(seq_output, include_plotlyjs="cdn")
 
     if _asset_is_stale(pcr_output, [PCR_METADATA_PATH, plot_code_path, config_path]):
-        pcr_grouped = _aggregate_by_week(bundle.pcr)
-        fig_pcr = make_weekly_strain_figure(pcr_grouped, "canonical_strain", "PCR")
+        pcr_grouped = _aggregate_by_week(bundle.pcr, match_col="match_sequencing")
+        fig_pcr = make_weekly_strain_figure(
+            pcr_grouped, "canonical_strain", "PCR", match_label="Match Sequencing"
+        )
         fig_pcr.write_html(pcr_output, include_plotlyjs="cdn")
 
     if _asset_is_stale(

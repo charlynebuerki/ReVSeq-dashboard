@@ -168,19 +168,19 @@
     };
   </script>
 
-  {% if modules.histogram_sequencing or modules.histogram_pcr or modules.map %}
+  {% if modules.barplot_sequencing or modules.barplot_pcr or modules.map %}
   <script>
     function updateDashboardSource(source) {
-      var histogram = document.getElementById('histogram');
+      var barplot = document.getElementById('barplot');
       var mapFrame = document.getElementById('map_frame');
-      var histogramHasSeq = {{ modules.histogram_sequencing|yesno:"true,false" }};
-      var histogramHasPcr = {{ modules.histogram_pcr|yesno:"true,false" }};
+      var barplotHasSeq = {{ modules.barplot_sequencing|yesno:"true,false" }};
+      var barplotHasPcr = {{ modules.barplot_pcr|yesno:"true,false" }};
 
-      if (histogram) {
-        var histogramSource = source;
-        if (histogramSource === 'seq' && !histogramHasSeq) histogramSource = 'pcr';
-        if (histogramSource === 'pcr' && !histogramHasPcr) histogramSource = 'seq';
-        histogram.src = '/static/barplots/' + '{{strain}}' + '_' + histogramSource + '.html?v={{ asset_version }}';
+      if (barplot) {
+        var barplotSource = source;
+        if (barplotSource === 'seq' && !barplotHasSeq) barplotSource = 'pcr';
+        if (barplotSource === 'pcr' && !barplotHasPcr) barplotSource = 'seq';
+        barplot.src = '/static/barplots/' + '{{strain}}' + '_' + barplotSource + '.html?v={{ asset_version }}';
       }
 
       if (mapFrame) {
@@ -205,11 +205,11 @@
   </div>
 
   <div class="row">
-    {% if modules.histogram_sequencing or modules.histogram_pcr %}
+    {% if modules.barplot_sequencing or modules.barplot_pcr %}
     <div class="column">
-      <h3 class="module-subtitle">Histogram</h3>
-      <iframe id='histogram'
-        src="{% if default_histogram == 'seq' %}{% static 'barplots/'|add:strain|add:'_seq.html' %}{% else %}{% static 'barplots/'|add:strain|add:'_pcr.html' %}{% endif %}?v={{ asset_version }}"
+      <h3 class="module-subtitle">Barplot</h3>
+      <iframe id='barplot'
+        src="{% if default_barplot == 'seq' %}{% static 'barplots/'|add:strain|add:'_seq.html' %}{% else %}{% static 'barplots/'|add:strain|add:'_pcr.html' %}{% endif %}?v={{ asset_version }}"
         width="100%" height="450px"
         frameborder="0"></iframe>
     </div>
@@ -227,92 +227,206 @@
   {% endif %}
   {% if modules.pileup %}
   <h3 class="module-subtitle">Pileup</h3>
-  <h2></h2>
-  {%if substrains|length > 1%}
-  <div class="row">
-    <select name="substrain" id="substrain">
-      <option value="all" selected>All substrains</option>
-      {% for substrain in substrains %}
-      <option value="{{substrain}}">{{substrain}}</option>
+  {% if pileup.enabled %}
+  {% if pileup.mode == 'segmented' %}
+  <script>
+    var segmentedAllFiles = {{ pileup.segmented_all_files|safe }};
+    var segmentedSubstrainFiles = {{ pileup.segmented_substrain_files|safe }};
+    var segmentedIndividualFiles = {{ pileup.segmented_individual_files|safe }};
+    var currentSegmentedView = "{{ pileup.default_view|default:'all' }}";
+
+    function segmentedSegmentsForView(view, subtype) {
+      if (view === 'all') return Object.keys(segmentedAllFiles || {});
+      if (view === 'substrain') {
+        var segs = Object.keys(segmentedSubstrainFiles || {});
+        return segs.filter(function (seg) { return ((segmentedSubstrainFiles[seg] || {})[subtype]); });
+      }
+      if (view === 'individual') {
+        var segs = Object.keys(segmentedIndividualFiles || {});
+        return segs.filter(function (seg) { return ((segmentedIndividualFiles[seg] || {})[subtype]); });
+      }
+      return [];
+    }
+
+    function segmentedSourceForSelection() {
+      var subtypeSelector = document.getElementById('pileup_subtype');
+      var segmentSelector = document.getElementById('pileup_segment');
+      if (!segmentSelector) return '';
+      var segment = segmentSelector.value;
+      var subtype = subtypeSelector ? subtypeSelector.value : "{{ pileup.segmented_default_subtype|default:'' }}";
+      if (currentSegmentedView === 'all') return (segmentedAllFiles || {})[segment] || '';
+      if (currentSegmentedView === 'substrain') return ((segmentedSubstrainFiles[segment] || {})[subtype]) || '';
+      if (currentSegmentedView === 'individual') return ((segmentedIndividualFiles[segment] || {})[subtype]) || '';
+      return '';
+    }
+
+    function refreshSegmentedSelectors() {
+      var subtypeSelector = document.getElementById('pileup_subtype');
+      var segmentSelector = document.getElementById('pileup_segment');
+      var subtypeWrap = document.getElementById('pileup_subtype_wrap');
+      if (!segmentSelector) return;
+
+      var subtype = subtypeSelector ? subtypeSelector.value : "{{ pileup.segmented_default_subtype|default:'' }}";
+      if (subtypeWrap) subtypeWrap.style.display = (currentSegmentedView === 'all' || !subtypeSelector) ? 'none' : 'block';
+      var segmentKeys = segmentedSegmentsForView(currentSegmentedView, subtype);
+      var currentSegment = segmentSelector.value;
+      segmentSelector.innerHTML = '';
+
+      for (var i = 0; i < segmentKeys.length; i++) {
+        var key = segmentKeys[i];
+        var option = document.createElement('option');
+        option.value = key;
+        option.text = key;
+        segmentSelector.appendChild(option);
+      }
+
+      if (segmentKeys.indexOf(currentSegment) >= 0) {
+        segmentSelector.value = currentSegment;
+      }
+      if (segmentKeys.length > 0) {
+        var preferred = "{{ pileup.segmented_default_segment|default:'HA' }}";
+        // On initial render, browser auto-selects first option; prefer configured default instead.
+        if (!currentSegment) {
+          segmentSelector.value = segmentKeys.indexOf(preferred) >= 0 ? preferred : segmentKeys[0];
+        } else if (!segmentSelector.value) {
+          segmentSelector.value = segmentKeys.indexOf(preferred) >= 0 ? preferred : segmentKeys[0];
+        }
+      }
+      setSegmentedPileupSource();
+    }
+
+    function setSegmentedPileupView(view) {
+      currentSegmentedView = view;
+      refreshSegmentedSelectors();
+    }
+
+    function setSegmentedPileupSource() {
+      var iframe = document.getElementById('pileup_frame');
+      if (!iframe) return;
+      var src = segmentedSourceForSelection();
+      if (src) iframe.src = '/static/' + src + '?v={{ pileup.version }}';
+    }
+  </script>
+
+  {% if pileup.available_views|length > 1 %}
+  <div class="wrapper">
+    {% if 'all' in pileup.available_views %}
+    <div class="custom-input">
+      <input type="radio" id="pileup_all" name="pileup_view" onclick="setSegmentedPileupView('all');"
+        {% if pileup.default_view == 'all' %}checked{% endif %}>
+      <label for="pileup_all">All samples</label>
+    </div>
+    {% endif %}
+    {% if 'substrain' in pileup.available_views %}
+    <div class="custom-input">
+      <input type="radio" id="pileup_sub" name="pileup_view" onclick="setSegmentedPileupView('substrain');"
+        {% if pileup.default_view == 'substrain' %}checked{% endif %}>
+      <label for="pileup_sub">Substrains</label>
+    </div>
+    {% endif %}
+    {% if 'individual' in pileup.available_views %}
+    <div class="custom-input">
+      <input type="radio" id="pileup_indiv" name="pileup_view" onclick="setSegmentedPileupView('individual');"
+        {% if pileup.default_view == 'individual' %}checked{% endif %}>
+      <label for="pileup_indiv">Individuals</label>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="controls">
+    {% if pileup.segmented_subtypes|length > 1 %}
+    <div id="pileup_subtype_wrap">
+      <label for="pileup_subtype">Subtype</label>
+      <select id="pileup_subtype" onchange="refreshSegmentedSelectors();">
+        {% for subtype in pileup.segmented_subtypes %}
+        <option value="{{ subtype.value }}" {% if subtype.value == pileup.segmented_default_subtype %}selected{% endif %}>{{ subtype.label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
+
+    <div>
+      <label for="pileup_segment">Segment</label>
+      <select id="pileup_segment" onchange="setSegmentedPileupSource();"></select>
+    </div>
+  </div>
+
+  <iframe id="pileup_frame"
+    src=""
+    width="100%" height="560px" frameborder="0"></iframe>
+
+  <script>
+    refreshSegmentedSelectors();
+  </script>
+  {% else %}
+  <script>
+    var pileupSubstrainFiles = {{ pileup.substrain_files|safe }};
+    function getPileupSourceForView(view) {
+      if (view === 'all') return "{{ pileup.all_file|default:'' }}";
+      if (view === 'individual') return "{{ pileup.individual_file|default:'' }}";
+      if (view === 'substrain') {
+        var selector = document.getElementById('pileup_substrain');
+        if (!selector || !selector.value) return '';
+        return pileupSubstrainFiles[selector.value] || '';
+      }
+      return '';
+    }
+
+    function setPileupView(view) {
+      var iframe = document.getElementById('pileup_frame');
+      var substrainWrap = document.getElementById('pileup_substrain_wrap');
+      if (!iframe) return;
+      if (substrainWrap) {
+        substrainWrap.style.display = view === 'substrain' ? 'block' : 'none';
+      }
+      var src = getPileupSourceForView(view);
+      if (src) iframe.src = '/static/' + src + '?v={{ pileup.version }}';
+    }
+  </script>
+
+  {% if pileup.available_views|length > 1 %}
+  <div class="wrapper">
+    {% if 'all' in pileup.available_views %}
+    <div class="custom-input">
+      <input type="radio" id="pileup_all" name="pileup_view" onclick="setPileupView('all');"
+        {% if pileup.default_view == 'all' %}checked{% endif %}>
+      <label for="pileup_all">All samples</label>
+    </div>
+    {% endif %}
+    {% if 'substrain' in pileup.available_views %}
+    <div class="custom-input">
+      <input type="radio" id="pileup_sub" name="pileup_view" onclick="setPileupView('substrain');"
+        {% if pileup.default_view == 'substrain' %}checked{% endif %}>
+      <label for="pileup_sub">Substrains</label>
+    </div>
+    {% endif %}
+    {% if 'individual' in pileup.available_views %}
+    <div class="custom-input">
+      <input type="radio" id="pileup_indiv" name="pileup_view" onclick="setPileupView('individual');"
+        {% if pileup.default_view == 'individual' %}checked{% endif %}>
+      <label for="pileup_indiv">Individuals</label>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div id="pileup_substrain_wrap" style="{% if pileup.default_view != 'substrain' %}display:none;{% endif %} margin-top: 8px;">
+    <select id="pileup_substrain" onchange="setPileupView('substrain');">
+      {% for substrain, path in pileup.substrain_files.items %}
+      <option value="{{ substrain }}">{{ substrain }}</option>
       {% endfor %}
     </select>
   </div>
-  {%else%}
-  {%if no_samples <= 25 %} <div class="column">
-    <div class="wrapper">
-      <div class="custom-input">
-        <input type="radio" name="view" id="aggregated" onclick="change_view(true)" checked>
-        <label for="aggregated">Aggregated</label>
-      </div>
-      <div class="custom-input">
-        <input type="radio" name="view" id="individual" onclick="change_view(false)">
-        <label for="individual">Individual</label>
-      </div>
-    </div>
-    <div class="column"></div>
-    </div>
-    <script>
-      function change_view(aggregated) {
-        if (aggregated) {
-          document.getElementById('pileup_plt').src = '/static/pileup/' + '{{strain}}' + '_all.png';
-        } else {
-          document.getElementById('pileup_plt').src = '/static/pileup/' + '{{strain}}' + '_all_indiv.png';
-        }
-      }
-    </script>
-    {% endif %}
-    {% endif %}
-    {%if strain_name == "Influenza A" or strain_name == "Influenza B"%}
-    <div id=pileup_plt></div>
-    <script>
-      let segments;
-      if ("{{strain_name}}" == "Influenza A") {
-        segments = ['HA', 'NA', 'PB1', 'PB2', 'PA', 'NP', 'MP', 'NS'];
-      } else {
-        segments = ['HA', 'NA', 'PB1', 'PB2', 'NP', 'MP', 'NS'];
-      }
-      var pileup = '';
-      for (i in segments) {
-        pileup += '<div class=\"column\">'
-        pileup += '<h3>' + segments[i] + '</h3>'
-        pileup += '<img id=\"' + segments[i] + '\" src=\"/static/pileup/' + '{{strain}}' + '_' + segments[i] + '_all.png\" style=\"width:100%\">';
-        pileup += '</div>'
-      }
-      document.getElementById('pileup_plt').innerHTML = pileup;
 
-      if ("{{strain_name}}" == "Influenza A") {
-        var selectSubstrain = document.getElementById('substrain');
-        if (selectSubstrain) {
-          selectSubstrain.onchange = function () {
-            var substrain = this.value;
-            var subtype = 'all';
-            var subtypeMatch = substrain.match(/H1N1|H3N2/i);
-            if (subtypeMatch) {
-              subtype = subtypeMatch[0].toUpperCase();
-            } else if (substrain.toLowerCase() === 'all') {
-              subtype = 'all';
-            }
-            for (i in segments) {
-              document.getElementById(segments[i]).src = '/static/pileup/' + '{{strain}}' + '_' + segments[i] + '_' + subtype + '.png';
-            }
-          };
-        }
-      }
-    </script>
-
-    {%else%}
-    <img id="pileup_plt" src="{% static 'pileup/'|add:strain|add:'_all.png' %}" style="width:100%">
-    {%if substrains|length > 1%}
-    <script>
-      var selectSubstrain = document.getElementById('substrain');
-      selectSubstrain.onchange = function () {
-        var substrain = this.value;
-        document.getElementById('pileup_plt').src = '/static/pileup/' + '{{strain}}' + '_' + substrain.split(' ').join('_') + '.png';
-      };
-    </script>
-    {%endif%}
-    {%endif%}
-    {% endif %}
+  <iframe id="pileup_frame"
+    src="{% if pileup.default_view == 'all' %}/static/{{ pileup.all_file }}?v={{ pileup.version }}{% elif pileup.default_view == 'individual' %}/static/{{ pileup.individual_file }}?v={{ pileup.version }}{% else %}/static/{% for substrain, path in pileup.substrain_files.items %}{% if forloop.first %}{{ path }}{% endif %}{% endfor %}?v={{ pileup.version }}{% endif %}"
+    width="100%" height="560px" frameborder="0"></iframe>
+  {% endif %}
+  {% else %}
+  <p>No pileup dataset available for this strain.</p>
+  {% endif %}
+  {% endif %}
     {% if modules.tree %}
     <h3 class="module-subtitle">Phylogenetic Tree</h3>
     {% with nextstrain_filter="?f_Node%20type=New" %}
