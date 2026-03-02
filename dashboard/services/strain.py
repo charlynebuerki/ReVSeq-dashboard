@@ -64,6 +64,7 @@ def _ensure_strain_barplot(
     match_label: str | None = None,
 ):
     """Render strain barplot HTML only when inputs changed."""
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     if not _asset_is_stale(output_path, source_files):
         return
     # Weekly bars with optional substrain split.
@@ -134,6 +135,8 @@ def get_strain_context(strain_slug, strain_config, request_host):
     if modules["map"]:
         map_seq_output = f"dashboard/static/barplots/{strain_slug}_map_seq.html"
         map_pcr_output = f"dashboard/static/barplots/{strain_slug}_map_pcr.html"
+        Path(map_seq_output).parent.mkdir(parents=True, exist_ok=True)
+        Path(map_pcr_output).parent.mkdir(parents=True, exist_ok=True)
         if _asset_is_stale(
             map_seq_output,
             [SEQ_METADATA_PATH, "dashboard/static/swiss_cantons.geojson", plot_code_path, config_path],
@@ -163,8 +166,6 @@ def get_strain_context(strain_slug, strain_config, request_host):
             segmented_default_segment=strain_config.get("pileup_default_segment"),
         )
 
-    hostname = request_host.split(":")[0]
-    nextstrain_host = f"{hostname}:4000"
     default_barplot = "seq" if modules["barplot_sequencing"] else "pcr"
     default_map = "seq" if not seq_df.empty else "pcr"
     default_source = default_barplot if (modules["barplot_sequencing"] or modules["barplot_pcr"]) else default_map
@@ -186,7 +187,6 @@ def get_strain_context(strain_slug, strain_config, request_host):
         "strain_name": strain_name,
         "no_samples": no_samples,
         "substrains": substrains,
-        "nextstrain_host": nextstrain_host,
         "tree_sources": strain_config.get("trees", []),
         "pileup": pileup_context,
         "modules": modules,

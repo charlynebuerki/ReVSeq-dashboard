@@ -429,13 +429,25 @@
   {% endif %}
     {% if modules.tree %}
     <h3 class="module-subtitle">Phylogenetic Tree</h3>
-    {% with nextstrain_filter="?f_Node%20type=New" %}
     {% for tree in tree_sources %}
     <h2>{{ tree.title }}</h2>
-    <object type="text/html" data="http://{{ nextstrain_host }}/{{ tree.dataset }}{{ nextstrain_filter }}"
+    <object
+      type="text/html"
+      class="nextstrain-tree"
+      data-dataset="{{ tree.dataset }}"
       style="width:100%; aspect-ratio: 16/9"></object>
     {% endfor %}
-    {% endwith %}
+    <script>
+      (function () {
+        var nextstrainBase = window.location.protocol + "//" + window.location.hostname + ":4000";
+        var nextstrainFilter = "?f_Node%20type=New";
+        document.querySelectorAll(".nextstrain-tree").forEach(function (el) {
+          var dataset = el.getAttribute("data-dataset");
+          if (!dataset) return;
+          el.setAttribute("data", nextstrainBase + "/" + dataset + nextstrainFilter);
+        });
+      })();
+    </script>
     {% endif %}
   </main>
 </body>
