@@ -1,18 +1,19 @@
 services:
   dashboard:
-    image: <dockerhub_user>/revseq-dashboard:${REVSEQ_TAG}
+    image: <username>/revseq-dashboard:${REVSEQ_TAG}
     container_name: revseq-dashboard
     ports:
       - "8000:8000"
     environment:
       - DJANGO_ALLOWED_HOSTS=revseq.charlynebuerki.com,localhost,127.0.0.1
       - DJANGO_DEBUG=0
+      - DJANGO_SECRET_KEY=<long-random-secret>
       - NEXTSTRAIN_BASE_URL=/nextstrain
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     restart: unless-stopped
 
   nextstrain:
-    image: <dockerhub_user>/revseq-nextstrain:${REVSEQ_TAG}
+    image: <username>/revseq-nextstrain:${REVSEQ_TAG}
     container_name: revseq-nextstrain
     ports:
       - "4000:4000"

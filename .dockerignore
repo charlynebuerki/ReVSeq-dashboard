@@ -7,6 +7,10 @@ __pycache__/
 *.pyd
 .pytest_cache/
 .mypy_cache/
+.idea/
+.vscode/
+*.swp
+*.swo
 
 # Local envs / caches
 envs/
@@ -16,6 +20,8 @@ venv/
 # Large/unneeded project data for runtime images
 Extract-pileup/
 Nextstrain-pipelines/
+data_curation/
+data_raw/
 
 # Generated dashboard assets
 dashboard/static/pileup_html/
@@ -27,7 +33,16 @@ dashboard/static/barplot_pcr.html
 dashboard/static/barplot_seq.html
 dashboard/static/map_pcr.html
 dashboard/static/map_seq.html
+dashboard/static/mixed/*.png
+dashboard/static/pileup/*.png
 
 # Local DB and logs
 db.sqlite3
 logs/
+*.log
+
+# Archives / transfer artifacts
+*.tar
+*.tar.gz
+*.tgz
+*.zip

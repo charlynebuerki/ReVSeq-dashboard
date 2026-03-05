@@ -1,150 +1,171 @@
-# ReVSeq Dashboard
+# ReVSeq Visuals: A Rapid, Modular Environment for Viral Sequence Visualization
 
-Django dashboard for ReVSeq data visualization, with Auspice/Nextstrain trees.
+Web dashboard for respiratory virus surveillance, built with Django and Auspice.
 
-## Recent Changes
+## Configuration (`dashboard/config.py`)
 
-- Refactored dashboard tree embedding to use a configurable base URL (`NEXTSTRAIN_BASE_URL`).
-- Added deployment-safe Django host and iframe settings:
-  - `DJANGO_ALLOWED_HOSTS`
-  - `DJANGO_DEBUG`
-  - `X_FRAME_OPTIONS = "SAMEORIGIN"`
-- Added dedicated deploy compose file: `docker-compose.deploy.yml`.
-- Standardized local vs hosted tree routing:
-  - Local (no reverse proxy): `http://127.0.0.1:<port>`
-  - Hosted (nginx reverse proxy): `/nextstrain`
+The main dashboard behavior is controlled in `dashboard/config.py`.
 
-## Local Run (No Docker)
+### Global settings
 
-Run Django:
+- `DEFAULT_MODULES`
+  - Default module toggles on strain pages:
+    - `barplot_pcr`
+    - `barplot_sequencing`
+    - `map`
+    - `pileup`
+    - `tree`
+- `DEFAULT_PILEUP_LEVELS`
+  - Enabled pileup display modes (for example `all`, `substrain`, `individual`)
+- `DEFAULT_PILEUP_MAX_INDIVIDUAL_TRACES`
+  - Max number of traces rendered in individual pileup mode
+- `MIXED_PAGE_ENABLED`
+  - Enables/disables the mixed (co-infection) page
+
+### Strain settings (`STRAIN_CONFIG`)
+
+Each strain entry (for example `Influenza_A`, `RSV`, `SARS-CoV-2`) can define:
+
+- `label`
+  - UI display name
+- `data_name`
+  - Canonical strain name used for metadata harmonization
+- `modules`
+  - Per-strain module overrides
+- `pileup_data_prefix`
+  - Prefix used to load pileup JSONs from `dashboard/static/data/pileup`
+- `pileup_segments`
+  - Segment definitions for segmented viruses
+- `pileup_default_segment`
+  - Default selected segment in segmented pileup views
+- `trees`
+  - Auspice datasets to embed on the strain page (`title`, `dataset`)
+
+### Supporting mappings
+
+- `STRAIN_ORDER`
+  - Controls strain ordering in UI/navigation
+- `COLOR_BY_STRAIN`
+  - Plot color mapping by canonical strain
+- Harmonization helpers
+  - Strain label normalization
+  - Location normalization (for canton mapping)
+
+## Project Overview
+
+### `dashboard/`
+
+- Django app serving:
+  - home page (all strains)
+  - strain-specific pages
+  - mixed/co-infection page
+- Modules include:
+  - barplots (sequencing and PCR)
+  - maps
+  - pileup visualizations
+  - embedded phylogenetic trees
+
+### `data_curation/`
+
+- Pipeline code used to prepare curated metadata, tree inputs, and pileup inputs.
+- Includes:
+  - `Nextstrain-pipelines/` for tree/metadata workflows
+  - `Extract-pileup/` for consensus/pileup extraction workflows
+
+## Runtime Configuration
+
+Main environment variables:
+
+- `NEXTSTRAIN_BASE_URL`
+  - local example: `http://127.0.0.1:4001`
+  - reverse-proxy deployment example: `/nextstrain`
+- `DJANGO_DEBUG` (`1` for local dev, `0` for deployment)
+- `DJANGO_ALLOWED_HOSTS` (comma-separated hostnames)
+- `DJANGO_SECRET_KEY` (required when `DJANGO_DEBUG=0`)
+
+## Run Locally (No Docker)
+
+Terminal 1 (Auspice):
+
+```bash
+HOST=0.0.0.0 PORT=4001 npx auspice-revseq view --datasetDir dashboard/static/auspice
+```
+
+Terminal 2 (Django):
 
 ```bash
 export NEXTSTRAIN_BASE_URL=http://127.0.0.1:4001
 python manage.py runserver
 ```
 
-Run Auspice in a second terminal:
-
-```bash
-HOST=0.0.0.0 PORT=4001 npx auspice-revseq view --datasetDir dashboard/static/auspice
-```
-
 Open:
+
 - `http://127.0.0.1:8000/home/`
 
-## Local Run (Docker Compose)
-
-`docker-compose.yml` is set up for local development.
+## Run Locally (Docker Compose)
 
 ```bash
 docker compose up --build
 ```
 
 Open:
+
 - Dashboard: `http://localhost:8000/home/`
 - Auspice: `http://localhost:4000/`
 
-## Deployment (Docker + nginx)
+## Deploy with Docker Images
 
 ### 1. Build and push versioned images
 
 ```bash
-export REVSEQ_TAG=2026.03.02-6
-export DOCKERHUB_USER=<your_dockerhub_user>
-docker build -f Dockerfile -t ${DOCKERHUB_USER}/revseq-dashboard:$REVSEQ_TAG .
-docker build -f Dockerfile_nextstrain -t ${DOCKERHUB_USER}/revseq-nextstrain:$REVSEQ_TAG .
-docker push ${DOCKERHUB_USER}/revseq-dashboard:$REVSEQ_TAG
-docker push ${DOCKERHUB_USER}/revseq-nextstrain:$REVSEQ_TAG
+export REVSEQ_TAG=2026.03.05-1
+export DOCKERHUB_USER=<dockerhub_user>
+
+docker build -f Dockerfile -t ${DOCKERHUB_USER}/revseq-dashboard:${REVSEQ_TAG} .
+docker build -f Dockerfile_nextstrain -t ${DOCKERHUB_USER}/revseq-nextstrain:${REVSEQ_TAG} .
+
+docker push ${DOCKERHUB_USER}/revseq-dashboard:${REVSEQ_TAG}
+docker push ${DOCKERHUB_USER}/revseq-nextstrain:${REVSEQ_TAG}
 ```
 
-### 2. Deploy on host
+### 2. Set deploy environment on host
 
-`docker-compose.deploy.yml` should include for `dashboard`:
+In the same directory as `docker-compose.deploy.yml`, create `.env`:
 
-```yaml
-environment:
-  - DJANGO_ALLOWED_HOSTS=revseq.charlynebuerki.com,localhost,127.0.0.1
-  - DJANGO_DEBUG=0
-  - NEXTSTRAIN_BASE_URL=/nextstrain
+```env
+REVSEQ_TAG=2026.03.05-1
+DJANGO_SECRET_KEY=<strong_random_secret>
 ```
 
-Then:
+Ensure `docker-compose.deploy.yml` references:
+
+- `${REVSEQ_TAG}` in image tags
+- `${DJANGO_SECRET_KEY}` for dashboard environment
+
+### 3. Pull and recreate containers
 
 ```bash
-export REVSEQ_TAG=2026.03.02-6
 docker compose -f docker-compose.deploy.yml pull
 docker compose -f docker-compose.deploy.yml up -d --force-recreate
 ```
 
-### 3. nginx reverse proxy (host)
-
-Use a dedicated HTTPS server block for `revseq.charlynebuerki.com` with:
-
-- `/` -> Django (`127.0.0.1:8000`)
-- `/nextstrain/` -> Auspice (`127.0.0.1:4000`) with prefix rewrite
-- `/dist/` -> Auspice static assets
-- `/charon/` -> Auspice API
-- explicit rewrite for dataset requests with `prefix=nextstrain/...`
-
-Example (inside the `listen 443 ssl` block):
-
-```nginx
-location /nextstrain/ {
-    rewrite ^/nextstrain/(.*)$ /$1 break;
-    proxy_pass http://127.0.0.1:4000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}
-
-location = /charon/getDataset {
-    if ($arg_prefix ~ "^nextstrain/(.*)$") {
-        proxy_pass http://127.0.0.1:4000/charon/getDataset?prefix=/$1;
-    }
-    proxy_pass http://127.0.0.1:4000/charon/getDataset?$query_string;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}
-
-location /dist/ {
-    proxy_pass http://127.0.0.1:4000/dist/;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}
-
-location /charon/ {
-    proxy_pass http://127.0.0.1:4000/charon/;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}
-
-location / {
-    proxy_pass http://127.0.0.1:8000;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-}
-```
-
-After edits:
+### 4. Verify deployment
 
 ```bash
-sudo nginx -t
-sudo systemctl reload nginx
+docker compose -f docker-compose.deploy.yml ps
+docker logs revseq-dashboard --tail 80
+docker logs revseq-nextstrain --tail 80
 ```
 
-## Quick Health Checks
-
-Hosted checks:
+Optional local checks on host:
 
 ```bash
-curl -I https://revseq.charlynebuerki.com/strain/Parainfluenza_3/
-curl -I "https://revseq.charlynebuerki.com/nextstrain/HPIV-3?f_Node%20type=New"
-curl -I "https://revseq.charlynebuerki.com/charon/getDataset?prefix=/HPIV-3"
-curl -I "https://revseq.charlynebuerki.com/static/barplots/Parainfluenza_3_seq.html"
+curl -I http://127.0.0.1:8000/home/
+curl -I http://127.0.0.1:4000
 ```
 
-If charts appear blank, do a hard refresh (`Ctrl+Shift+R`) to clear cached iframe content.
+If deployed behind a reverse proxy, route:
+
+- `/` to Django (`:8000`)
+- `/nextstrain/` to Auspice (`:4000`)
+- `/dist/` and `/charon/` to Auspice (`:4000`)
