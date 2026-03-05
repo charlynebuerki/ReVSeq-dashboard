@@ -2,39 +2,17 @@ from __future__ import annotations
 
 """Build data context and static artifacts for strain-specific pages."""
 
-import hashlib
 from pathlib import Path
 
 import pandas as pd
+from django.conf import settings
 
 from dashboard.config import SLUG_BY_DATA_NAME
 
+from .assets import asset_is_stale, asset_version
 from .data import PCR_METADATA_PATH, SEQ_METADATA_PATH, load_dashboard_metadata
 from .pileup import build_pileup_context
 from .plots import build_weekly_canton_map, make_weekly_substrain_figure
-
-
-def _asset_is_stale(output_path: str | Path, input_paths: list[str | Path]) -> bool:
-    output_path = Path(output_path)
-    if not output_path.exists():
-        return True
-
-    output_mtime = output_path.stat().st_mtime
-    for input_path in input_paths:
-        input_path = Path(input_path)
-        if input_path.exists() and input_path.stat().st_mtime > output_mtime:
-            return True
-    return False
-
-
-def _asset_version(input_paths: list[str | Path]) -> str:
-    mtimes = []
-    for input_path in input_paths:
-        p = Path(input_path)
-        mtimes.append(str(p.stat().st_mtime) if p.exists() else "missing")
-    return hashlib.md5("|".join(mtimes).encode("utf-8")).hexdigest()[:10]
-
-
 
 def _aggregate_strain_by_week(df: pd.DataFrame, match_col: str | None = None) -> pd.DataFrame:
     """Aggregate weekly counts per substrain and optional match ratios."""
@@ -65,7 +43,7 @@ def _ensure_strain_barplot(
 ):
     """Render strain barplot HTML only when inputs changed."""
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
-    if not _asset_is_stale(output_path, source_files):
+    if not asset_is_stale(output_path, source_files):
         return
     # Weekly bars with optional substrain split.
     grouped = _aggregate_strain_by_week(df, match_col=match_col)
@@ -91,7 +69,7 @@ def _select_substrains(seq_df: pd.DataFrame, pcr_df: pd.DataFrame, strain_name: 
 
 
 
-def get_strain_context(strain_slug, strain_config, request_host):
+def get_strain_context(strain_slug, strain_config):
     """Assemble template context and ensure dependent HTML assets exist."""
     modules = strain_config["modules"]
     strain_name = strain_config["data_name"]
@@ -129,7 +107,9 @@ def get_strain_context(strain_slug, strain_config, request_host):
             match_label="Match PCR",
         )
 
-    no_samples = int(seq_df["sample_id"].nunique()) if not seq_df.empty else 0
+    no_sequences = int(seq_df["sample_id"].nunique()) if not seq_df.empty else 0
+    # PCR total should reflect all detections (rows), not unique sample IDs.
+    no_detections = int(len(pcr_df.index)) if not pcr_df.empty else 0
     substrains = _select_substrains(seq_df, pcr_df, strain_name)
 
     if modules["map"]:
@@ -137,13 +117,13 @@ def get_strain_context(strain_slug, strain_config, request_host):
         map_pcr_output = f"dashboard/static/barplots/{strain_slug}_map_pcr.html"
         Path(map_seq_output).parent.mkdir(parents=True, exist_ok=True)
         Path(map_pcr_output).parent.mkdir(parents=True, exist_ok=True)
-        if _asset_is_stale(
+        if asset_is_stale(
             map_seq_output,
             [SEQ_METADATA_PATH, "dashboard/static/swiss_cantons.geojson", plot_code_path, config_path],
         ):
             fig_map_seq = build_weekly_canton_map(seq_df)
             fig_map_seq.write_html(map_seq_output, include_plotlyjs="cdn")
-        if _asset_is_stale(
+        if asset_is_stale(
             map_pcr_output,
             [PCR_METADATA_PATH, "dashboard/static/swiss_cantons.geojson", plot_code_path, config_path],
         ):
@@ -169,7 +149,7 @@ def get_strain_context(strain_slug, strain_config, request_host):
     default_barplot = "seq" if modules["barplot_sequencing"] else "pcr"
     default_map = "seq" if not seq_df.empty else "pcr"
     default_source = default_barplot if (modules["barplot_sequencing"] or modules["barplot_pcr"]) else default_map
-    version = _asset_version(
+    version = asset_version(
         [
             PCR_METADATA_PATH,
             SEQ_METADATA_PATH,
@@ -185,9 +165,11 @@ def get_strain_context(strain_slug, strain_config, request_host):
     return {
         "strain": strain_slug,
         "strain_name": strain_name,
-        "no_samples": no_samples,
+        "no_sequences": no_sequences,
+        "no_detections": no_detections,
         "substrains": substrains,
         "tree_sources": strain_config.get("trees", []),
+        "nextstrain_base_url": settings.NEXTSTRAIN_BASE_URL,
         "pileup": pileup_context,
         "modules": modules,
         "default_barplot": default_barplot,

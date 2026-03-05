@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 from dna_features_viewer import BiopythonTranslator
 from matplotlib import pyplot as plt
 
@@ -110,7 +111,11 @@ def make_weekly_substrain_figure(
         minor=dict(showgrid=False),
     )
     fig.update_yaxes(showgrid=True)
-    fig.update_layout(legend=dict(xanchor="left", x=0, yanchor="bottom", y=1))
+    # Keep legend above the plotting area and horizontal to avoid title overlap.
+    fig.update_layout(
+        legend=dict(orientation="h", xanchor="left", x=0, yanchor="bottom", y=1.03),
+        margin=dict(t=90),
+    )
     return fig
 
 
@@ -172,22 +177,146 @@ def build_weekly_canton_map(df: pd.DataFrame, geojson_path: str = "dashboard/sta
 
 
 
-def build_coinfection_heatmap(co_infections_np, labels):
+def build_coinfection_heatmap(
+    co_infections_np,
+    labels,
+    hover_text_matrix: np.ndarray | None = None,
+    title: str = "Co-infection Matrix",
+):
+    def _discrete_colorscale(max_count: int):
+        if max_count <= 0:
+            return [[0.0, "#f2f4f8"], [1.0, "#f2f4f8"]]
+        # One exact color per integer count (0..max_count).
+        sampled = px.colors.sample_colorscale(
+            "Viridis", [i / max_count for i in range(max_count + 1)]
+        )
+        scale = []
+        for count, color in enumerate(sampled):
+            # Bin boundaries at half-integers so integer z-values map cleanly.
+            start = 0.0 if count == 0 else (count - 0.5) / max_count
+            end = 1.0 if count == max_count else (count + 0.5) / max_count
+            scale.append([max(0.0, start), color])
+            scale.append([min(1.0, end), color])
+        return scale
+
+    z = np.array(co_infections_np, dtype=float)
+    text = np.where(np.isnan(z), "", z.astype(int).astype(str))
+    customdata = hover_text_matrix if hover_text_matrix is not None else text
+    max_count = int(np.nanmax(z)) if not np.isnan(z).all() else 0
+
     fig = go.Figure(
         go.Heatmap(
-            z=co_infections_np[1:, :-1][::-1],
-            x=labels[:-1],
-            y=labels[1:][::-1],
-            colorscale="Viridis",
+            z=z,
+            x=labels,
+            y=labels,
+            colorscale=_discrete_colorscale(max_count),
+            zmin=0,
+            zmax=max(max_count, 1),
+            customdata=customdata,
+            text=text,
+            texttemplate="%{text}",
+            hovertemplate="%{customdata}<extra></extra>",
+            hoverongaps=False,
+            showscale=True,
+            colorbar={
+                "title": "Pair count",
+                "tickmode": "array",
+                "tickvals": list(range(0, max_count + 1)) if max_count <= 12 else None,
+                "dtick": 1 if max_count <= 12 else max(1, round(max_count / 8)),
+            },
         )
     )
-    fig.update_layout({"paper_bgcolor": "rgba(0, 0, 0, 0)", "plot_bgcolor": "rgba(0, 0, 0, 0)"})
-    fig = fig.update_traces(
-        text=np.nan_to_num(co_infections_np[1:, :-1][::-1], nan=0).astype(int).astype(str),
-        texttemplate="%{text}",
-        hovertemplate=None,
-        showscale=False,
+    fig.update_layout(
+        template="simple_white",
+        title=title,
+        xaxis={"side": "top"},
+        yaxis={"autorange": "reversed"},
+        paper_bgcolor="rgba(0, 0, 0, 0)",
+        plot_bgcolor="rgba(0, 0, 0, 0)",
+        margin={"l": 50, "r": 20, "t": 55, "b": 30},
     )
+    from plotly.offline import plot
+
+    return plot(fig, output_type="div")
+
+
+def build_coinfection_composite_figure(
+    co_infections_np: np.ndarray,
+    labels: list[str],
+    hover_text_matrix: np.ndarray,
+    frequency_percent: list[float],
+    frequency_hover: list[str],
+    title: str,
+):
+    def _discrete_colorscale(max_count: int):
+        if max_count <= 0:
+            return [[0.0, "#f2f4f8"], [1.0, "#f2f4f8"]]
+        sampled = px.colors.sample_colorscale(
+            "Viridis", [i / max_count for i in range(max_count + 1)]
+        )
+        scale = []
+        for count, color in enumerate(sampled):
+            start = 0.0 if count == 0 else (count - 0.5) / max_count
+            end = 1.0 if count == max_count else (count + 0.5) / max_count
+            scale.append([max(0.0, start), color])
+            scale.append([min(1.0, end), color])
+        return scale
+
+    z = np.array(co_infections_np, dtype=float)
+    zmax = int(np.nanmax(z)) if not np.isnan(z).all() else 0
+    text = np.where(np.isnan(z), "", z.astype(int).astype(str))
+
+    fig = make_subplots(
+        rows=2,
+        cols=1,
+        shared_xaxes=True,
+        vertical_spacing=0.08,
+        row_heights=[0.33, 0.67],
+    )
+    fig.add_trace(
+        go.Bar(
+            x=labels,
+            y=frequency_percent,
+            marker={"color": "#1d3f72"},
+            customdata=np.array(frequency_hover, dtype=object)[:, None],
+            hovertemplate="%{customdata[0]}<extra></extra>",
+            name="Co-infection frequency (%)",
+        ),
+        row=1,
+        col=1,
+    )
+    fig.add_trace(
+        go.Heatmap(
+            z=z,
+            x=labels,
+            y=labels,
+            colorscale=_discrete_colorscale(zmax),
+            zmin=0,
+            zmax=max(zmax, 1),
+            customdata=hover_text_matrix,
+            text=text,
+            texttemplate="%{text}",
+            hovertemplate="%{customdata}<extra></extra>",
+            hoverongaps=False,
+            colorbar={"title": "Pair count"},
+        ),
+        row=2,
+        col=1,
+    )
+
+    fig.update_xaxes(showticklabels=False, row=1, col=1)
+    fig.update_xaxes(showticklabels=True, row=2, col=1)
+    fig.update_yaxes(title_text="Frequency (%)", rangemode="tozero", row=1, col=1)
+    fig.update_yaxes(autorange="reversed", row=2, col=1)
+    fig.update_layout(
+        template="simple_white",
+        title=title,
+        showlegend=False,
+        margin={"l": 50, "r": 20, "t": 60, "b": 40},
+        paper_bgcolor="rgba(0, 0, 0, 0)",
+        plot_bgcolor="rgba(0, 0, 0, 0)",
+    )
+
     from plotly.offline import plot
 
     return plot(fig, output_type="div")

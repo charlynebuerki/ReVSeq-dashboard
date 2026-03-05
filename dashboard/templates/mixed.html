@@ -98,9 +98,56 @@
             display: table;
          }
 
+         .wrapper {
+            display: flex;
+            padding: 4px;
+            background-color: #d4dce7;
+            border-radius: 8px;
+            width: fit-content;
+            margin-bottom: 10px;
+         }
+
+         .custom-input {
+            flex-grow: 1;
+         }
+
+         .custom-input input[type=radio] {
+            display: none;
+         }
+
+         .custom-input label {
+            display: block;
+            padding: 6px 8px;
+            color: #2f3f54;
+            font-weight: bold;
+            text-align: center;
+            transition: all .4s 0s ease;
+         }
+
+         .custom-input input[type=radio]:checked+label {
+            background-color: #fff;
+            color: #102748;
+            border-radius: 4px;
+         }
+
          img {
             border-radius: 10px;
             border: 1px solid var(--line);
+         }
+
+         .full-width-iframe {
+            width: 100%;
+            height: 460px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fff;
+            margin-bottom: 14px;
+         }
+
+         .small-note {
+            margin: 8px 0 14px;
+            color: var(--muted);
+            font-size: 0.95rem;
          }
       </style>
 
@@ -121,7 +168,14 @@
     <option value="{{ option.value }}">{{ option.label }}</option>
     {% endfor %}
   </select>
-  <div class="metric">Total no. of co-infections: {{no_co_infections}}</div>
+  <div class="metric" id="mixed_metric">
+    <span id="mixed_metric_label">
+      {% if default_source == "pcr" %}Total no. of PCR co-infection pairs:{% else %}Total no. of sequencing co-infection pairs:{% endif %}
+    </span>
+    <span id="mixed_metric_value">
+      {% if default_source == "pcr" %}{{ no_co_infections_pcr }}{% else %}{{ no_co_infections_seq }}{% endif %}
+    </span>
+  </div>
 </div>
 <script>
 var selectStrain = document.getElementById('strain');
@@ -132,60 +186,152 @@ var selectStrain = document.getElementById('strain');
           
       };
 </script>
-<h3 class="module-subtitle">Co-infection Heatmap</h3>
-{% autoescape off %}
-        {{ co_inf_mat }}
-{% endautoescape %}
-<h3 class="module-subtitle">Pair Pileups</h3>
-<div class="row">
-<select name="substrain" id="substrain">
-<option value="all" selected>All strains</option>
-{% for strain in strains %}
-<option value="{{strain}}">{{strain}}</option>
-{% endfor %}
-</select>
-</div>
-<div id = 'pileup_plt'>
-{% if show_pair_plots %}
-  {% for p in pairs %}
-  <div class="column">
-      <h2>{{p.first}} & {{p.second}}</h2>
-      <img src="{% static 'mixed/pileup_'|add:p.first_clean|add:'_'|add:p.second_clean|add:'.png' %}" style="width:100%;border: 1px solid #000; padding: 10px">
+<div class="wrapper">
+  <div class="custom-input">
+    <input type="radio" id="mixed_source_seq" name="mixed_source"
+      onclick="setMixedSource('sequencing');"
+      {% if default_source == "sequencing" %}checked{% endif %}>
+    <label for="mixed_source_seq">Sequencing</label>
   </div>
-  {% endfor %}
-{% endif %}
-<script>
-
-var selectSubstrain = document.getElementById('substrain');
-      selectSubstrain.onchange = function(){
-        var substrain = this.value;
-        pileup=''
-        let pairs = {{ pairs|safe }}
-        let selectedPairs
-        if(substrain=='all'){
-            selectedPairs = pairs;
-        } else {
-              selectedPairs= pairs.filter(function(item) {
-              if (item.first == substrain || item.second == substrain)
-                return true;
-              return false;
-            });
-        }
-
-        for (i in selectedPairs){
-         pileup += '<div class=\"column\">'
-         pileup += '<h2>' + selectedPairs[i].first + ' \& ' + selectedPairs[i].second+ '</h2>' 
-         {% if show_pair_plots %}
-         pileup += '<img src=\"/static/mixed/pileup_'+ selectedPairs[i].first_clean + '_' + selectedPairs[i].second_clean + '.png\" style=\"width:100%;border: 1px solid #000; padding: 10px\">';
-         {% endif %}
-         pileup += '</div>'
-        
-            document.getElementById('pileup_plt').innerHTML = pileup;
-        }
-          
-      };
-</script>
+  <div class="custom-input">
+    <input type="radio" id="mixed_source_pcr" name="mixed_source"
+      onclick="setMixedSource('pcr');"
+      {% if default_source == "pcr" %}checked{% endif %}>
+    <label for="mixed_source_pcr">PCR</label>
+  </div>
 </div>
+<h3 class="module-subtitle">Co-infection Heatmap</h3>
+<div id="mixed_heatmap_seq" {% if default_source == "pcr" %}style="display:none;"{% endif %}>
+  {% autoescape off %}
+  {{ co_inf_mat_seq }}
+  {% endautoescape %}
+</div>
+<div id="mixed_heatmap_pcr" {% if default_source == "sequencing" %}style="display:none;"{% endif %}>
+  {% autoescape off %}
+  {{ co_inf_mat_pcr }}
+  {% endautoescape %}
+</div>
+<script>
+  function setMixedSource(source) {
+    var seqDiv = document.getElementById('mixed_heatmap_seq');
+    var pcrDiv = document.getElementById('mixed_heatmap_pcr');
+    var label = document.getElementById('mixed_metric_label');
+    var value = document.getElementById('mixed_metric_value');
+    var seqCount = {{ no_co_infections_seq }};
+    var pcrCount = {{ no_co_infections_pcr }};
+
+    if (source === 'pcr') {
+      if (seqDiv) seqDiv.style.display = 'none';
+      if (pcrDiv) pcrDiv.style.display = 'block';
+      if (label) label.textContent = 'Total no. of PCR co-infection pairs:';
+      if (value) value.textContent = pcrCount;
+    } else {
+      if (seqDiv) seqDiv.style.display = 'block';
+      if (pcrDiv) pcrDiv.style.display = 'none';
+      if (label) label.textContent = 'Total no. of sequencing co-infection pairs:';
+      if (value) value.textContent = seqCount;
+    }
+  }
+  setMixedSource('{{ default_source }}');
+</script>
+
+<h3 class="module-subtitle">Pileup (Co-infection Sample)</h3>
+{% if mixed_pileup_sample_options %}
+<div class="controls">
+  <label for="mixed_pileup_sample">Sample:</label>
+  <select id="mixed_pileup_sample" name="mixed_pileup_sample">
+    {% for sample in mixed_pileup_sample_options %}
+    <option value="{{ sample }}" {% if sample == mixed_pileup_selected_sample %}selected{% endif %}>{{ sample }}</option>
+    {% endfor %}
+  </select>
+</div>
+<div id="mixed_pileup_content">
+{% if mixed_pileup_items %}
+  {% for item in mixed_pileup_items %}
+  <h4>{{ item.label }}</h4>
+  {% if item.available %}
+  <iframe class="full-width-iframe" src="/static/{{ item.file }}?v={{ item.version }}" frameborder="0"></iframe>
+  {% else %}
+  <div class="small-note">Pileup {{ item.message }} for this sample.</div>
+  {% endif %}
+  {% endfor %}
+{% else %}
+<div class="small-note">Pileup not available for this sample.</div>
+{% endif %}
+</div>
+<script>
+  (function() {
+    var sel = document.getElementById('mixed_pileup_sample');
+    if (!sel) return;
+    var content = document.getElementById('mixed_pileup_content');
+
+    function renderPileupItems(items) {
+      if (!content) return;
+      content.innerHTML = '';
+      if (!items || !items.length) {
+        var empty = document.createElement('div');
+        empty.className = 'small-note';
+        empty.textContent = 'Pileup not available for this sample.';
+        content.appendChild(empty);
+        return;
+      }
+
+      items.forEach(function(item) {
+        var title = document.createElement('h4');
+        title.textContent = item.label || 'Unknown';
+        content.appendChild(title);
+
+        if (item.available) {
+          var frame = document.createElement('iframe');
+          frame.className = 'full-width-iframe';
+          frame.setAttribute('frameborder', '0');
+          frame.src = '/static/' + item.file + '?v=' + (item.version || '');
+          content.appendChild(frame);
+        } else {
+          var note = document.createElement('div');
+          note.className = 'small-note';
+          note.textContent = 'Pileup ' + (item.message || 'not available') + ' for this sample.';
+          content.appendChild(note);
+        }
+      });
+    }
+
+    function loadPileupForSample(sample) {
+      if (!content) return;
+      content.innerHTML = '<div class="small-note">Loading pileup...</div>';
+      var endpoint = '/mixed/pileup/?sample=' + encodeURIComponent(sample || '');
+      fetch(endpoint, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(function(resp) {
+          if (!resp.ok) throw new Error('Failed to load pileup data');
+          return resp.json();
+        })
+        .then(function(payload) {
+          var selected = payload.mixed_pileup_selected_sample || sample || '';
+          if (selected && sel.value !== selected) {
+            sel.value = selected;
+          }
+          renderPileupItems(payload.mixed_pileup_items || []);
+          var url = new URL(window.location.href);
+          if (selected) {
+            url.searchParams.set('sample', selected);
+          } else {
+            url.searchParams.delete('sample');
+          }
+          window.history.replaceState({}, '', url.toString());
+        })
+        .catch(function() {
+          content.innerHTML = '<div class="small-note">Pileup not available for this sample.</div>';
+        });
+    }
+
+    sel.onchange = function() {
+      loadPileupForSample(sel.value || '');
+    };
+  })();
+</script>
+{% else %}
+<div class="small-note">No co-infection sample available for pileup display.</div>
+{% endif %}
 </main>
 </body>
 </html>

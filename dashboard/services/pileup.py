@@ -19,6 +19,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from Bio import SeqIO
 from plotly.subplots import make_subplots
+from dashboard.config import SLUG_BY_DATA_NAME, get_strain_config
 
 PILEUP_DATA_DIR = Path("dashboard/static/data/pileup")
 ANNOTATIONS_DIR = Path("dashboard/static/annotations")
@@ -85,6 +86,8 @@ def _resolve_individual_path_for_substrain(prefixes: list[str], substrain: str) 
             candidates = [
                 PILEUP_DATA_DIR / f"{prefix}_{clean}_{suffix}.json",
                 PILEUP_DATA_DIR / f"{prefix}_{lower_clean}_{suffix}.json",
+                PILEUP_DATA_DIR / f"{prefix}-{lower_clean}_{suffix}.json",
+                PILEUP_DATA_DIR / f"{prefix}-{kebab_clean}_{suffix}.json",
                 PILEUP_DATA_DIR / f"{clean}_{suffix}.json",
                 PILEUP_DATA_DIR / f"{lower_clean}_{suffix}.json",
                 PILEUP_DATA_DIR / f"{kebab_clean}_{suffix}.json",
@@ -821,6 +824,172 @@ def _build_segmented_subtype_context(
         assets["segmented_default_segment"] = segment_values[0]
 
     assets["version"] = _asset_version(cache_inputs)
+    return assets
+
+
+def _resolve_annotation_for_segment(strain_config: dict, strain_slug: str, segment: str) -> str:
+    for item in strain_config.get("pileup_segments", []):
+        if str(item.get("value")) == str(segment) and item.get("annotation"):
+            return str(item["annotation"])
+    return strain_config.get("pileup_annotation", f"{strain_slug}.gb")
+
+
+def _extract_segment_names_from_individual_json(path: Path) -> list[str]:
+    with open(path, "r", encoding="utf-8") as fh:
+        payload = json.load(fh)
+    segments = payload.get("segments") if isinstance(payload, dict) else None
+    if isinstance(segments, dict):
+        return sorted(str(k) for k in segments.keys())
+    return []
+
+
+def _pick_sample_trace(sample_depths: dict[str, np.ndarray], sample_id: str) -> tuple[str | None, np.ndarray | None]:
+    def _normalize_sample_token(value: str) -> str:
+        token = str(value).strip()
+        if token.lower().startswith("m2-"):
+            return token[3:]
+        return token
+
+    if sample_id in sample_depths:
+        return sample_id, sample_depths[sample_id]
+
+    # Fallback: mixed metadata sample IDs can be "sample|date|location" while
+    # pileup JSON sample IDs are just "sample".
+    sample_id_raw = _normalize_sample_token(str(sample_id).strip())
+    sample_id_base = _normalize_sample_token(sample_id_raw.split("|", 1)[0].strip())
+
+    lowered = {
+        _normalize_sample_token(str(k).strip()).lower(): k
+        for k in sample_depths.keys()
+    }
+    key = lowered.get(sample_id_raw.lower())
+    if key is not None:
+        return str(key), sample_depths[str(key)]
+
+    key = lowered.get(sample_id_base.lower())
+    if key is not None:
+        return str(key), sample_depths[str(key)]
+
+    # Last fallback: match JSON key prefix before first "|" to metadata base.
+    for original_key in sample_depths.keys():
+        key_base = _normalize_sample_token(str(original_key).split("|", 1)[0].strip()).lower()
+        if key_base and key_base == sample_id_base.lower():
+            return str(original_key), sample_depths[str(original_key)]
+    return None, None
+
+
+def build_mixed_sample_pileup_assets(sample_id: str, sample_rows: pd.DataFrame) -> list[dict]:
+    """Build one pileup iframe asset per virus detected in a mixed sample."""
+    if not sample_id or sample_rows.empty:
+        return []
+
+    unique_rows = (
+        sample_rows[["canonical_strain", "display_label"]]
+        .dropna(subset=["canonical_strain"])
+        .drop_duplicates()
+    )
+    assets: list[dict] = []
+
+    for row in unique_rows.itertuples(index=False):
+        canonical = str(row.canonical_strain)
+        display = str(row.display_label) if pd.notna(row.display_label) else canonical
+        label = display if display != canonical else canonical
+        slug = SLUG_BY_DATA_NAME.get(canonical)
+        if slug is None:
+            assets.append(
+                {
+                    "label": label,
+                    "available": False,
+                    "message": "not available",
+                }
+            )
+            continue
+
+        strain_config = get_strain_config(slug) or {}
+        if not strain_config.get("modules", {}).get("pileup", False):
+            assets.append(
+                {
+                    "label": label,
+                    "available": False,
+                    "message": "not available",
+                }
+            )
+            continue
+
+        prefix = strain_config.get("pileup_data_prefix", slug)
+        prefix_candidates: list[str] = []
+        for candidate in (prefix, slug):
+            if candidate and candidate not in prefix_candidates:
+                prefix_candidates.append(candidate)
+
+        indiv_path = None
+        if display != canonical:
+            indiv_path = _resolve_individual_path_for_substrain(prefix_candidates, display)
+        if indiv_path is None:
+            indiv_path = _resolve_individual_path(prefix_candidates)
+        if indiv_path is None:
+            assets.append({"label": label, "available": False, "message": "not available"})
+            continue
+
+        segment = None
+        segment_names = _extract_segment_names_from_individual_json(indiv_path)
+        if segment_names:
+            configured_default = str(strain_config.get("pileup_default_segment", "")).strip()
+            if configured_default and configured_default in segment_names:
+                segment = configured_default
+            elif "HA" in segment_names:
+                segment = "HA"
+            else:
+                segment = segment_names[0]
+
+        if segment is not None:
+            annotation_name = _resolve_annotation_for_segment(strain_config, slug, segment)
+            annotation_path = ANNOTATIONS_DIR / annotation_name
+            positions, sample_depths = _load_individual_depth_json_for_segment(indiv_path, segment)
+            title = f"Pileup - {label} - {sample_id} - {segment}"
+        else:
+            annotation_name = strain_config.get("pileup_annotation", f"{slug}.gb")
+            annotation_path = ANNOTATIONS_DIR / annotation_name
+            positions, sample_depths = _load_individual_depth_json(indiv_path)
+            title = f"Pileup - {label} - {sample_id}"
+
+        trace_name, trace = _pick_sample_trace(sample_depths, sample_id)
+        if trace_name is None or trace is None:
+            assets.append(
+                {
+                    "label": label,
+                    "available": False,
+                    "message": "not available",
+                }
+            )
+            continue
+
+        output_name = f"mixed_{_slugify(sample_id)}_{_slugify(label)}"
+        if segment is not None:
+            output_name = f"{output_name}_{_slugify(segment)}"
+        output_path = PILEUP_OUTPUT_DIR / f"{output_name}.html"
+
+        input_paths = [indiv_path, annotation_path, Path(__file__)]
+        if _asset_is_stale(output_path, input_paths):
+            features = _load_annotation_features(annotation_path)
+            fig = build_individual_pileup_figure(
+                positions=positions,
+                sample_depths={trace_name: trace},
+                features=features,
+                title=title,
+                max_traces=1,
+            )
+            _write_figure(fig, output_path)
+
+        assets.append(
+            {
+                "label": label,
+                "available": True,
+                "file": f"pileup_html/{output_path.name}",
+                "version": _asset_version(input_paths + [output_path]),
+            }
+        )
+
     return assets
 
 

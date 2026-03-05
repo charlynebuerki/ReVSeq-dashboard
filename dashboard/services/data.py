@@ -10,8 +10,8 @@ from dashboard.config import harmonize_canton, harmonize_detected_strain
 DATA_DIR = Path("dashboard/static/data")
 PCR_METADATA_PATH = DATA_DIR / "metadata_pcr.tsv"
 SEQ_METADATA_PATH = DATA_DIR / "metadata_sequencing.tsv"
-MIXED_PCR_PATH = DATA_DIR / "mixed_pcr.tsv"
-MIXED_SEQ_PATH = DATA_DIR / "mixed_sequencing.tsv"
+MIXED_PCR_PATH = DATA_DIR / "metadata_co_infection_pcr.tsv"
+MIXED_SEQ_PATH = DATA_DIR / "metadata_co_infection_sequencing.tsv"
 CONFIG_PATH = Path("dashboard/config.py")
 
 
@@ -169,14 +169,34 @@ def load_mixed_metadata(
     sequencing = _read_tsv(sequencing_path)
 
     if not pcr.empty:
-        # Mixed inputs are already harmonized by design; only normalize date/location.
-        pcr = pcr.rename(columns={"location": "canton"})
+        pcr = pcr.rename(
+            columns={
+                "strain": "sample_id",
+                "virus_identified_pcr": "virus_identified_pcr",
+            }
+        )
         pcr = _add_week(pcr)
-        pcr = _normalize_canton_column(pcr, "canton")
+        pcr = _harmonize_column(pcr, "virus_identified_pcr")
+        if "Match_sequencing" in pcr.columns:
+            pcr["match_sequencing"] = _normalize_match_flag(pcr["Match_sequencing"])
+        elif "Match_Sequencing" in pcr.columns:
+            pcr["match_sequencing"] = _normalize_match_flag(pcr["Match_Sequencing"])
+        else:
+            pcr["match_sequencing"] = 0
+
     if not sequencing.empty:
-        sequencing = sequencing.rename(columns={"location": "canton"})
+        sequencing = sequencing.rename(
+            columns={
+                "strain": "sample_id",
+                "virus_identified": "virus_identified_sequencing",
+            }
+        )
         sequencing = _add_week(sequencing)
-        sequencing = _normalize_canton_column(sequencing, "canton")
+        sequencing = _harmonize_column(sequencing, "virus_identified_sequencing")
+        if "Match_PCR" in sequencing.columns:
+            sequencing["match_pcr"] = _normalize_match_flag(sequencing["Match_PCR"])
+        else:
+            sequencing["match_pcr"] = 0
 
     bundle = MetadataBundle(pcr=pcr, sequencing=sequencing)
     _MIXED_CACHE_KEY = cache_key

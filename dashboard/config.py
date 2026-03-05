@@ -12,20 +12,9 @@ DEFAULT_MODULES = {
 
 DEFAULT_PILEUP_LEVELS = ["all", "substrain", "individual"]
 DEFAULT_PILEUP_MAX_INDIVIDUAL_TRACES = 30
+MIXED_PAGE_ENABLED = True
 
 STRAIN_CONFIG = {
-    "Adenovirus": {
-        "label": "Adenovirus",
-        "data_name": "Adenovirus",
-        "modules": {"pileup": False},
-        "trees": [],
-    },
-    "Bocavirus": {
-        "label": "Bocavirus",
-        "data_name": "Bocavirus",
-        "modules": {"barplot_pcr": False},
-        "trees": [],
-    },
     "Influenza_A": {
         "label": "Influenza A",
         "data_name": "Influenza A",
@@ -103,12 +92,6 @@ STRAIN_CONFIG = {
         "pileup_data_prefix": "hpiv-4a",
         "trees": [{"title": "", "dataset": "HPIV-4a"}],
     },
-    "Polyomavirus": {
-        "label": "Polyomavirus",
-        "data_name": "Polyomavirus",
-        "modules": {"barplot_pcr": False, "pileup": False},
-        "trees": [],
-    },
     "RSV": {
         "label": "RSV - A/B",
         "data_name": "RSV - A/B",
@@ -124,12 +107,6 @@ STRAIN_CONFIG = {
         "modules": {"tree": True},
         "pileup_data_prefix": "sars-cov-2",
         "trees": [{"title": "", "dataset": "SARS-CoV-2"}],
-    },
-    "Enterovirus": {
-        "label": "Rhino- / Enterovirus",
-        "data_name": "Rhino- / Enterovirus",
-        "modules": {},
-        "trees": [],
     },
     "coronavirus_229E": {
         "label": "coronavirus 229E",
@@ -166,8 +143,6 @@ DASHBOARD_STRAIN_NAMES = {item["data_name"] for item in STRAIN_CONFIG.values()}
 SLUG_BY_DATA_NAME = {item["data_name"]: slug for slug, item in STRAIN_CONFIG.items()}
 
 COLOR_BY_STRAIN = {
-    "Adenovirus": "#65E0C8",
-    "Bocavirus": "#D2D2E3",
     "Influenza A": "#6875D9",
     "Influenza B": "#E158D3",
     "Metapneumovirus": "royalblue",
@@ -181,7 +156,7 @@ COLOR_BY_STRAIN = {
     "coronavirus 229E": "pink",
     "coronavirus HKU1": "#BAE6B0",
     "coronavirus NL63": "#A968E1",
-    "coronavirus OC43": "darkblue",
+    "coronavirus OC43": "#65E0C8",
 }
 
 # Source-specific normalization maps.
@@ -350,7 +325,7 @@ def harmonize_detected_strain(raw_value, source: str):
     if canonical == "Parainfluenza 3":
         if "human parainfluenza" in key:
             return canonical, "Human parainfluenza 3"
-    if canonical == "Parainfluenza 4":
+    if canonical == "Parainfluenza 4a":
         if "human parainfluenza" in key:
             return canonical, "Human parainfluenza virus 4a"
 
@@ -372,16 +347,6 @@ def get_strain_config(slug):
     result = deepcopy(config)
     result["slug"] = slug
     raw_modules = result.get("modules", {})
-    # Backward compatibility: accept legacy histogram module keys.
-    if "histogram_pcr" in raw_modules and "barplot_pcr" not in raw_modules:
-        raw_modules["barplot_pcr"] = raw_modules["histogram_pcr"]
-    if (
-        "histogram_sequencing" in raw_modules
-        and "barplot_sequencing" not in raw_modules
-    ):
-        raw_modules["barplot_sequencing"] = raw_modules["histogram_sequencing"]
-    raw_modules.pop("histogram_pcr", None)
-    raw_modules.pop("histogram_sequencing", None)
     modules = DEFAULT_MODULES.copy()
     modules.update(raw_modules)
     result["modules"] = modules
@@ -403,5 +368,10 @@ def get_strain_options():
         }
         for slug in STRAIN_ORDER
     )
-    options.append({"value": "/mixed", "label": "Mixed"})
+    if MIXED_PAGE_ENABLED:
+        options.append({"value": "/mixed", "label": "Mixed"})
     return options
+
+
+def is_mixed_page_enabled() -> bool:
+    return bool(MIXED_PAGE_ENABLED)

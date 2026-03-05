@@ -10,22 +10,51 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Keep plotting backend non-interactive in server/runtime contexts.
+os.environ.setdefault("MPLBACKEND", "Agg")
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hj4uxkkk3g4moi!ix+u7cir$)ym4efp54(cv!^m-ovg499srlx'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "1") == "1"
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+if not SECRET_KEY:
+    if DEBUG:
+        # Dev-only fallback so local runs work without extra env config.
+        SECRET_KEY = get_random_secret_key()
+    else:
+        raise RuntimeError("DJANGO_SECRET_KEY must be set when DJANGO_DEBUG=0")
+
+# Comma-separated hostnames for deployment behind reverse proxies.
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv(
+        "DJANGO_ALLOWED_HOSTS",
+        "localhost,127.0.0.1,revseq.charlynebuerki.com",
+    ).split(",")
+    if host.strip()
+]
+
+# Dashboard pages embed same-origin iframes for barplots/maps/pileup trees.
+X_FRAME_OPTIONS = "SAMEORIGIN"
+
+# Reverse-proxy aware HTTPS handling.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# Base URL used to embed Nextstrain trees from strain pages.
+# Use "/nextstrain" behind reverse proxy, or "http://127.0.0.1:4000" for local dev.
+NEXTSTRAIN_BASE_URL = os.getenv("NEXTSTRAIN_BASE_URL", "/nextstrain")
 
 
 # Application definition
@@ -116,10 +145,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATIC_URL = "static/"

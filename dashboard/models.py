@@ -1,3 +1,4 @@
-from django.db import models
+"""No Django ORM models are currently defined for this app.
 
-# Create your models here.
+Data is loaded from TSV/JSON assets and rendered through service modules.
+"""

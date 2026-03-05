@@ -156,7 +156,14 @@
       <option value="{{ option.value }}">{{ option.label }}</option>
       {% endfor %}
     </select>
-    <div class="metric">Total no. of samples: {{no_samples}}</div>
+    <div class="metric" id="sample_metric">
+      <span id="sample_metric_label">
+        {% if default_source == "pcr" %}Total no. of PCR detection:{% else %}Total no. of sequences:{% endif %}
+      </span>
+      <span id="sample_metric_value">
+        {% if default_source == "pcr" %}{{ no_detections }}{% else %}{{ no_sequences }}{% endif %}
+      </span>
+    </div>
   </div>
   <script>
     var selectStrain = document.getElementById('strain');
@@ -173,18 +180,34 @@
     function updateDashboardSource(source) {
       var barplot = document.getElementById('barplot');
       var mapFrame = document.getElementById('map_frame');
+      var metricLabel = document.getElementById('sample_metric_label');
+      var metricValue = document.getElementById('sample_metric_value');
       var barplotHasSeq = {{ modules.barplot_sequencing|yesno:"true,false" }};
       var barplotHasPcr = {{ modules.barplot_pcr|yesno:"true,false" }};
+      var seqTotal = {{ no_sequences }};
+      var pcrTotal = {{ no_detections }};
+      var displaySource = source;
 
       if (barplot) {
         var barplotSource = source;
         if (barplotSource === 'seq' && !barplotHasSeq) barplotSource = 'pcr';
         if (barplotSource === 'pcr' && !barplotHasPcr) barplotSource = 'seq';
+        displaySource = barplotSource;
         barplot.src = '/static/barplots/' + '{{strain}}' + '_' + barplotSource + '.html?v={{ asset_version }}';
       }
 
       if (mapFrame) {
-        mapFrame.src = '/static/barplots/' + '{{strain}}' + '_map_' + source + '.html?v={{ asset_version }}';
+        mapFrame.src = '/static/barplots/' + '{{strain}}' + '_map_' + displaySource + '.html?v={{ asset_version }}';
+      }
+
+      if (metricLabel && metricValue) {
+        if (displaySource === 'pcr') {
+          metricLabel.textContent = 'Total no. of PCR detection:';
+          metricValue.textContent = pcrTotal;
+        } else {
+          metricLabel.textContent = 'Total no. of sequences:';
+          metricValue.textContent = seqTotal;
+        }
       }
     }
   </script>
@@ -203,6 +226,10 @@
       <label for="source_pcr">PCR</label>
     </div>
   </div>
+
+  <script>
+    updateDashboardSource('{{ default_source }}');
+  </script>
 
   <div class="row">
     {% if modules.barplot_sequencing or modules.barplot_pcr %}
@@ -439,12 +466,14 @@
     {% endfor %}
     <script>
       (function () {
-        var nextstrainBase = window.location.protocol + "//" + window.location.hostname + ":4000";
+        var nextstrainBase = "{{ nextstrain_base_url|default:'/nextstrain'|escapejs }}";
+        nextstrainBase = (nextstrainBase || "").replace(/\/+$/, "");
         var nextstrainFilter = "?f_Node%20type=New";
         document.querySelectorAll(".nextstrain-tree").forEach(function (el) {
           var dataset = el.getAttribute("data-dataset");
           if (!dataset) return;
-          el.setAttribute("data", nextstrainBase + "/" + dataset + nextstrainFilter);
+          var treePath = "/" + dataset + nextstrainFilter;
+          el.setAttribute("data", (nextstrainBase ? nextstrainBase : "") + treePath);
         });
       })();
     </script>

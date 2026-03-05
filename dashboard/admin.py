@@ -1,3 +1,5 @@
-from django.contrib import admin
+"""Admin registration is intentionally empty.
 
-# Register your models here.
+The dashboard currently serves computed/metadata-driven views only and does not
+expose editable Django models via the admin site.
+"""
