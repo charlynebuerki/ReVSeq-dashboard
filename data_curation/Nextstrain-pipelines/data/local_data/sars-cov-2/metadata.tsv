@@ -1,0 +1,78 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_34	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	204339	99.67	XEC	XEC	SARS-CoV-2	46548937	ETH_Plate1	B5	10.12.2024	VD	NA	sars_flu_rsv_panel	SARS-CoV-2	NA
+51199_1_41	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	8596174	99.81	XEC	XEC	SARS-CoV-2	46642596	ETH_Plate1	A6	18.12.2024	GE	NA	resp_panel, flu_rsv_panel	SARS-CoV-2	NA
+51199_1_82	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	6848	82.87	NA	XEC	SARS-CoV-2	46199507	ETH_Plate1	B11	11.11.2024	BS	NA	resp_panel	SARS-CoV-2	NA
+51199_1_90	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	16113901	99.85	KP.3.1.1	KP.3.1.1	SARS-CoV-2	46224188	ETH_Plate1	B12	12.11.2024	GR	NA	resp_panel	SARS-CoV-2, Rhino-/Enterovirus	NA
+51199_2_81	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	621888	99.72	LB.1.3.1	LB.1.3.1	SARS-CoV-2	47369455	ETH_Plate2	A11	28.02.2025	GE	NA	resp_panel	SARS-CoV-2, Rhino-/Enterovirus	NA
+51199_2_92	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	3345792	99.78	KP.1.1.3	KP.1.1.3	SARS-CoV-2	47538792	ETH_Plate2	D12	15.03.2025	BL	ambulant	flu_only_panel	SARS-CoV-2	NA
+51607_1_16	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	13145593	99.83	KP.3.3	KP.3.3	SARS-CoV-2	47999036	ETH_Plate3	H2	25.04.2025	BL	ambulant	resp_panel	SARS-CoV-2	NA
+51607_1_18	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	43070	99.62	KP.1.1.3	KP.1.1.3	SARS-CoV-2	47968834	ETH_Plate3	B3	23.04.2025	LU	NA	sars_flu_rsv_panel	SARS-CoV-2	NA
+51607_1_46	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	9786657	99.83	KP.1.1.3	KP.1.1.3	SARS-CoV-2	47942087	ETH_Plate3	F6	07.04.2025	VD	NA	sars_flu_rsv_panel	SARS-CoV-2	NA
+51607_2_44	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	18233781	99.86	JN.1.16.1	JN.1.16.1	SARS-CoV-2	48370174	ETH_Plate4	D6	28.05.2025	VD	NA	sars_flu_rsv_panel	SARS-CoV-2	NA
+51607_2_49	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	6790126	99.82	KP.1.1.3	KP.1.1.3	SARS-CoV-2	48000988	ETH_Plate4	A7	26.04.2025	GR	NA	resp_panel	SARS-CoV-2	NA
+51607_2_54	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	15746848	99.85	XEC	XEC	SARS-CoV-2	48004520	ETH_Plate4	F7	28.04.2025	BE	NA	resp_panel	SARS-CoV-2	NA
+51607_2_56	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	12308123	99.81	MC.10	MC.10	SARS-CoV-2	48009218	ETH_Plate4	H7	28.04.2025	VD	NA	sars_flu_rsv_panel	SARS-CoV-2	NA
+51607_2_68	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	2298132	99.78	JN.1.16.1	JN.1.16.1	SARS-CoV-2	48287909	ETH_Plate4	D9	21.05.2025	VD	NA	sars_flu_rsv_panel	SARS-CoV-2	NA
+51607_2_70	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	127394	99.68	KP.1.1.3	KP.1.1.3	SARS-CoV-2	48316459	ETH_Plate4	F9	23.05.2025	BS	NA	resp_panel	SARS-CoV-2	NA
+51607_2_72	Betacoronavirus pandemicum	3418604	2697049	Severe acute respiratory syndrome coronavirus 2	18133358	99.85	XEC	XEC	SARS-CoV-2	46623780	ETH_Plate4	H9	16.12.2024	AG	NA	resp_panel	Coronavirus NL63, SARS-CoV-2, Rhino-/Enterovirus	NA
+m2-37cQGL	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1892158	100	NA	NA	SARS-CoV-2	NA	010623RVS-m2	NA	2023-05-11	VD	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-ZNzLxp	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	870800	100	NA	NA	SARS-CoV-2	NA	010623RVS-m2	NA	2023-05-11	LU	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-3qdHwU	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	3436849	100	NA	NA	SARS-CoV-2	NA	010623RVS-m2	NA	2023-05-10	VD	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-3Ft7q9	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	3752375	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-12-07	GE	NA	sars_flu_rsv	Influenza A	17
+m2-38nVTV	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	825091	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-21	AG	NA	resp_panel	SARS-CoV-2	NA
+m2-4H6FKQ	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1215583	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-16	BS	NA	resp_panel	SARS-CoV-2	NA
+m2-4kXick	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	7772	66	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-25	AG	stationär	sars_flu_rsv	SARS-CoV-2	4
+m2-5xXjjp	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	15975	98	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-12-04	GE	NA	resp_panel	SARS-CoV-2	NA
+m2-3SXzSV	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1596574	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-26	VD	NA	resp_panel	SARS-CoV-2	NA
+m2-BF2ufp	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	19090	91	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-12-04	BE	NA	resp_panel	SARS-CoV-2, Rhino- / Enterovirus	NA
+m2-BJn2VZ	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	3013927	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-23	GE	NA	resp_panel	Rhino- / Enterovirus, RSV - A/B	NA
+m2-bkrZsY	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	10436	95	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-17	BS	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-cGQaRk	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1925694	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-29	BS	NA	resp_panel	Adenovirus	NA
+m2-DxMevL	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	909801	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-20	AG	NA	resp_panel	SARS-CoV-2	NA
+m2-3KZQzJ	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	6314	73	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-25	AG	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-Mj6hgu	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	9930	67	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-17	BL	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-xvyMxE	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1681905	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate3-m2	NA	2023-11-29	BS	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-G4bQxE	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	25220	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-28	BS	NA	resp_panel	SARS-CoV-2	NA
+m2-gyQtpZ	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1046909	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-20	GE	NA	sars_flu_rsv	Rhino- / Enterovirus, Metapneumovirus, SARS-CoV-2	NA
+m2-mGefQv	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	6279	48	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-19	GE	NA	resp_panel	SARS-CoV-2	NA
+m2-npCqtD	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	16568	98	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-24	AG	stationär	resp_panel	SARS-CoV-2	NA
+m2-ozKj7w	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1744209	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-28	BL	stationär	sars_flu_rsv	RSV - A/B	23
+m2-q4bsMd	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2486206	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-24	AG	NA	sars_flu_rsv	Influenza A	13
+m2-QGowTB	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	112335	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-29	GR	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-QtXNo7	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2929802	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-21	BL	NA	resp_panel	SARS-CoV-2	NA
+m2-TzR6v7	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	20364	97	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-11-21	GR	NA	resp_panel	SARS-CoV-2	NA
+m2-uBCY5S	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	240624	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-23	AG	NA	resp_panel	Parainfluenza 3	NA
+m2-y9sf9q	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	932379	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-19	BS	NA	resp_panel	SARS-CoV-2	NA
+m2-yQUmMG	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	187942	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate4-m2	NA	2023-12-29	AG	NA	resp_panel	Metapneumovirus	NA
+m2-F2HifQ	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	4324	51	NA	NA	SARS-CoV-2	NA	RVSeqPlate5-m2	NA	2024-01-18	AG	NA	sars_flu_rsv	Influenza A, SARS-CoV-2	NA
+m2-oUT7WT	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	175896	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate5-m2	NA	2024-01-11	GE	NA	sars_flu_rsv	Adenovirus, SARS-CoV-2	NA
+m2-YRBBfu	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1573020	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate5-m2	NA	2024-01-11	AG	NA	sars_flu_rsv	SARS-CoV-2, SARS-CoV-2	NA
+m2-i5wLSU	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	4478406	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate5-m2	NA	2024-01-18	TI	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-MvvBk9	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2146917	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate5-m2	NA	2024-01-19	TI	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-cyCNuA	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1502813	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate5-m2	NA	2024-01-11	GR	NA	resp_panel	SARS-CoV-2	NA
+m2-QEotEA	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	6384	82	NA	NA	SARS-CoV-2	NA	RVSeqPlate5-m2	NA	2024-01-12	VD	NA	resp_panel	SARS-CoV-2	NA
+m2-7xxDyW	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	3911429	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate6-m2	NA	2024-01-30	BS	NA	resp_panel	SARS-CoV-2	NA
+m2-XP6vJf	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	920916	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate7-m2	NA	2024-02-20	AG	stationär	sars_flu_rsv	SARS-CoV-2	4
+m2-5YkKkJ	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	111055	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate8-m2	NA	2024-03-02	BL	stationär	sars_flu_rsv	SARS-CoV-2	4
+m2-V9rHyG	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	3222998	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate9-m2	NA	2024-03-10	VD	NA	resp_panel	SARS-CoV-2	NA
+m2-9qnCXK	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2737867	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate10-m2	NA	2024-04-15	AG	stationär	sars_flu_rsv	SARS-CoV-2	4
+m2-eyf48e	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	107185	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate11-m2	NA	2024-06-01	AG	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-DhoSq8	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2022619	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate11-m2	NA	2024-06-02	BL	stationär	sars_flu_rsv	SARS-CoV-2	4
+m2-gycK6z	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	44450	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate11-m2	NA	2024-05-02	AG	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-CcozBt	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	487371	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate12-m2	NA	2024-05-26	AG	stationär	resp_panel	SARS-CoV-2	NA
+m2-fngLcf	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	958266	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate12-m2	NA	2024-06-17	TI	NA	resp_panel	SARS-CoV-2	NA
+m2-NdSZao	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2432165	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate12-m2	NA	2024-06-11	VD	NA	resp_panel	SARS-CoV-2	NA
+m2-s96RDD	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	916426	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate12-m2	NA	2024-05-24	AG	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-VduGeq	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	20426	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate12-m2	NA	2024-06-14	ZH	NA	resp_panel	SARS-CoV-2, Rhino- / Enterovirus	NA
+m2-wM9MFc	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1571447	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate12-m2	NA	2024-06-13	BL	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-gxDNRv	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	4242540	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-07-01	VD	NA	resp_panel	SARS-CoV-2	NA
+m2-mkGmpe	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	233471	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-03	AG	stationär	sars_flu_rsv	SARS-CoV-2	4
+m2-nmHdMk	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2896685	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-07-04	BS	NA	resp_panel	SARS-CoV-2	NA
+m2-AXsNSL	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	13279	97	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-20	BL	stationär	sars_flu_rsv	SARS-CoV-2	4
+m2-oxY6PQ	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	888641	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-10	ZH	NA	resp_panel	SARS-CoV-2	NA
+m2-pDAji8	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	1015461	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-26	JU	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-PVnipc	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	3014164	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-21	VD	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-QTwV7a	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2189370	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-30	VD	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-G68KXW	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	2425107	100	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-07-02	AG	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-dC5QX8	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	80964	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-04	AG	ambulant	sars_flu_rsv	SARS-CoV-2	4
+m2-V87KNw	Severe acute respiratory syndrome coronavirus 2	2697049	NA	NA	39542	99	NA	NA	SARS-CoV-2	NA	RVSeqPlate13-m2	NA	2024-06-27	BL	NA	resp_panel	SARS-CoV-2, Adenovirus	NA

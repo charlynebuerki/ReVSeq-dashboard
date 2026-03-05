@@ -54,9 +54,11 @@ Extract-pileup/
 **/Nextstrain-pipelines/logs/
 **/Nextstrain-pipelines/results/
 **/Nextstrain-pipelines/auspice/
+!data_curation/Nextstrain-pipelines/results/
+!data_curation/Nextstrain-pipelines/results/**
 
 # data_curation pipeline generated data/artifacts
-data_curation/Nextstrain-pipelines/data/local_data/*
+
 !data_curation/Nextstrain-pipelines/data/local_data/.empty_local_data
 data_curation/Nextstrain-pipelines/data/nextclade/*
 !data_curation/Nextstrain-pipelines/data/nextclade/.empty_nextclade_reference_files
@@ -70,7 +72,7 @@ data_curation/Nextstrain-pipelines/ingest/data/**
 !data_curation/Nextstrain-pipelines/ingest/data/**/pathogen.json
 !data_curation/Nextstrain-pipelines/ingest/data/**/reference.fasta
 !data_curation/Nextstrain-pipelines/ingest/data/**/reference.gbk
-data_curation/Nextstrain-pipelines/ingest/dataset/
+
 data_curation/Nextstrain-pipelines/ingest/logs/
 data_curation/Nextstrain-pipelines/ingest/results/
 data_curation/Nextstrain-pipelines/ingest/test_out/

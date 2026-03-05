@@ -1,0 +1,48 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_13	Influenza B Virus	2955465	8207956	B/Georgia/02/2016 segment 3	37041	100	NA	NA	Influenza B Virus	47015692	ETH_Plate1	E2	28.01.2025	AG	NA	sars_flu_rsv_panel	Influenza B, RSV - A/B	20.0,18.0
+51199_1_54	Influenza B Virus	2955465	8413769	B/Georgia/23/2019 segment 2	33974	100	NA	NA	Influenza B Virus	46440647	ETH_Plate1	F7	02.12.2024	VD	NA	sars_flu_rsv_panel	Influenza B	23
+51199_1_56	Influenza B Virus	2955465	8408633	B/Delaware/05/2020 segment 3	17382	100	NA	NA	Influenza B Virus	46493650	ETH_Plate1	H7	05.12.2024	AG	NA	flu_rsv_panel	Influenza B	NA
+51199_1_71	Influenza B Virus	2955465	8204406	B/Florida/71/2016 segment 3	42462	100	NA	NA	Influenza B Virus	46365645	ETH_Plate1	G9	25.11.2024	AG	NA	flu_rsv_panel	Influenza B	NA
+51199_2_20	Influenza B Virus	2955465	8413769	B/Georgia/23/2019 segment 2	14114	100	NA	NA	Influenza B Virus	47284499	ETH_Plate2	D3	20.02.2025	ZH	NA	flu_only_panel	Influenza B	4
+51199_2_27	Influenza B Virus	2955465	8357085	B/District Of Columbia/07/2019 segment 2	4764	100	NA	NA	Influenza B Virus	47218317	ETH_Plate2	C4	14.02.2025	BL	NA	sars_flu_rsv_panel	Influenza B	19
+51199_2_29	Influenza B Virus	2955465	8413769	B/Georgia/23/2019 segment 2	19712	100	NA	NA	Influenza B Virus	47296150	ETH_Plate2	E4	21.02.2025	BL	NA	resp_panel	Coronavirus OC43, Coronavirus NL63, Rhino-/Enterovirus, Influenza B, RSV - A/B	NA
+51199_2_30	Influenza B Virus	2955465	8193112	B/Iowa/16/2016 segment 2	24600	100	NA	NA	Influenza B Virus	47335388	ETH_Plate2	F4	25.02.2025	GR	NA	resp_panel	SARS-CoV-2, Adenovirus, Influenza B	NA
+51199_2_34	Influenza B Virus	2955465	8220613	B/Gyeongnam/568/2016 segment 5	9294	100	NA	NA	Influenza B Virus	47215328	ETH_Plate2	B5	14.02.2025	BL	NA	flu_only_panel	Influenza B	15
+51199_2_93	Influenza B Virus	2955465	8393377	B/Louisiana/40/2019 segment 5	327673	100	NA	NA	Influenza B Virus	47539579	ETH_Plate2	E12	16.03.2025	BL	ambulant	resp_panel	Influenza B	NA
+51607_1_34	Influenza B Virus	2955465	8192736	B/Vermont/11/2016 segment 2	1799151	100	NA	NA	Influenza B Virus	47605364	ETH_Plate3	B5	20.03.2025	BS	NA	resp_panel	Influenza B	NA
+51607_1_87	Influenza B Virus	2955465	8418012	B/Washington/35/2020 segment 1	22344	100	NA	NA	Influenza B Virus	47756465	ETH_Plate3	G11	02.04.2025	ZH	NA	resp_panel	Influenza B	NA
+51607_1_89	Influenza B Virus	2955465	8167429	B/Montana/17/2015 segment 1	30714	100	NA	NA	Influenza B Virus	47720786	ETH_Plate3	A12	31.03.2025	BL	NA	resp_panel	Rhino-/Enterovirus, Influenza B	NA
+51607_1_94	Influenza B Virus	2955465	8330516	B/Arizona/03/2019 segment 2	2968	100	NA	NA	Influenza B Virus	47833761	ETH_Plate3	F12	08.04.2025	SH	NA	resp_panel	Influenza B	NA
+51607_2_15	Influenza B Virus	2955465	8325056	B/Connecticut/35/2018 segment 5	41331	100	NA	NA	Influenza B Virus	47706487	ETH_Plate4	G2	28.03.2025	AG	NA	resp_panel	Rhino-/Enterovirus, Influenza B	NA
+51607_2_18	Influenza B Virus	2955465	8383774	B/Singapore/DMS1974/2012 segment 3	225237	100	NA	NA	Influenza B Virus	47675134	ETH_Plate4	B3	26.03.2025	BE	NA	resp_panel	Influenza B	NA
+51607_2_19	Influenza B Virus	2955465	8330516	B/Arizona/03/2019 segment 2	1070988	100	NA	NA	Influenza B Virus	47670936	ETH_Plate4	C3	26.03.2025	TI	NA	resp_panel	Adenovirus, Influenza B	NA
+51607_2_53	Influenza B Virus	2955465	8394101	B/Washington/18/2019 segment 4	45668	100	NA	NA	Influenza B Virus	48010503	ETH_Plate4	E7	28.04.2025	AG	NA	resp_panel	Influenza B	NA
+51607_2_91	Influenza B Virus	2955465	8413769	B/Georgia/23/2019 segment 2	3080	100	NA	NA	Influenza B Virus	46434160	ETH_Plate4	C12	01.12.2024	VD	NA	sars_flu_rsv_panel	Influenza B	25
+m2-4R8qnW	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	631	11	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-04-10	AG	NA	flu_rsv	Influenza B	
+m2-4VEsBg	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	1752	36	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-04-07	AG	NA	resp_panel	Influenza B	
+m2-nVaDMr	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	8738	62	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-04-10	AG	NA	flu_rsv	Influenza B	
+m2-4VDu4S	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	24463	95	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-03-31	AG	NA	sars_flu_rsv	Influenza B	15
+m2-4VxKmQ	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	372	4	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-03-28	AG	NA	resp_panel	Influenza B	
+m2-4Bx73L	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	1198	27	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-04-15	AG	NA	flu_rsv	Influenza B	
+m2-37mqBc	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	990	22	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-04-18	AG	NA	flu_rsv	Influenza B	
+m2-AWBv2b	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	708	18	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-04-20	ZH	NA	flu_rsv	Influenza B	
+m2-FMccqA	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	3681	69	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-04-19	BL	NA	sars_flu_rsv	Influenza B	15
+m2-357RdT	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	42167	96	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	010623RVS-m2	NA	2023-05-15	SZ	NA	flu_rsv	Influenza B	
+m2-ex4d6T	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	45103	96	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate4-m2	NA	2023-12-29	VS	NA	sars_flu_rsv	Influenza A	20
+m2-hPD72F	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	7256	86	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate5-m2	NA	2024-01-19	VD	ambulant	flu_rsv	Influenza B	
+m2-NMp4NB	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	99830	96	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate5-m2	NA	2024-01-19	VD	ambulant	flu_rsv	Influenza B	
+m2-wnuNvT	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	19236	93	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate6-m2	NA	2024-01-31	BE	NA	resp_panel	SARS-CoV-2, Influenza B	
+m2-qEvaf6	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	49967	95	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate7-m2	NA	2024-02-22	VD	NA	sars_flu_rsv	Influenza B	20
+m2-hYvKaP	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	90563	97	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate7-m2	NA	2024-02-20	BS	NA	sars_flu_rsv	Influenza B	17
+m2-xw6CDX	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	340	0	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate7-m2	NA	2024-02-15	SG	NA	flu_rsv	Influenza B	
+m2-DkAxP2	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	15702	92	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate8-m2	NA	2024-03-06	BS	NA	flu_rsv	Influenza B	
+m2-RnGqmM	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	231452	97	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate8-m2	NA	2024-02-28	BS	NA	resp_panel	Influenza B	
+m2-Bvnu3e	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	1796	45	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate9-m2	NA	2024-03-13	BS	NA	sars_flu_rsv	Influenza B	23
+m2-CdyN3k	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	107125	96	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate9-m2	NA	2024-03-25	ZH	NA	resp_panel	Influenza B	
+m2-Xo2ZNk	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	113125	97	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate9-m2	NA	2024-03-08	TI	NA	sars_flu_rsv	Influenza B	14
+m2-b3vnfe	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	13274	92	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate10-m2	NA	2024-03-21	TI	NA	flu_rsv	Influenza B	
+m2-Qw6j9Q	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	11577	88	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate10-m2	NA	2024-04-11	BS	NA	sars_flu_rsv	Influenza B	21
+m2-iAMjS3	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	5070	85	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate10-m2	NA	2024-03-19	BL	NA	sars_flu_rsv	Influenza B	23
+m2-uGN5sK	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	21197	92	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate10-m2	NA	2024-04-02	BE	NA	resp_panel	Influenza B	
+m2-HqYEku	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	2210	52	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate11-m2	NA	2024-05-02	AG	NA	resp_panel	Influenza B	
+m2-icabqG	Influenza B virus (B/Brisbane/60/2008)	604436	NA	NA	19658	96	NA	NA	Influenza B virus (B/Brisbane/60/2008)	NA	RVSeqPlate11-m2	NA	2024-04-23	ZH	NA	resp_panel	Influenza B	

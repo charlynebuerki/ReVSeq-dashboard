@@ -1,0 +1,56 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_11	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	5472	95.41	NA	NA	Human coronavirus OC43	47057357	ETH_Plate1	C2	31.01.2025	AG	NA	resp_panel	Coronavirus OC43, Rhino-/Enterovirus	NA
+51199_1_12	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	2445760	99.89	NA	NA	Human coronavirus OC43	47038886	ETH_Plate1	D2	29.01.2025	BL	ambulant	resp_panel	Coronavirus OC43	NA
+51199_1_16	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	9250	89.1	NA	NA	Human coronavirus OC43	46764325	ETH_Plate1	H2	07.01.2025	BS	NA	resp_panel	Coronavirus OC43	NA
+51199_1_26	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	46297	99.71	NA	NA	Human coronavirus OC43	46967242	ETH_Plate1	B4	23.01.2025	GE	NA	resp_panel, flu_only_panel	Coronavirus OC43	NA
+51199_1_30	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	175482	99.8	NA	NA	Human coronavirus OC43	46873712	ETH_Plate1	F4	15.01.2025	VS	NA	resp_panel	Coronavirus OC43	NA
+51199_1_47	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	219278	99.87	NA	NA	Human coronavirus OC43	46685526	ETH_Plate1	G6	21.12.2024	GR	NA	resp_panel	Coronavirus OC43	NA
+51199_1_52	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1381675	99.83	NA	NA	Human coronavirus OC43	46469880	ETH_Plate1	D7	03.12.2024	VD	NA	resp_panel	Coronavirus OC43	NA
+51199_1_8	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	4414	90.25	A	A	Human coronavirus OC43	47063496	ETH_Plate1	H1	30.01.2025	BL	stationär	sars_flu_rsv_panel	RSV - A/B	16
+51199_1_80	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	277603	99.79	NA	NA	Human coronavirus OC43	46491604	ETH_Plate1	H10	05.12.2024	SG	NA	resp_panel	Coronavirus OC43, Rhino-/Enterovirus	NA
+51199_2_13	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	228339	99.8	NA	NA	Human coronavirus OC43	47100331	ETH_Plate2	E2	04.02.2025	BL	NA	resp_panel	Coronavirus OC43	NA
+51199_2_17	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	8148761	99.88	NA	NA	Human coronavirus OC43	47273070	ETH_Plate2	A3	19.02.2025	BL	NA	resp_panel, sars_flu_rsv_panel	Coronavirus OC43	NA
+51199_2_2	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	431374	99.8	NA	NA	Human coronavirus OC43	47140587	ETH_Plate2	B1	07.02.2025	ZH	NA	resp_panel	Coronavirus OC43	NA
+51199_2_21	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	118159	99.77	NA	NA	Human coronavirus OC43	47088089	ETH_Plate2	E3	04.02.2025	ZH	NA	resp_panel	Coronavirus OC43	NA
+51199_2_23	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	89324	99.79	NA	NA	Human coronavirus OC43	47096428	ETH_Plate2	G3	04.02.2025	GE	NA	resp_panel	Coronavirus OC43	NA
+51199_2_3	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	11809497	99.85	NA	NA	Human coronavirus OC43	47139610	ETH_Plate2	C1	07.02.2025	GR	NA	resp_panel	Coronavirus OC43	NA
+51199_2_32	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	5712	92.24	NA	NA	Human coronavirus OC43	47225440	ETH_Plate2	H4	15.02.2025	ZH	NA	resp_panel	Coronavirus OC43	NA
+51199_2_52	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1105593	99.82	NA	NA	Human coronavirus OC43	47426732	ETH_Plate2	D7	05.03.2025	GR	NA	resp_panel	Coronavirus OC43	NA
+51199_2_53	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	60589	99.64	NA	NA	Human coronavirus OC43	47426413	ETH_Plate2	E7	05.03.2025	BS	NA	resp_panel	Coronavirus OC43	NA
+51199_2_54	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	2028694	99.86	A	A	Human coronavirus OC43	47396373	ETH_Plate2	F7	03.03.2025	BS	NA	resp_panel	Coronavirus OC43, RSV - A/B	NA
+51199_2_77	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	8592	91.18	NA	NA	Human coronavirus OC43	47350545	ETH_Plate2	E10	26.02.2025	BL	ambulant	resp_panel	Coronavirus OC43	NA
+51199_2_78	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	857237	99.88	NA	NA	Human coronavirus OC43	47374916	ETH_Plate2	F10	28.02.2025	VD	NA	resp_panel, rsv_only_panel	Coronavirus OC43, Rhino-/Enterovirus	NA
+51199_2_84	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	8806	98.14	NA	NA	Human coronavirus OC43	47509405	ETH_Plate2	D11	13.03.2025	ZH	NA	resp_panel	Coronavirus OC43	NA
+51607_1_2	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	82801	99.76	NA	NA	Human coronavirus OC43	47624930	ETH_Plate3	B1	21.03.2025	AG	NA	resp_panel	Coronavirus OC43	NA
+51607_1_22	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	7733397	99.91	NA	NA	Human coronavirus OC43	48104934	ETH_Plate3	F3	06.05.2025	VD	NA	resp_panel, rsv_only_panel	Coronavirus OC43	NA
+51607_1_30	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	117713	99.78	NA	NA	Human coronavirus OC43	47810970	ETH_Plate3	F4	07.04.2025	BL	NA	resp_panel	Coronavirus OC43	NA
+51607_1_4	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	14470	94.35	NA	NA	Human coronavirus OC43	47572245	ETH_Plate3	D1	18.03.2025	BE	NA	resp_panel	Coronavirus OC43, Adenovirus	NA
+51607_1_42	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	20166	99.71	NA	NA	Human coronavirus OC43	47906519	ETH_Plate3	B6	15.04.2025	LU	NA	resp_panel	Coronavirus OC43	NA
+51607_1_47	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	5596884	99.84	NA	NA	Human coronavirus OC43	47891573	ETH_Plate3	G6	14.04.2025	SG	NA	resp_panel	Coronavirus OC43, Adenovirus	NA
+51607_1_6	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1785852	99.83	NA	NA	Human coronavirus OC43	47574730	ETH_Plate3	F1	18.03.2025	BS	NA	resp_panel	Coronavirus OC43	NA
+51607_1_65	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	8883206	99.92	NA	NA	Human coronavirus OC43	47734201	ETH_Plate3	A9	01.04.2025	TI	NA	resp_panel	Coronavirus OC43, Adenovirus, Metapneumovirus	NA
+51607_1_71	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	52240	98.7	NA	NA	Human coronavirus OC43	47782568	ETH_Plate3	G9	04.04.2025	SZ	NA	resp_panel	Coronavirus OC43	NA
+51607_1_81	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	823321	99.82	NA	NA	Human coronavirus OC43	47850637	ETH_Plate3	A11	09.04.2025	BL	NA	resp_panel	Coronavirus OC43	NA
+51607_2_10	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	14299972	99.93	NA	NA	Human coronavirus OC43	47538387	ETH_Plate4	B2	15.03.2025	BS	NA	resp_panel	Coronavirus OC43, Metapneumovirus, RSV - A/B	NA
+51607_2_11	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1540	28.77	NA	NA	Human coronavirus OC43	47467694	ETH_Plate4	C2	10.03.2025	VD	NA	resp_panel	Coronavirus OC43	NA
+51607_2_22	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	18908	99.58	B	B	Human coronavirus OC43	47676955	ETH_Plate4	F3	26.03.2025	SG	NA	rsv_only_panel	RSV - A/B	15
+51607_2_33	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1153188	99.81	NA	NA	Human coronavirus OC43	47668691	ETH_Plate4	A5	26.03.2025	ZH	NA	resp_panel	Coronavirus OC43	NA
+51607_2_34	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1680330	99.83	NA	NA	Human coronavirus OC43	47705822	ETH_Plate4	B5	28.03.2025	ZH	NA	resp_panel	Coronavirus OC43, Rhino-/Enterovirus	NA
+51607_2_36	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	2933571	99.88	NA	NA	Human coronavirus OC43	47705791	ETH_Plate4	D5	28.03.2025	SZ	NA	resp_panel, flu_only_panel	Coronavirus OC43	NA
+51607_2_57	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1030814	99.85	NA	NA	Human coronavirus OC43	48026829	ETH_Plate4	A8	29.04.2025	AG	NA	resp_panel, sars_flu_rsv_panel	Coronavirus OC43, Adenovirus	NA
+51607_2_60	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1029694	99.77	NA	NA	Human coronavirus OC43	48277206	ETH_Plate4	D8	21.05.2025	ZH	NA	resp_panel	Coronavirus OC43	NA
+51607_2_7	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	2594824	99.87	NA	NA	Human coronavirus OC43	47484424	ETH_Plate4	G1	11.03.2025	ZH	NA	resp_panel	Coronavirus OC43	NA
+51607_2_77	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	794790	99.82	NA	NA	Human coronavirus OC43	46603387	ETH_Plate4	E10	13.12.2024	AG	NA	resp_panel	Coronavirus OC43, Adenovirus	NA
+51607_2_9	Betacoronavirus gravedinis	3433757	31631	Human coronavirus OC43	1468	28.74	NA	NA	Human coronavirus OC43	47536018	ETH_Plate4	A2	14.03.2025	BS	NA	resp_panel	Coronavirus OC43	NA
+m2-32supx	Human coronavirus OC43	31631	NA	NA	10442	78	NA	NA	Human coronavirus OC43	NA	010623RVS-m2	NA	2023-03-29	BL	NA	resp_panel	coronavirus OC43	NA
+m2-4SWHMc	Human coronavirus OC43	31631	NA	NA	62339	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate3-m2	NA	2023-12-04	AG	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-e3y7tj	Human coronavirus OC43	31631	NA	NA	125401	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate5-m2	NA	2024-01-19	GE	NA	resp_panel	coronavirus OC43	NA
+m2-EJ7fEz	Human coronavirus OC43	31631	NA	NA	15150	99	NA	NA	Human coronavirus OC43	NA	RVSeqPlate5-m2	NA	2024-01-11	VD	NA	resp_panel	coronavirus OC43, Influenza A	NA
+m2-QRRsiL	Human coronavirus OC43	31631	NA	NA	887556	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate6-m2	NA	2024-01-22	BS	NA	resp_panel	coronavirus OC43, Influenza A	NA
+m2-YB7Zxj	Human coronavirus OC43	31631	NA	NA	428468	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate7-m2	NA	2024-02-22	BS	NA	resp_panel	coronavirus OC43	NA
+m2-5pS65p	Human coronavirus OC43	31631	NA	NA	120890	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate7-m2	NA	2024-02-19	BS	NA	resp_panel	coronavirus OC43	NA
+m2-Y4rZ7q	Human coronavirus OC43	31631	NA	NA	120789	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate8-m2	NA	2024-02-27	AG	NA	resp_panel	coronavirus OC43, Rhino- / Enterovirus, Parainfluenza 3	NA
+m2-XHdiUs	Human coronavirus OC43	31631	NA	NA	86591	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate8-m2	NA	2024-03-01	SG	NA	resp_panel	coronavirus OC43, coronavirus HKU1	NA
+m2-BYjiah	Human coronavirus OC43	31631	NA	NA	2882587	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate8-m2	NA	2024-03-07	SO	NA	resp_panel	coronavirus OC43	NA
+m2-cWAMxe	Human coronavirus OC43	31631	NA	NA	229644	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate9-m2	NA	2024-03-14	AG	stationär	resp_panel	coronavirus OC43	NA
+m2-Kouapg	Human coronavirus OC43	31631	NA	NA	48626	100	NA	NA	Human coronavirus OC43	NA	RVSeqPlate10-m2	NA	2024-04-02	BL	NA	resp_panel	coronavirus OC43	NA

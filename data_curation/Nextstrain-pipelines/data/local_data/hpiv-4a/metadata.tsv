@@ -1,0 +1,2 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_48	Orthorubulavirus hominis	3052556	11224	Human parainfluenza virus 4a	4756	39.67		Unassigned	Human parainfluenza virus 4a	46678784	ETH_Plate1	H6	20.12.2024	BS		resp_panel	Parainfluenza 4	

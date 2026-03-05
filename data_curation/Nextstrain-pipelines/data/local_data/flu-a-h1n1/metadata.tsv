@@ -1,0 +1,137 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_37	Influenza A Virus (H1N1)	2955291	8405154	A/California/09/2020(H1N1) segment 1	1356120	100	H1N1	H1N1	Influenza A Virus (H1N1)	46626384	ETH_Plate1	E5	16.12.2024	GR	NA	resp_panel	Coronavirus OC43, Influenza A	NA
+51199_1_62	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	1038896	100	H1N1	H1N1	Influenza A Virus (H1N1)	46555762	ETH_Plate1	F8	11.12.2024	VD	NA	sars_flu_rsv_panel	Influenza A	19
+51199_1_70	Influenza A Virus (H1N1)	2955291	8405154	A/California/09/2020(H1N1) segment 1	702239	100	H1N1	H1N1	Influenza A Virus (H1N1)	46428940	ETH_Plate1	F9	29.11.2024	ZH	NA	resp_panel	Influenza A	NA
+51199_1_75	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	4436	100	H1N1	H1N1	Influenza A Virus (H1N1)	46392259	ETH_Plate1	C10	27.11.2024	BL	NA	flu_rsv_panel	Influenza A	NA
+51199_2_19	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	680976	100	H1N1	H1N1	Influenza A Virus (H1N1)	47215298	ETH_Plate2	C3	14.02.2025	BL	NA	sars_flu_rsv_panel	Influenza A	19
+51199_2_37	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	3032180	100	H1N1	H1N1	Influenza A Virus (H1N1)	47302686	ETH_Plate2	E5	22.02.2025	AG	NA	sars_flu_rsv_panel	Influenza A	11
+51199_2_66	Influenza A Virus (H1N1)	2955291	8332032	A/New York/WC-LVD-11-022/2011(H1N1) segment 1	2408	99.35	H1N1	H1N1	Influenza A Virus (H1N1)	47458772	ETH_Plate2	B9	09.03.2025	BS	NA	sars_flu_rsv_panel	Influenza A	24
+51199_2_80	Influenza A Virus (H1N1)	2955291	8420169	A/Hawaii/25/2020(H1N1) segment 2	73164	100	H1N1	H1N1	Influenza A Virus (H1N1)	47380003	ETH_Plate2	H10	28.02.2025	AG	stationär	sars_flu_rsv_panel	Influenza A	17
+51199_2_91	Influenza A Virus (H1N1)	2955291	8332032	A/New York/WC-LVD-11-022/2011(H1N1) segment 1	804081	100	H1N1	H1N1	Influenza A Virus (H1N1)	47535963	ETH_Plate2	C12	14.03.2025	AG	NA	sars_flu_rsv_panel	Influenza A	16
+51607_1_23	Influenza A Virus (H1N1)	2955291	8332032	A/New York/WC-LVD-11-022/2011(H1N1) segment 1	164329	100	H1N1	H1N1	Influenza A Virus (H1N1)	48154043	ETH_Plate3	G3	09.05.2025	AG	NA	resp_panel	Influenza A	NA
+51607_1_25	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	1891214	100	H1N1	H1N1	Influenza A Virus (H1N1)	48147861	ETH_Plate3	A4	09.05.2025	BL	NA	resp_panel	Influenza A	NA
+51607_1_32	Influenza A Virus (H1N1)	2955291	8234206	A/duck/Guangxi/149D24/2013(H4N6) segment 2	9541	92.01	H1N1	H1N1	Influenza A Virus (H1N1)	47624373	ETH_Plate3	H4	21.03.2025	BS	NA	resp_panel	Influenza A	NA
+51607_1_35	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	506784	100	H1N1	H1N1	Influenza A Virus (H1N1)	47584193	ETH_Plate3	C5	19.03.2025	AG	NA	flu_only_panel	Influenza A	17
+51607_1_37	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	150016	100	H1N1	H1N1	Influenza A Virus (H1N1)	47584395	ETH_Plate3	E5	19.03.2025	AG	NA	sars_flu_rsv_panel	Influenza A	20
+51607_1_44	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	2421370	100	H1N1	H1N1	Influenza A Virus (H1N1)	47903936	ETH_Plate3	D6	15.04.2025	SG	NA	resp_panel	Influenza A	NA
+51607_2_23	Influenza A Virus (H1N1)	2955291	8120647	A/swine/Guangxi/NS2394/2012(H3N2) segment 2	1970285	100	H1N1	H1N1	Influenza A Virus (H1N1)	47688444	ETH_Plate4	G3	27.03.2025	BL	NA	flu_only_panel	Influenza A	16
+51607_2_52	Influenza A Virus (H1N1)	2955291	8419749	A/South Dakota/13/2020(H1N1) segment 1	3214	99.96	H1N1	H1N1	Influenza A Virus (H1N1)	48006866	ETH_Plate4	D7	28.04.2025	BL	NA	resp_panel	Influenza A	NA
+51607_2_58	Influenza A Virus (H1N1)	2955291	8096387	A/swine/Niederwinden/IDT14445/2011(H1N2) segment 2	32538	99.62	H1N1	H1N1	Influenza A Virus (H1N1)	48281250	ETH_Plate4	B8	21.05.2025	ZH	NA	resp_panel	Influenza A	NA
+m2-3qDrEd	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	78896	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	010623RVS-m2	NA	2023-04-19	AG	ambulant	sars_flu_rsv	Influenza A	18
+m2-4SnyCD	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1300	26	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	010623RVS-m2	NA	2023-04-10	BL	NA	sars_flu_rsv	Influenza A	17
+m2-32WNFL	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	72534	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate3-m2	NA	2023-12-07	GR	NA	resp_panel	NA	NA
+m2-3URpmc	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	424	0	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate3-m2	NA	2023-12-07	TI	NA	sars_flu_rsv	RSV - A/B	28
+m2-3MgVni	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	636	3	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate3-m2	NA	2023-12-02	BS	NA	resp_panel	Influenza A	NA
+m2-4Rt9sw	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	461	0	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate3-m2	NA	2023-11-26	AG	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-375EUk	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	59163	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate3-m2	NA	2023-12-08	BS	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-3edUBd	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	21011	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate3-m2	NA	2023-11-30	BE	NA	sars_flu_rsv	Influenza A, SARS-CoV-2	NA
+m2-kwbwf8	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	995389	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-26	AG	NA	sars_flu_rsv	Influenza A	15
+m2-mc3GSV	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1521	33	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-28	BS	NA	resp_panel	Influenza A	NA
+m2-XEuJCy	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	2514	82	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-22	AG	NA	resp_panel	Rhino- / Enterovirus	NA
+m2-UqhsDL	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	3463	84	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-23	BS	NA	resp_panel	coronavirus HKU1	NA
+m2-4UF9K6	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1650424	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-28	GE	NA	sars_flu_rsv	SARS-CoV-2	4
+m2-CLwScw	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	107008	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-28	BS	NA	flu_rsv	Influenza A	NA
+m2-jtjCjd	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	86900	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-27	SO	NA	resp_panel	coronavirus OC43, SARS-CoV-2, Rhino- / Enterovirus, Parainfluenza 3, RSV - A/B	NA
+m2-xwkVbK	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	126526	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-27	TI	NA	sars_flu_rsv	Influenza B	14
+m2-ZAyjrq	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	3064	80	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-18	BS	NA	flu_rsv	Influenza A	NA
+m2-RyXauM	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	6249	97	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-27	TI	NA	sars_flu_rsv	Influenza A	14
+m2-itJLqU	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	49544	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate4-m2	NA	2023-12-29	TI	NA	sars_flu_rsv	Influenza A	17
+m2-xHGR9u	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	73445	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-17	AG	ambulant	sars_flu_rsv	Influenza A	23
+m2-xrRPFj	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	204797	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-18	GE	NA	sars_flu_rsv	Influenza A	20
+m2-xxAxC9	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	585	0	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-10	SG	NA	resp_panel	Influenza A	NA
+m2-qtZxkz	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	43733	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-15	BS	NA	resp_panel	Influenza A	NA
+m2-SKJgwA	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	10529	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-18	AG	NA	sars_flu_rsv	Influenza A	23
+m2-ss4Fh8	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	34623	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-19	BL	NA	flu_rsv	Influenza A	NA
+m2-URVR7h	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1581	50	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-19	BL	NA	flu_rsv	Influenza A	NA
+m2-Sm9GYA	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	208846	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-12	AG	stationär	resp_panel	Influenza A	NA
+m2-xYnaUy	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	122933	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-16	BS	NA	sars_flu_rsv	Influenza A, SARS-CoV-2	NA
+m2-m6243p	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	287581	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-17	ZH	NA	sars_flu_rsv	Influenza A	19
+m2-opfXjQ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	136168	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-11	AG	ambulant	resp_panel	Influenza A	NA
+m2-q2oXnd	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	637860	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-09	SG	NA	resp_panel	Adenovirus, Influenza A	NA
+m2-Qb4JVo	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	734	2	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-19	VD	NA	resp_panel	Influenza A	NA
+m2-g33df2	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	14718	99	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-09	AG	ambulant	resp_panel	Influenza A	NA
+m2-kBgpZ4	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	93161	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-16	VD	NA	sars_flu_rsv	Influenza A	21
+m2-V5iihT	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	457657	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-18	VD	NA	sars_flu_rsv	Influenza A	16
+m2-SQZYHn	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	55015	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-17	BL	NA	sars_flu_rsv	Influenza A	22
+m2-MHWQwo	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	2252	76	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-11	VD	NA	resp_panel	Influenza A	NA
+m2-FHPnrx	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	6890	94	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-17	BL	ambulant	resp_panel	Influenza A	NA
+m2-VA9Yi5	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	160504	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-10	BS	NA	resp_panel	SARS-CoV-2, Influenza A	NA
+m2-w9v3Qv	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	60438	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-12	BS	ambulant	resp_panel	Influenza A	NA
+m2-x6NRYc	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	275828	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-16	SO	NA	sars_flu_rsv	Influenza A	15
+m2-oLXZ9a	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	29629	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-17	BL	NA	sars_flu_rsv	Influenza A	21
+m2-ydSpNQ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	11304	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-16	AG	NA	sars_flu_rsv	Influenza A	17
+m2-F2HifQ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1407070	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-18	AG	NA	sars_flu_rsv	Influenza A, SARS-CoV-2	NA
+m2-DwiwwU	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	18137	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-19	BL	NA	flu_rsv	Influenza A	NA
+m2-39kc9U	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1422175	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-19	GE	NA	sars_flu_rsv	Influenza A	14
+m2-4rvG7f	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	323206	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-19	AG	NA	sars_flu_rsv	Influenza A	19
+m2-9HhvMh	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	66058	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-18	BL	ambulant	resp_panel	Influenza A	NA
+m2-eAr6Lo	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1018605	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate5-m2	NA	2024-01-15	AG	stationär	sars_flu_rsv	Influenza A	17
+m2-3VC6ft	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	65661	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-30	AG	NA	sars_flu_rsv	Influenza A	21
+m2-sr4bvM	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	10726	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-02-02	BS	NA	resp_panel	Influenza A	NA
+m2-rhiSHJ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	618	1	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-24	BS	NA	resp_panel	Influenza A, RSV - A/B	NA
+m2-fhoncL	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	3089	85	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-02-02	AG	NA	resp_panel	Influenza A	NA
+m2-BnbHLr	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	97900	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-26	BS	NA	resp_panel	SARS-CoV-2, Influenza A	NA
+m2-hzNQRG	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	129793	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-02-01	BL	NA	sars_flu_rsv	Influenza A	15
+m2-4L3pXZ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	999959	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-27	SG	NA	resp_panel	Metapneumovirus, Influenza A	NA
+m2-Rtjhba	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1439	37	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-24	VD	NA	resp_panel	Influenza A	NA
+m2-LCBdav	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	36742	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-31	BS	NA	flu_rsv	Influenza A	NA
+m2-K2udH5	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	398373	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-30	BL	NA	sars_flu_rsv	Influenza A	15
+m2-SpXNmN	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	132284	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-29	BL	NA	flu_rsv	Influenza A	NA
+m2-4t7Ncr	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	12374	99	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-31	BL	ambulant	sars_flu_rsv	Influenza A	23
+m2-LosGHn	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	3705	97	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-28	BS	NA	flu_rsv	Influenza A	NA
+m2-iDqyV9	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	416922	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-25	SZ	NA	resp_panel	Influenza A	NA
+m2-voFSf6	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1528	14.000000000000002	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-26	BS	NA	sars_flu_rsv	Influenza A	17
+m2-juVwzj	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	407281	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-02-01	AG	NA	sars_flu_rsv	Influenza A	18
+m2-gkcF5C	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	244442	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-31	AG	NA	sars_flu_rsv	Influenza A	16
+m2-mmYEfJ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	161020	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-02-01	TI	NA	sars_flu_rsv	Influenza A	20
+m2-h2ZJd5	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	9450	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-31	BE	NA	flu_rsv	Influenza A	NA
+m2-uTpHe5	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	206064	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-01-24	BS	NA	resp_panel	Influenza A	NA
+m2-3H4uLZ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	355159	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate6-m2	NA	2024-02-01	AG	NA	sars_flu_rsv	Influenza A, SARS-CoV-2	NA
+m2-Y4wzR3	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	670	3	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-16	SZ	NA	flu_rsv	Influenza A	NA
+m2-PZQaiq	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	12731	99	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-20	BE	NA	flu_rsv	Influenza A	NA
+m2-gF3E5u	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	3388	90	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-22	VS	NA	resp_panel	Influenza A	NA
+m2-tDscqy	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1191	15	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-16	TI	NA	sars_flu_rsv	Influenza A	25
+m2-C983Zw	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	87932	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-19	AG	ambulant	sars_flu_rsv	Influenza A	20
+m2-YBrMoY	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	26603	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-16	BL	NA	sars_flu_rsv	Influenza A	24
+m2-gsuEGK	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	20265	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-16	GR	NA	sars_flu_rsv	Influenza A	19
+m2-gyUNUP	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	131821	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-19	BL	NA	sars_flu_rsv	Influenza A	21
+m2-HtiJwT	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	6275	91	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-19	AG	NA	sars_flu_rsv	Influenza A	20
+m2-kNU7js	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	9938	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-15	AG	stationär	resp_panel	Influenza A	NA
+m2-jHbrsp	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	55694	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-20	GR	NA	resp_panel	Influenza A	NA
+m2-JFKsEJ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	2608	77	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-20	AG	NA	flu_rsv	Influenza A	NA
+m2-QqAEGg	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	3241	74	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-22	VS	NA	resp_panel	Influenza A	NA
+m2-XMdsys	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	360	1	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-16	SO	NA	flu_rsv	Influenza A	NA
+m2-YowhiU	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	19708	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-16	AG	stationär	sars_flu_rsv	Influenza A	23
+m2-YYRzxL	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	535213	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-21	AG	stationär	sars_flu_rsv	Influenza A	17
+m2-hozdkG	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	2789	84	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-15	BL	stationär	sars_flu_rsv	Influenza A	26
+m2-2b8YpQ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	98815	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-16	BL	NA	resp_panel	Influenza A	NA
+m2-DgRuyg	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	5088	88	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-14	BS	NA	sars_flu_rsv	Influenza A	21
+m2-PGoRgN	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	5161	96	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-20	VD	NA	sars_flu_rsv	Influenza A	25
+m2-AcEG8S	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	59689	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-18	AG	NA	sars_flu_rsv	Influenza A	21
+m2-DMLKnU	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	405168	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate7-m2	NA	2024-02-15	BS	NA	sars_flu_rsv	Influenza A	20
+m2-NESNdH	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	592	0	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-03-06	AG	NA	resp_panel	Rhino- / Enterovirus, Influenza A	NA
+m2-b99ooj	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	200674	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-02-27	AG	ambulant	resp_panel	Influenza A	NA
+m2-j3ZXpL	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	416813	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-02-29	BL	NA	resp_panel	Adenovirus, Influenza A	NA
+m2-FXFt6J	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	57630	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-03-04	BS	NA	resp_panel	Influenza A	NA
+m2-WrGEQp	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	3798	87	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-02-27	AG	NA	resp_panel	Influenza A	NA
+m2-TPsF65	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1708	55.00000000000001	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-03-01	BS	NA	flu_rsv	Influenza A	NA
+m2-f8rfBe	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	107327	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-03-04	BL	NA	sars_flu_rsv	Influenza A	19
+m2-yhE88h	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	15266	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-03-01	TI	NA	flu_rsv	Influenza A	NA
+m2-gaQkyT	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	66897	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-03-06	BS	NA	resp_panel	Adenovirus, Influenza A	NA
+m2-uSTYZ2	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	68820	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-03-04	BS	NA	sars_flu_rsv	Influenza A	22
+m2-sAyJww	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	104030	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-02-27	AG	NA	flu_rsv	Influenza A	NA
+m2-2hKeW2	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1049489	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-02-27	AG	NA	sars_flu_rsv	Influenza A	19
+m2-BbET5x	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	532	0	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate8-m2	NA	2024-02-29	GE	NA	resp_panel	Influenza A	NA
+m2-6z2wf2	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	1699518	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate9-m2	NA	2024-03-07	AG	stationär	sars_flu_rsv	Influenza A	16
+m2-5cJWyf	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	9260	99	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate9-m2	NA	2024-03-13	SH	NA	resp_panel	Influenza A	NA
+m2-sFFUfJ	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	99743	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate9-m2	NA	2024-03-14	SG	NA	flu_rsv	Influenza A	NA
+m2-TPgies	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	364490	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate9-m2	NA	2024-03-11	BS	NA	sars_flu_rsv	Influenza A, SARS-CoV-2	NA
+m2-U2wv8C	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	935	12	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate9-m2	NA	2024-03-11	BS	NA	resp_panel	Adenovirus	NA
+m2-ztFGoy	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	115085	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate10-m2	NA	2024-04-02	ZH	NA	flu_rsv	Influenza A	NA
+m2-3p7s5a	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	294509	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate10-m2	NA	2024-03-20	BL	NA	flu_rsv	Influenza A	NA
+m2-9eyPAv	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	71224	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate10-m2	NA	2024-03-30	AG	NA	flu_rsv	RSV - A/B, Influenza A	NA
+m2-qeHUBn	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	6127	97	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate10-m2	NA	2024-04-11	BL	NA	sars_flu_rsv	Influenza A	21
+m2-wVBQbT	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	152846	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate11-m2	NA	2024-05-29	VD	NA	sars_flu_rsv	Influenza A	23
+m2-bpDXvz	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	4710	94	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate11-m2	NA	2024-04-26	BS	NA	resp_panel	Influenza A	NA
+m2-8ochGa	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	414176	100	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate13-m2	NA	2024-06-10	BL	NA	sars_flu_rsv	Influenza A	16
+m2-qWgDtq	Influenza A virus (A/Michigan/45/2015(H1N1))	1777792	NA	NA	7609	99	NA	NA	Influenza A virus (A/Michigan/45/2015(H1N1))	NA	RVSeqPlate13-m2	NA	2024-06-04	VD	NA	sars_flu_rsv	Influenza A	24

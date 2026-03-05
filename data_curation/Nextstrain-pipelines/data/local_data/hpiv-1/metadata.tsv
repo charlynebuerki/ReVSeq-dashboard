@@ -1,0 +1,11 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_38	Respirovirus laryngotracheitidis	3049952	12730	Human respirovirus 1	4808709	99.98	NA	NA	Human parainfluenza 1	46626339	ETH_Plate1	F5	16.12.2024	BS	NA	resp_panel	Parainfluenza 1	NA
+51199_1_49	Respirovirus laryngotracheitidis	3049952	12730	Human respirovirus 1	3035992	99.82	NA	NA	Human parainfluenza 1	46456111	ETH_Plate1	A7	03.12.2024	BL	NA	resp_panel	Parainfluenza 1	NA
+51199_1_58	Respirovirus laryngotracheitidis	3049952	12730	Human respirovirus 1	14331496	99.99	NA	NA	Human parainfluenza 1	46575877	ETH_Plate1	B8	12.12.2024	BL	NA	resp_panel	Parainfluenza 1	NA
+51199_1_74	Respirovirus laryngotracheitidis	3049952	12730	Human respirovirus 1	27460	98.62	NA	NA	Human parainfluenza 1	46407358	ETH_Plate1	B10	28.11.2024	SZ	NA	resp_panel	Rhino-/Enterovirus, Parainfluenza 1	NA
+51199_1_81	Respirovirus laryngotracheitidis	3049952	12730	Human respirovirus 1	249197	99.87	NA	NA	Human parainfluenza 1	46199262	ETH_Plate1	A11	11.11.2024	ZH	NA	resp_panel	Parainfluenza 1	NA
+51607_1_95	Respirovirus laryngotracheitidis	3049952	12730	Human respirovirus 1	17849194	99.99	NA	NA	Human parainfluenza 1	47724749	ETH_Plate3	G12	31.03.2025	SZ	NA	resp_panel	Parainfluenza 1	NA
+51607_2_30	Respirovirus laryngotracheitidis	3049952	12730	Human respirovirus 1	332260	99.9	NA	NA	Human parainfluenza 1	47701211	ETH_Plate4	F4	28.03.2025	SZ	NA	resp_panel	Coronavirus 229E, Parainfluenza 1	NA
+m2-gnDemF	Human respirovirus 1	12730	NA	NA	2546	56.00000000000001	NA	NA	Human parainfluenza virus 1	NA	RVSeqPlate4-m2	NA	2023-12-27	BS	NA	resp_panel	RSV - A/B	
+m2-Dq37e8	Human respirovirus 1	12730	NA	NA	260128	100	NA	NA	Human parainfluenza virus 1	NA	RVSeqPlate10-m2	NA	2024-03-30	AG	NA	resp_panel	coronavirus 229E, Parainfluenza 1	
+m2-L3ukKo	Human respirovirus 1	12730	NA	NA	2256	49	NA	NA	Human parainfluenza virus 1	NA	RVSeqPlate13-m2	NA	2024-07-02	GR	NA	resp_panel	Rhino- / Enterovirus, Parainfluenza 1	

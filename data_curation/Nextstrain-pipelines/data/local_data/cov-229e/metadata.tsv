@@ -1,0 +1,13 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_72	Alphacoronavirus chicagoense	3433756	11137	Human coronavirus 229E	13730155	99.8	NA	NA	Human coronavirus 229E	46431626	ETH_Plate1	H9	29.11.2024	BE	NA	resp_panel	Coronavirus 229E	NA
+51199_2_15	Alphacoronavirus chicagoense	3433756	11137	Human coronavirus 229E	10442401	99.78	NA	NA	Human coronavirus 229E	47279539	ETH_Plate2	G2	20.02.2025	LU	NA	resp_panel, sars_flu_rsv_panel	Coronavirus 229E	NA
+51607_1_66	Alphacoronavirus chicagoense	3433756	11137	Human coronavirus 229E	71000	99.6	NA	NA	Human coronavirus 229E	47744310	ETH_Plate3	B9	01.04.2025	ZH	NA	resp_panel	Coronavirus 229E	NA
+51607_1_67	Alphacoronavirus chicagoense	3433756	11137	Human coronavirus 229E	189738	99.67	NA	NA	Human coronavirus 229E	47789965	ETH_Plate3	C9	04.04.2025	ZH	NA	resp_panel	Coronavirus 229E	NA
+51607_2_30	Alphacoronavirus chicagoense	3433756	11137	Human coronavirus 229E	7186	75.25	NA	NA	Human coronavirus 229E	47701211	ETH_Plate4	F4	28.03.2025	SZ	NA	resp_panel	Coronavirus 229E, Parainfluenza 1	NA
+51607_2_62	Alphacoronavirus chicagoense	3433756	11137	Human coronavirus 229E	4908	84.78	NA	NA	Human coronavirus 229E	48302906	ETH_Plate4	F8	22.05.2025	BS	NA	resp_panel	Coronavirus 229E	NA
+51607_2_76	Alphacoronavirus chicagoense	3433756	11137	Human coronavirus 229E	80561	99.67	NA	NA	Human coronavirus 229E	47117727	ETH_Plate4	D10	05.02.2025	BL	NA	resp_panel	Coronavirus 229E	NA
+m2-dLeBHd	Human coronavirus 229E	11137	NA	NA	78231	89	NA	NA	Human coronavirus 229E	NA	RVSeqPlate9-m2	NA	2024-03-19	AG	NA	resp_panel	coronavirus 229E, Rhino- / Enterovirus	
+m2-HsBVJN	Human coronavirus 229E	11137	NA	NA	477908	95	NA	NA	Human coronavirus 229E	NA	RVSeqPlate10-m2	NA	2024-04-11	ZH	NA	resp_panel	coronavirus 229E, Metapneumovirus	
+m2-Dq37e8	Human coronavirus 229E	11137	NA	NA	16025	82	NA	NA	Human coronavirus 229E	NA	RVSeqPlate10-m2	NA	2024-03-30	AG	NA	resp_panel	coronavirus 229E, Parainfluenza 1	
+m2-AqTpPL	Human coronavirus 229E	11137	NA	NA	167256	89	NA	NA	Human coronavirus 229E	NA	RVSeqPlate10-m2	NA	2024-04-02	BS	NA	resp_panel	coronavirus 229E	
+m2-MUZ8Cb	Human coronavirus 229E	11137	NA	NA	20758	90	NA	NA	Human coronavirus 229E	NA	RVSeqPlate11-m2	NA	2024-04-29	GR	NA	resp_panel	coronavirus 229E	
