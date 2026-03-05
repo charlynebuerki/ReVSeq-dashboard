@@ -50,6 +50,8 @@ data_curation/Extract-pileup/envs/
 data_curation/Extract-pileup/defaults/**/*.fai
 data_curation/Extract-pileup/z_get_pileups_from_local_revseq/**
 !data_curation/Extract-pileup/z_get_pileups_from_local_revseq/assemble_pileup_local.R
+#ignore z_pileup_local.R output files
+data_curation/Extract-pileup/z_get_pileups_from_local_revseq/
 
 # Nextstrain / Snakemake runtime artifacts (keep workflow code trackable)
 **/Nextstrain-pipelines/.snakemake/
