@@ -1,0 +1,116 @@
+from snakemake.utils import min_version
+
+min_version(
+    "7.7.0"
+)  # Snakemake 7.7.0 introduced `retries` directive used in fetch-sequences
+
+
+# Use default configuration values. Override with Snakemake's --configfile/--config options.
+# configfile: "defaults/config.yaml"
+
+
+# This is the default rule that Snakemake will run when there are no specified targets.
+# rule all:
+#    input:
+#        "results/sequences.fasta",
+#        "results/metadata.tsv",
+
+
+if not config:
+
+    configfile: "defaults/config.yaml"
+
+
+strains = config["strains"]
+
+
+def _get_all_targets(wildcards):
+    # Default targets are the metadata TSV and sequences FASTA files
+    all_targets = [
+        # expand("results/nextclade/{strain}/sequences.fasta", strain=strains),
+        # expand("results/nextclade/{strain}/metadata.tsv", strain=strains),
+        # expand("results/nextclade/{strain}/tree.json", strain=strains),
+        expand("test_out/{strain}/.test_ready", strain=strains),
+    ]
+
+    # Add additional targets based on upload config
+    upload_config = config.get("upload", {})
+
+    for target, params in upload_config.items():
+        files_to_upload = params.get("files_to_upload", [])
+        remote_file_names = params.get("remote_file_names", [])
+
+        if len(files_to_upload) != len(remote_file_names):
+            print(
+                f"Skipping file upload for {target!r} because the number of",
+                "files to upload does not match the number of remote file names.",
+            )
+        elif len(remote_file_names) != len(set(remote_file_names)):
+            print(
+                f"Skipping file upload for {target!r} because there are duplicate remote file names."
+            )
+        elif "s3_dst" not in config:
+            print(
+                f"Skipping file upload for {target!r} because the destintion was not defined."
+            )
+        else:
+            all_targets.extend(
+                expand(
+                    [
+                        f"data/upload/{target}/{{file_to_upload}}-to-{{remote_file_name}}.done"
+                    ],
+                    zip,
+                    file_to_upload=files_to_upload,
+                    remote_file_name=remote_file_names,
+                )
+            )
+    return [
+        item
+        for sublist in all_targets
+        for item in (sublist if isinstance(sublist, list) else [sublist])
+    ]
+
+
+rule all:
+    input:
+        _get_all_targets,
+
+
+# include: "rules/fetch_from_local.smk" # should comment out if there are no local sequences to include
+include: "rules/fetch_from_ncbi.smk"
+include: "rules/curate.smk"
+include: "rules/sort.smk"
+include: "rules/build_tree.smk"
+
+
+rule clean:
+    message:
+        "Removing files and directories for cleaning."
+    params:
+        # Use a lambda to dynamically expand the file paths
+        files=lambda wildcards: expand(
+            [
+                "data/{strain}/curated_metadata.tsv",
+                "data/{strain}/metadata.tsv",
+                "data/{strain}/metadata_raw.tsv",
+                "data/{strain}/sequences.fasta",
+                "data/{strain}/sequences.ndjson",
+                "data/{strain}/ncbi.ndjson",
+                "data/genbank.ndjson",
+            ],
+            strain=strains,
+        ),
+        directories=["results", "logs", "test_out", "dataset", "tmp"],
+    shell:
+        """
+        # Remove specified files
+        rm -fv {params.files}
+        # Remove specified directories
+        rm -rfv {params.directories}
+        """
+
+
+# if "custom_rules" in config:
+#    for rule_file in config["custom_rules"]:
+#
+#        include: rule_file

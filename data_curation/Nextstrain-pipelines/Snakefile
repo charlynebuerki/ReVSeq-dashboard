@@ -1,0 +1,41 @@
+
+configfile: "configfile.yaml"
+
+
+include: "workflows/download_dataset_nextclade.smk"
+include: "workflows/format_metadata_dashboard.smk"
+
+
+# wildcards
+wildcard_constraints:
+    # Allow letters, numbers, underscores and hyphens (e.g. 'RSV-A') in the
+    # {virus} wildcard so filenames like 'data/RSV-A/...' match rules.
+    virus="[-A-Za-z0-9_]+",
+
+
+VIRUSES = list(config.get("viruses", []))
+
+
+rule all:
+    input:
+        expand(
+            "results/nextclade/{virus}/tree.json",
+            virus=VIRUSES,
+        ),
+        expand(
+            "results/auspice_trees/.export_ready_{virus}",
+            virus=VIRUSES,
+        ),
+        "results/dashboard-metadata/metadata_sequencing.tsv",
+        "results/dashboard-metadata/metadata_pcr.tsv",
+
+
+rule clean:
+    message:
+        "Cleaning all results and metadata files"
+    params:
+        directories=["results/dashboard-metadata", "tmp"],
+    shell:
+        """
+        rm -rfv {params.directories}
+        """
