@@ -11,9 +11,6 @@
 db.sqlite3
 root@revseq
 
-# Local workflow folders (kept out of git)
-Nextstrain-pipelines/
-Extract-pileup/
 
 # Generated dashboard HTML artifacts
 dashboard/static/map*.html
@@ -43,3 +40,45 @@ dashboard/static/example_data_old.csv
 
 # remove data raw files
 data_raw/
+
+
+# data curation module:
+# Local workflow folders (kept out of git)
+Extract-pileup/
+
+# Nextstrain / Snakemake runtime artifacts (keep workflow code trackable)
+**/Nextstrain-pipelines/.snakemake/
+**/Nextstrain-pipelines/**/.snakemake/
+**/Nextstrain-pipelines/**/.snakemake_timestamp
+**/Nextstrain-pipelines/**/*.snakemake.log
+**/Nextstrain-pipelines/logs/
+**/Nextstrain-pipelines/results/
+**/Nextstrain-pipelines/auspice/
+
+# data_curation pipeline generated data/artifacts
+data_curation/Nextstrain-pipelines/data/local_data/*
+!data_curation/Nextstrain-pipelines/data/local_data/.empty_local_data
+data_curation/Nextstrain-pipelines/data/nextclade/*
+!data_curation/Nextstrain-pipelines/data/nextclade/.empty_nextclade_reference_files
+
+data_curation/Nextstrain-pipelines/ingest/benchmarks/
+# Keep only selected reference assets in ingest/data subdirectories.
+data_curation/Nextstrain-pipelines/ingest/data/**
+!data_curation/Nextstrain-pipelines/ingest/data/
+!data_curation/Nextstrain-pipelines/ingest/data/**/
+!data_curation/Nextstrain-pipelines/ingest/data/**/annotation.gff3
+!data_curation/Nextstrain-pipelines/ingest/data/**/pathogen.json
+!data_curation/Nextstrain-pipelines/ingest/data/**/reference.fasta
+!data_curation/Nextstrain-pipelines/ingest/data/**/reference.gbk
+data_curation/Nextstrain-pipelines/ingest/dataset/
+data_curation/Nextstrain-pipelines/ingest/logs/
+data_curation/Nextstrain-pipelines/ingest/results/
+data_curation/Nextstrain-pipelines/ingest/test_out/
+data_curation/Nextstrain-pipelines/ingest/tmp/
+data_curation/Nextstrain-pipelines/ingest/utput-all
+data_curation/Extract-pileup/logs/
+data_curation/Extract-pileup/output/
+data_curation/Extract-pileup/all_pileups/
+data_curation/Extract-pileup/processed_pileup/
+data_curation/Extract-pileup/bam_only/
+data_curation/**/__pycache__/

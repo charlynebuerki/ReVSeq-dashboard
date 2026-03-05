@@ -1,0 +1,55 @@
+
+#viruses list
+viruses:
+  - "rsv-a"
+  - "rsv-b"
+  - "sars-cov-2"
+  - "hmpv"
+  - "flu-b"
+  - "flu-a-h1n1"
+  - "flu-a-h3n2"
+  - "hpiv-1"
+  - "hpiv-2"
+  - "hpiv-3"
+  - "hpiv-4a"
+  - "cov-229e"
+  - "cov-oc43"
+  - "cov-nl63"
+  - "cov-hku1"
+
+# nextclade viruses to download
+nextclade_datasets:
+#from nextclade
+  "sars-cov-2": "nextstrain/sars-cov-2/wuhan-hu-1/orfs"
+  "rsv-a": "nextstrain/rsv/a/EPI_ISL_412866"
+  "rsv-b" : "nextstrain/rsv/b/EPI_ISL_1653999"
+  "flu-a-h1n1" : "nextstrain/flu/h1n1pdm/ha/MW626062" #do we include also na segment?
+  "flu-a-h3n2" : "nextstrain/flu/h3n2/ha/EPI1857216" #do we include also na segment?
+  "flu-b" : "nextstrain/flu/b/ha/KX058884"
+  "hmpv" : "nextstrain/hmpv/all-clades/NC_039199"
+  #custom datasets
+  "hpiv-1" : "ingest/dataset/dataset_HPIV-1.zip"
+  "hpiv-2" : "ingest/dataset/dataset_HPIV-2.zip"
+  "hpiv-3" : "ingest/dataset/dataset_HPIV-3.zip"
+  "hpiv-4a" : "ingest/dataset/dataset_HPIV-4a.zip"
+  "cov-229e" : "ingest/dataset/dataset_229E.zip"
+  "cov-oc43" : "ingest/dataset/dataset_OC43.zip"
+  "cov-nl63" : "ingest/dataset/dataset_NL63.zip"
+  "cov-hku1" : "ingest/dataset/dataset_HKU1.zip"
+
+nice_virus_names:
+  "sars-cov-2": "SARS-CoV-2"
+  "rsv-a": "RSV-A"
+  "rsv-b" : "RSV-B"
+  "flu-a-h1n1" : "Influenza-A-H1N1-HA"
+  "flu-a-h3n2" : "Influenza-A-H3N2-HA"
+  "flu-b" : "Influenza-B"
+  "hmpv" : "HMPV"
+  "hpiv-1" : "HPIV-1"
+  "hpiv-2" : "HPIV-2"
+  "hpiv-3" : "HPIV-3"
+  "hpiv-4a" : "HPIV-4a"
+  "cov-229e" : "Coronavirus-229E"
+  "cov-oc43" : "Coronavirus-OC43"
+  "cov-nl63" : "Coronavirus-NL63"
+  "cov-hku1" : "Coronavirus-HKU1"

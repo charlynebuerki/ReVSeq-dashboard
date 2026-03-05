@@ -1,0 +1,21 @@
+name: ingest-genetic-data
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11.8
+  - pandas=2.1.3
+  - requests=2.27.1
+  - pulp=2.7.0
+  - biopython=1.80
+  - snakemake=7.32.4
+  - pip=22.1.1
+  - isoweek=1.3.3
+  - augur=32.1.0
+  - ete3=3.1.3
+  - ncbi-datasets-cli
+  - csvtk
+  - tsv-utils
+  - pip:
+    - bio==1.3.9

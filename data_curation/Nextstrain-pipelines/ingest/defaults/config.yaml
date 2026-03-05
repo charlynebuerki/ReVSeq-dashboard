@@ -1,0 +1,153 @@
+# Sources of sequences to include in the ingest run
+sources: ['genbank']
+
+#strains used:
+#strains: ['HPIV-1', 'HPIV-2', 'HPIV-3', 'HPIV-4a' ]
+strains: ['HPIV-1', 'HPIV-2', 'HPIV-3', 'HPIV-4a', 'OC43', 'NL63', 'HKU1', '229E']
+
+# Pathogen NCBI Taxonomy ID
+ncbi_taxon_id: 
+  HPIV-1: '12730'
+  HPIV-2: '2560525'
+  HPIV-3: '11216'
+  HPIV-4a: '11224'
+  229E: '11137'
+  HKU1: '290028'
+  NL63: '277944'
+  OC43: '31631'
+
+
+# Renames the NCBI dataset headers
+ncbi_field_map: 'defaults/ncbi-dataset-field-map.tsv'
+
+# Params for the curate rule
+curate:
+  # Fields to rename.
+  # This is the first step in the pipeline, so any references to field names
+  # in the configs below should use the new field names
+  field_map:
+    collected: date
+    submitted: date_submitted
+    genbank_accession: accession
+    submitting_organization: institution
+  # Standardized strain name regex
+  # Currently accepts any characters because we do not have a clear standard for strain names
+  strain_regex: '^.+$'
+  # Back up strain name field if 'strain' doesn't match regex above
+  strain_backup_fields: ['accession']
+  # List of date fields to standardize
+  date_fields: ['date', 'date_submitted']
+  # Expected date formats present in date fields
+  # These date formats should use directives expected by datetime
+  # See https://docs.python.org/3.9/library/datetime.html#strftime-and-strptime-format-codes
+  expected_date_formats: ['%Y', '%Y-%m', '%Y-%m-%d', '%Y-%m-%dT%H:%M:%SZ']
+  # The expected field that contains the GenBank geo_loc_name
+  genbank_location_field: location
+  # Titlecase rules
+  titlecase:
+    # Abbreviations not cast to titlecase, keeps uppercase
+    abbreviations: ['USA']
+    # Articles that should not be cast to titlecase
+    articles: [
+      'and', 'd', 'de', 'del', 'des', 'di', 'do', 'en', 'l', 'la', 'las', 'le',
+      'los', 'nad', 'of', 'op', 'sur', 'the', 'y'
+    ]
+    # List of string fields to titlecase
+    fields: ['region', 'country', 'division', 'location']
+  # Authors field name
+  authors_field: 'full_authors'
+  # Authors default value if authors value is empty
+  authors_default_value: '?'
+  # Field name for the generated abbreviated authors
+  abbr_authors_field: 'authors'
+  # General geolocation rules to apply to geolocation fields
+  geolocation_rules_url: 'https://raw.githubusercontent.com/nextstrain/ncov-ingest/master/source-data/gisaid_geoLocationRules.tsv'
+  # Local geolocation rules that are only applicable to mpox data
+  # Local rules can overwrite the general geolocation rules provided above
+  local_geolocation_rules: 'defaults/geolocation-rules.tsv'
+  # User annotations file
+  annotations: 'defaults/annotations.tsv'
+  # ID field used to merge annotations
+  annotations_id: 'accession'
+  # Field to use as the sequence ID in the FASTA file
+  id_field: 'accession'
+  # Field to use as the sequence in the FASTA file
+  sequence_field: 'sequence'
+  # Final output columns for the metadata TSV
+  metadata_columns: [
+    'accession',
+    'genbank_accession_rev',
+    'strain',
+    'date',
+    'region',
+    'country',
+    'division',
+    'location',
+    'host',
+    'date_submitted',
+    'sra_accession',
+    'authors',
+    'full_authors',
+    'institution',
+    'bioproject_accession'
+  ]
+
+# Params for Nextclade related rules
+nextclade:
+  # Field to use as the sequence ID in the Nextclade file
+  id_field: 'seqName'
+  # The first column should be the original column name of the Nextclade TSV
+  # The second column should be the new column name to use in the final metadata TSV
+  # Nextclade can have pathogen specific output columns so make sure to check which
+  # columns would be useful for your downstream phylogenetic analysis.
+  field_map:
+    seqName: "seqName"
+    clade: "clade"
+    outbreak: "outbreak"
+    lineage: "lineage"
+    coverage: "coverage"
+    totalMissing: "missing_data"
+    totalSubstitutions: "divergence"
+    totalNonACGTNs: "nonACGTN"
+    qc.missingData.status: "QC_missing_data"
+    qc.mixedSites.status: "QC_mixed_sites"
+    qc.privateMutations.status: "QC_rare_mutations"
+    qc.frameShifts.status: "QC_frame_shifts"
+    qc.stopCodons.status: "QC_stop_codons"
+    frameShifts: "frame_shifts"
+    isReverseComplement: "is_reverse_complement"
+
+
+#parameters for filtering sequences
+filter:
+  group_by: "year country"
+  min_coverage: 0.7
+  subsample_max_sequences: 
+    background: 30 # set lower if you want to have a max sequences per group
+    recent: 100
+  min_length: 
+    HPIV-1: 9360 #length of 15600 60%
+    HPIV-2: 9388 #length of 15646
+    HPIV-3: 9277 #length of 15462
+    HPIV-4a: 10230 #length of 17052
+    OC43: 18442 #length of 30738
+    229E: 16391 #length of 27317 60%
+    HKU1: 17956 #length of 29926
+    NL63: 16532 #length of  27553
+  resolution:
+    min_date: 100Y
+    max_date: "2025-12-01"
+  allowed_divergence: "1000"
+
+refine:
+  #root corresponds to the reference sequence
+  root:
+    HPIV-1: "NC_003461"
+    HPIV-2: "NC_003443"
+    HPIV-3: "NC_001796"
+    HPIV-4a: "NC_021928"
+    OC43: "AY391777"
+    NL63: "NC_005831"
+    HKU1: "NC_006577"
+    229E: "NC_002645"
+
