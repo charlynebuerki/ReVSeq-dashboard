@@ -43,8 +43,13 @@ data_raw/
 
 
 # data curation module:
-# Local workflow folders (kept out of git)
-Extract-pileup/
+# Extract-pileup: keep workflows, ignore runtime/generated artifacts only
+data_curation/Extract-pileup/data/*
+!data_curation/Extract-pileup/data/.empty_data
+data_curation/Extract-pileup/envs/
+data_curation/Extract-pileup/defaults/**/*.fai
+data_curation/Extract-pileup/z_get_pileups_from_local_revseq/**
+!data_curation/Extract-pileup/z_get_pileups_from_local_revseq/assemble_pileup_local.R
 
 # Nextstrain / Snakemake runtime artifacts (keep workflow code trackable)
 **/Nextstrain-pipelines/.snakemake/
