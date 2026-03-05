@@ -1,58 +1,45 @@
-#png files for pileup
+# System / editor artifacts
+.DS_Store
+**/.DS_Store
+
+# Python cache artifacts
+**/__pycache__/
+*.pyc
+*.cpython-311.pyc
+
+# Local DB / local artifacts
+db.sqlite3
+root@revseq
+
+# Local workflow folders (kept out of git)
+Nextstrain-pipelines/
+Extract-pileup/
+
+# Generated dashboard HTML artifacts
+dashboard/static/map*.html
+dashboard/static/barplot_*.html
+dashboard/static/histogram_*.html
+dashboard/static/barplots/*.html
+dashboard/static/pileup_html/*.html
+
+# Generated static image artifacts
 static/pileup/*.png
 static/barplots/*.png
 static/mixed
-
-*.cpython-311.pyc
-*.DS_Store
-
-# pycache in subdirectories
-**/__pycache__/
-**/*.pyc
-
-#ignore static files barplots
-dashboard/static/barplots/*.html
-
-#ignore pileup folder with png
 dashboard/static/pileup/*.png
-
-#inore mixed folder with png
 dashboard/static/mixed/*.png
 
-#ignore nextstrain-pipelines for now
-Nextstrain-pipelines/
-
-#ignore extract-pileup for now
-Extract-pileup/
-
-#ignore files in dashboard/data, except for the .empty file
+# Optional raw/static data excludes (kept for current local workflow)
 dashboard/static/data/*
 !dashboard/static/data/.empty_data
-
-#ignore auspice trees, exept for the .empty file
 dashboard/static/auspice/*
-!dashboard/static/auspice/.empty_tree
+!dashboard/static/auspice/.empty_auspice_trees
 
-#ignore tracked auspice JSON exports
-dashboard/static/auspice/*.json
-
-#ignore all pileup artifacts (csv/png/others)
-dashboard/static/pileup/**
-
-#ignore generated plot html files
-dashboard/static/map*.html
-dashboard/static/histogram_*.html
-dashboard/static/barplots/*.html
-
-#ignore bulky local data dumps in static root
+# Legacy bulky static data dumps
 dashboard/static/pileup_all_old.csv
 dashboard/static/pileup_coinfections_old.csv
 dashboard/static/example_data.csv
 dashboard/static/example_data_old.csv
 
-# Python cache
-**/__pycache__/
-*.pyc
-
-#ignore sqlite
-db.sqlite3
+# remove data raw files
+data_raw/
