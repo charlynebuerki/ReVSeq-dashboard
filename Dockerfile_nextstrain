@@ -14,4 +14,4 @@ EXPOSE 4000
 # Run the Django dashboard using your custom command
 RUN npm install -g auspice-revseq
 ENV HOST=0.0.0.0
-CMD ["npx", "auspice-revseq", "view" ,"--datasetDir"  ,"dashboard/static/auspice" ]
+CMD ["npx", "auspice-revseq", "view", "--datasetDir", "dashboard/static/auspice"]

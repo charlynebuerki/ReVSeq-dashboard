@@ -1,0 +1,33 @@
+.git
+.gitignore
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Local envs / caches
+envs/
+.venv/
+venv/
+
+# Large/unneeded project data for runtime images
+Extract-pileup/
+Nextstrain-pipelines/
+
+# Generated dashboard assets
+dashboard/static/pileup_html/
+dashboard/static/barplots/
+dashboard/static/map.html
+dashboard/static/histogram_pcr.html
+dashboard/static/histogram_seq.html
+dashboard/static/barplot_pcr.html
+dashboard/static/barplot_seq.html
+dashboard/static/map_pcr.html
+dashboard/static/map_seq.html
+
+# Local DB and logs
+db.sqlite3
+logs/

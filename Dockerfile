@@ -4,11 +4,6 @@ FROM python:3.11-slim
 # Set the working directory in the container
 WORKDIR /app
 
-
-# Install Python dependencies
-RUN apt update
-RUN apt install -y python3-geopandas
-
 # Copy the requirements.txt file to install the dependencies
 COPY requirements.txt .
 
