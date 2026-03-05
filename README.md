@@ -50,10 +50,11 @@ Open:
 
 ```bash
 export REVSEQ_TAG=2026.03.02-6
-docker build -f Dockerfile -t cbuerk/revseq-dashboard:$REVSEQ_TAG .
-docker build -f Dockerfile_nextstrain -t cbuerk/revseq-nextstrain:$REVSEQ_TAG .
-docker push cbuerk/revseq-dashboard:$REVSEQ_TAG
-docker push cbuerk/revseq-nextstrain:$REVSEQ_TAG
+export DOCKERHUB_USER=<your_dockerhub_user>
+docker build -f Dockerfile -t ${DOCKERHUB_USER}/revseq-dashboard:$REVSEQ_TAG .
+docker build -f Dockerfile_nextstrain -t ${DOCKERHUB_USER}/revseq-nextstrain:$REVSEQ_TAG .
+docker push ${DOCKERHUB_USER}/revseq-dashboard:$REVSEQ_TAG
+docker push ${DOCKERHUB_USER}/revseq-nextstrain:$REVSEQ_TAG
 ```
 
 ### 2. Deploy on host
