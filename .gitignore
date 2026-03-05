@@ -30,9 +30,9 @@ dashboard/static/pileup/*.png
 dashboard/static/mixed/*.png
 
 # Optional raw/static data excludes (kept for current local workflow)
-dashboard/static/data/*
+#dashboard/static/data/*
 !dashboard/static/data/.empty_data
-dashboard/static/auspice/*
+#dashboard/static/auspice/*
 !dashboard/static/auspice/.empty_auspice_trees
 
 # Legacy bulky static data dumps
