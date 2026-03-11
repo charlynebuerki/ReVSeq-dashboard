@@ -355,6 +355,45 @@ def _load_annotation_features(annotation_path: Path) -> pd.DataFrame:
     return df
 
 
+def _load_annotation_length(annotation_path: Path) -> int | None:
+    if not annotation_path.exists():
+        return None
+    record = SeqIO.read(str(annotation_path), "genbank")
+    seq = getattr(record, "seq", None)
+    if seq is None:
+        return None
+    length = len(seq)
+    return length if length > 0 else None
+
+
+def _resolve_annotation_max_len(annotation_path: Path, features: pd.DataFrame) -> int | None:
+    if not features.empty:
+        try:
+            return int(features["end"].max())
+        except Exception:
+            pass
+    return _load_annotation_length(annotation_path)
+
+
+def _clamp_avg_df(avg_df: pd.DataFrame, max_len: int | None) -> pd.DataFrame:
+    if max_len is None or avg_df.empty:
+        return avg_df
+    return avg_df[avg_df["position"] <= max_len].copy()
+
+
+def _clamp_individual_series(
+    positions: np.ndarray, sample_depths: dict[str, np.ndarray], max_len: int | None
+) -> tuple[np.ndarray, dict[str, np.ndarray]]:
+    if max_len is None or positions.size == 0:
+        return positions, sample_depths
+    mask = positions <= max_len
+    if not mask.any():
+        return positions[:0], {k: v[:0] for k, v in sample_depths.items()}
+    clamped_positions = positions[mask]
+    clamped_samples = {k: v[mask] for k, v in sample_depths.items()}
+    return clamped_positions, clamped_samples
+
+
 def _add_annotation_track(fig: go.Figure, features: pd.DataFrame) -> None:
     if features.empty:
         return
@@ -393,8 +432,11 @@ def _add_annotation_track(fig: go.Figure, features: pd.DataFrame) -> None:
     )
 
 
-def build_avg_pileup_figure(avg_df: pd.DataFrame, features: pd.DataFrame, title: str) -> go.Figure:
+def build_avg_pileup_figure(
+    avg_df: pd.DataFrame, features: pd.DataFrame, title: str, max_len: int | None = None
+) -> go.Figure:
     """Build the summary pileup view: median line + IQR + genome track."""
+    avg_df = _clamp_avg_df(avg_df, max_len)
     fig = make_subplots(
         rows=2,
         cols=1,
@@ -452,11 +494,16 @@ def build_avg_pileup_figure(avg_df: pd.DataFrame, features: pd.DataFrame, title:
         margin={"l": 50, "r": 20, "t": 50, "b": 40},
         legend={"orientation": "h", "x": 0, "y": 1.02},
     )
+    if max_len:
+        fig.update_xaxes(range=[1, max_len])
     return fig
 
 
 def build_multi_avg_pileup_figure(
-    avg_by_substrain: dict[str, pd.DataFrame], features: pd.DataFrame, title: str
+    avg_by_substrain: dict[str, pd.DataFrame],
+    features: pd.DataFrame,
+    title: str,
+    max_len: int | None = None,
 ) -> go.Figure:
     """Build a combined summary view with one median trace per substrain."""
     fig = make_subplots(
@@ -469,6 +516,7 @@ def build_multi_avg_pileup_figure(
     colors = ["#123b6d", "#0f7aa7", "#2a9d8f", "#bc6c25", "#6a4c93"]
 
     for idx, (substrain, avg_df) in enumerate(sorted(avg_by_substrain.items(), key=lambda x: x[0])):
+        avg_df = _clamp_avg_df(avg_df, max_len)
         x = avg_df["position"].to_numpy()
         q1 = avg_df["q1"].clip(lower=0.1).to_numpy()
         q3 = avg_df["q3"].clip(lower=0.1).to_numpy()
@@ -529,6 +577,8 @@ def build_multi_avg_pileup_figure(
         margin={"l": 50, "r": 20, "t": 50, "b": 40},
         legend={"orientation": "h", "x": 0, "y": 1.02},
     )
+    if max_len:
+        fig.update_xaxes(range=[1, max_len])
     return fig
 
 
@@ -538,8 +588,10 @@ def build_individual_pileup_figure(
     features: pd.DataFrame,
     title: str,
     max_traces: int,
+    max_len: int | None = None,
 ) -> go.Figure:
     """Build the individual sample view with trace capping for responsiveness."""
+    positions, sample_depths = _clamp_individual_series(positions, sample_depths, max_len)
     fig = make_subplots(
         rows=2,
         cols=1,
@@ -580,6 +632,8 @@ def build_individual_pileup_figure(
         margin={"l": 50, "r": 20, "t": 50, "b": 40},
         showlegend=False,
     )
+    if max_len:
+        fig.update_xaxes(range=[1, max_len])
 
     if truncated:
         fig.add_annotation(
@@ -714,6 +768,7 @@ def _build_segmented_subtype_context(
             continue
         annotation_path = ANNOTATIONS_DIR / annotation_name
         features = _load_annotation_features(annotation_path)
+        max_len = _resolve_annotation_max_len(annotation_path, features)
 
         if "all" in levels:
             avg_by_subtype: dict[str, pd.DataFrame] = {}
@@ -733,7 +788,10 @@ def _build_segmented_subtype_context(
                 ]
                 if _asset_is_stale(output_path, input_paths):
                     fig = build_multi_avg_pileup_figure(
-                        avg_by_subtype, features, title=f"Pileup - All samples - {segment_label}"
+                        avg_by_subtype,
+                        features,
+                        title=f"Pileup - All samples - {segment_label}",
+                        max_len=max_len,
                     )
                     _write_figure(fig, output_path)
                 all_files[segment_value] = f"pileup_html/{output_path.name}"
@@ -754,7 +812,10 @@ def _build_segmented_subtype_context(
                 )
                 if _asset_is_stale(output_path, [avg_path, annotation_path, Path(__file__)]):
                     fig = build_avg_pileup_figure(
-                        avg_df, features, title=f"Pileup - {subtype_label} - {segment_label}"
+                        avg_df,
+                        features,
+                        title=f"Pileup - {subtype_label} - {segment_label}",
+                        max_len=max_len,
                     )
                     _write_figure(fig, output_path)
                 per_segment_subtypes[subtype_value] = f"pileup_html/{output_path.name}"
@@ -786,6 +847,7 @@ def _build_segmented_subtype_context(
                         features,
                         title=f"Pileup - Individuals - {subtype_label} - {segment_label}",
                         max_traces=max_individual_traces,
+                        max_len=max_len,
                     )
                     _write_figure(fig, output_path)
                 per_segment_individual[subtype_value] = f"pileup_html/{output_path.name}"
@@ -972,12 +1034,14 @@ def build_mixed_sample_pileup_assets(sample_id: str, sample_rows: pd.DataFrame) 
         input_paths = [indiv_path, annotation_path, Path(__file__)]
         if _asset_is_stale(output_path, input_paths):
             features = _load_annotation_features(annotation_path)
+            max_len = _resolve_annotation_max_len(annotation_path, features)
             fig = build_individual_pileup_figure(
                 positions=positions,
                 sample_depths={trace_name: trace},
                 features=features,
                 title=title,
                 max_traces=1,
+                max_len=max_len,
             )
             _write_figure(fig, output_path)
 
@@ -1023,6 +1087,7 @@ def build_pileup_context(
 
     annotation_path = ANNOTATIONS_DIR / annotation_name
     features = _load_annotation_features(annotation_path)
+    max_len = _resolve_annotation_max_len(annotation_path, features)
     prefix_candidates = []
     for candidate in [data_prefix, strain_slug]:
         if candidate and candidate not in prefix_candidates:
@@ -1043,7 +1108,9 @@ def build_pileup_context(
             all_output = PILEUP_OUTPUT_DIR / f"{strain_slug}_all.html"
             if _asset_is_stale(all_output, [avg_path, annotation_path, Path(__file__)]):
                 avg_df = _load_avg_depth_json(avg_path)
-                fig = build_avg_pileup_figure(avg_df, features, title="Pileup - All samples")
+                fig = build_avg_pileup_figure(
+                    avg_df, features, title="Pileup - All samples", max_len=max_len
+                )
                 _write_figure(fig, all_output)
             assets["all_file"] = f"pileup_html/{all_output.name}"
             assets["available_views"].append("all")
@@ -1061,7 +1128,10 @@ def build_pileup_context(
                 all_output = PILEUP_OUTPUT_DIR / f"{strain_slug}_all.html"
                 if _asset_is_stale(all_output, input_paths):
                     fig = build_multi_avg_pileup_figure(
-                        avg_by_substrain, features, title="Pileup - All samples"
+                        avg_by_substrain,
+                        features,
+                        title="Pileup - All samples",
+                        max_len=max_len,
                     )
                     _write_figure(fig, all_output)
                 assets["all_file"] = f"pileup_html/{all_output.name}"
@@ -1078,7 +1148,9 @@ def build_pileup_context(
             output_path = PILEUP_OUTPUT_DIR / f"{strain_slug}_substrain_{clean}.html"
             if _asset_is_stale(output_path, [substrain_path, annotation_path, Path(__file__)]):
                 avg_df = _load_avg_depth_json(substrain_path)
-                fig = build_avg_pileup_figure(avg_df, features, title=f"Pileup - {substrain}")
+                fig = build_avg_pileup_figure(
+                    avg_df, features, title=f"Pileup - {substrain}", max_len=max_len
+                )
                 _write_figure(fig, output_path)
             substrain_assets[substrain] = f"pileup_html/{output_path.name}"
             cache_inputs.extend([substrain_path, output_path])
@@ -1099,6 +1171,7 @@ def build_pileup_context(
                     features,
                     title="Pileup - Individual samples",
                     max_traces=max_individual_traces,
+                    max_len=max_len,
                 )
                 _write_figure(fig, output_path)
             assets["individual_file"] = f"pileup_html/{output_path.name}"
@@ -1123,6 +1196,7 @@ def build_pileup_context(
                         features,
                         title="Pileup - Individual samples",
                         max_traces=max_individual_traces,
+                        max_len=max_len,
                     )
                     _write_figure(fig, output_path)
                 assets["individual_file"] = f"pileup_html/{output_path.name}"
