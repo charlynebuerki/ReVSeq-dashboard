@@ -146,42 +146,42 @@
                 {% endfor %}
             </select>
             <div class="metric">Total no. of sequences: {{ no_sequences }}</div>
-            <div class="metric">Total no. of PCR detection: {{ no_detections }}</div>
+            <div class="metric">Total no. of PCR detections: {{ no_detections }}</div>
         </div>
 
-    <script>
-        var selectStrain = document.getElementById('strain');
+        <script>
+            var selectStrain = document.getElementById('strain');
 
-        selectStrain.onchange = function () {
-            var goto = this.value;
-            redirect(goto);
+            selectStrain.onchange = function () {
+                var goto = this.value;
+                redirect(goto);
 
-        };
-    </script>
+            };
+        </script>
 
-    <div class="container">
-        <h3 class="module-subtitle">Sequencing counts</h3>
-        <iframe class="full-width-iframe" src="{% static 'barplot_seq.html' %}?v={{ asset_version }}"></iframe>
-        <h3 class="module-subtitle">PCR counts</h3>
-        <iframe class="full-width-iframe" src="{% static 'barplot_pcr.html' %}?v={{ asset_version }}"></iframe>
-        <h3 class="module-subtitle">Map</h3>
-        <div class="wrapper">
-            <div class="custom-input">
-                <input type="radio" id="home_map_seq" name="home_map_source"
-                    onclick="document.getElementById('home_map_frame').src = '/static/map_seq.html?v={{ asset_version }}';"
-                    {% if default_map == "seq" %}checked{% endif %}>
-                <label for="home_map_seq">Sequencing</label>
+        <div class="container">
+            <h3 class="module-subtitle">Sequencing counts</h3>
+            <iframe class="full-width-iframe" src="{% static 'barplot_seq.html' %}?v={{ asset_version }}"></iframe>
+            <h3 class="module-subtitle">PCR counts</h3>
+            <iframe class="full-width-iframe" src="{% static 'barplot_pcr.html' %}?v={{ asset_version }}"></iframe>
+            <h3 class="module-subtitle">Map</h3>
+            <div class="wrapper">
+                <div class="custom-input">
+                    <input type="radio" id="home_map_seq" name="home_map_source"
+                        onclick="document.getElementById('home_map_frame').src = '/static/map_seq.html?v={{ asset_version }}';"
+                        {% if default_map == "seq" %}checked{% endif %}>
+                    <label for="home_map_seq">Sequencing</label>
+                </div>
+                <div class="custom-input">
+                    <input type="radio" id="home_map_pcr" name="home_map_source"
+                        onclick="document.getElementById('home_map_frame').src = '/static/map_pcr.html?v={{ asset_version }}';"
+                        {% if default_map == "pcr" %}checked{% endif %}>
+                    <label for="home_map_pcr">PCR</label>
+                </div>
             </div>
-            <div class="custom-input">
-                <input type="radio" id="home_map_pcr" name="home_map_source"
-                    onclick="document.getElementById('home_map_frame').src = '/static/map_pcr.html?v={{ asset_version }}';"
-                    {% if default_map == "pcr" %}checked{% endif %}>
-                <label for="home_map_pcr">PCR</label>
-            </div>
+            <iframe id="home_map_frame" class="full-width-iframe"
+                src="{% if default_map == 'seq' %}{% static 'map_seq.html' %}{% else %}{% static 'map_pcr.html' %}{% endif %}?v={{ asset_version }}"></iframe>
         </div>
-        <iframe id="home_map_frame" class="full-width-iframe"
-            src="{% if default_map == 'seq' %}{% static 'map_seq.html' %}{% else %}{% static 'map_pcr.html' %}{% endif %}?v={{ asset_version }}"></iframe>
-    </div>
     </main>
 </body>
 
