@@ -9,6 +9,7 @@ services:
       - DJANGO_DEBUG=0
       - DJANGO_SECRET_KEY=<long-random-secret>
       - NEXTSTRAIN_BASE_URL=/nextstrain
+      - REVSEQ_CONFIG=${REVSEQ_CONFIG:-}
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     restart: unless-stopped
 

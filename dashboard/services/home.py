@@ -3,9 +3,11 @@ from __future__ import annotations
 from pathlib import Path
 import pandas as pd
 
+from dashboard.config import CONFIG_FILES, MAP_CONFIG
+
 from .assets import asset_is_stale, asset_version
 from .data import PCR_METADATA_PATH, SEQ_METADATA_PATH, load_dashboard_metadata
-from .plots import make_weekly_strain_figure, build_weekly_canton_map
+from .plots import make_weekly_strain_figure, build_weekly_location_map
 
 
 def _aggregate_by_week(
@@ -30,7 +32,6 @@ def _aggregate_by_week(
 
 def build_home_assets(bundle):
     plot_code_path = "dashboard/services/plots.py"
-    config_path = "dashboard/config.py"
     seq_output = "dashboard/static/barplot_seq.html"
     pcr_output = "dashboard/static/barplot_pcr.html"
     map_seq_output = "dashboard/static/map_seq.html"
@@ -41,14 +42,14 @@ def build_home_assets(bundle):
     Path(map_pcr_output).parent.mkdir(parents=True, exist_ok=True)
 
     # Pre-render static HTML plots used by iframe embeds.
-    if asset_is_stale(seq_output, [SEQ_METADATA_PATH, plot_code_path, config_path]):
+    if asset_is_stale(seq_output, [SEQ_METADATA_PATH, plot_code_path, *CONFIG_FILES]):
         seq_grouped = _aggregate_by_week(bundle.sequencing, match_col="match_pcr")
         fig_seq = make_weekly_strain_figure(
             seq_grouped, "canonical_strain", "Sequencing", match_label="Match PCR"
         )
         fig_seq.write_html(seq_output, include_plotlyjs="cdn")
 
-    if asset_is_stale(pcr_output, [PCR_METADATA_PATH, plot_code_path, config_path]):
+    if asset_is_stale(pcr_output, [PCR_METADATA_PATH, plot_code_path, *CONFIG_FILES]):
         pcr_grouped = _aggregate_by_week(bundle.pcr, match_col="match_sequencing")
         fig_pcr = make_weekly_strain_figure(
             pcr_grouped, "canonical_strain", "PCR", match_label="Match Sequencing"
@@ -57,16 +58,16 @@ def build_home_assets(bundle):
 
     if asset_is_stale(
         map_seq_output,
-        [SEQ_METADATA_PATH, "dashboard/static/swiss_cantons.geojson", plot_code_path, config_path],
+        [SEQ_METADATA_PATH, MAP_CONFIG["geojson"], plot_code_path, *CONFIG_FILES],
     ):
-        fig_map_seq = build_weekly_canton_map(bundle.sequencing)
+        fig_map_seq = build_weekly_location_map(bundle.sequencing)
         fig_map_seq.write_html(map_seq_output, include_plotlyjs="cdn")
 
     if asset_is_stale(
         map_pcr_output,
-        [PCR_METADATA_PATH, "dashboard/static/swiss_cantons.geojson", plot_code_path, config_path],
+        [PCR_METADATA_PATH, MAP_CONFIG["geojson"], plot_code_path, *CONFIG_FILES],
     ):
-        fig_map_pcr = build_weekly_canton_map(bundle.pcr)
+        fig_map_pcr = build_weekly_location_map(bundle.pcr)
         fig_map_pcr.write_html(map_pcr_output, include_plotlyjs="cdn")
 
 
@@ -84,7 +85,7 @@ def get_home_context():
             PCR_METADATA_PATH,
             SEQ_METADATA_PATH,
             "dashboard/services/plots.py",
-            "dashboard/config.py",
+            *CONFIG_FILES,
             "dashboard/static/map_seq.html",
             "dashboard/static/map_pcr.html",
         ]

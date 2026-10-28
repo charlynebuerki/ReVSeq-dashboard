@@ -1,0 +1,14 @@
+title: ReVSeq Visuals tutorial
+author: Charlyne Bürki
+exclude_patterns: [workdir/*, _build/*]
+
+execute:
+  execute_notebooks: "off"  # notebooks are committed with their outputs
+
+repository:
+  url: https://github.com/charlynebuerki/ReVSeq-dashboard
+  path_to_book: tutorial
+  branch: main
+
+html:
+  use_repository_button: true

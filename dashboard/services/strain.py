@@ -7,12 +7,12 @@ from pathlib import Path
 import pandas as pd
 from django.conf import settings
 
-from dashboard.config import SLUG_BY_DATA_NAME
+from dashboard.config import CONFIG_FILES, MAP_CONFIG, SLUG_BY_DATA_NAME
 
 from .assets import asset_is_stale, asset_version
 from .data import PCR_METADATA_PATH, SEQ_METADATA_PATH, load_dashboard_metadata
 from .pileup import build_pileup_context
-from .plots import build_weekly_canton_map, make_weekly_substrain_figure
+from .plots import build_weekly_location_map, make_weekly_substrain_figure
 
 def _aggregate_strain_by_week(df: pd.DataFrame, match_col: str | None = None) -> pd.DataFrame:
     """Aggregate weekly counts per substrain and optional match ratios."""
@@ -74,8 +74,6 @@ def get_strain_context(strain_slug, strain_config):
     modules = strain_config["modules"]
     strain_name = strain_config["data_name"]
     plot_code_path = "dashboard/services/plots.py"
-    config_path = "dashboard/config.py"
-
     bundle = load_dashboard_metadata()
     seq_df = (
         bundle.sequencing[bundle.sequencing["canonical_strain"] == strain_name]
@@ -93,7 +91,7 @@ def get_strain_context(strain_slug, strain_config):
             pcr_df,
             f"dashboard/static/barplots/{strain_slug}_pcr.html",
             title="PCR",
-            source_files=[PCR_METADATA_PATH, plot_code_path, config_path],
+            source_files=[PCR_METADATA_PATH, plot_code_path, *CONFIG_FILES],
             match_col="match_sequencing",
             match_label="Match Sequencing",
         )
@@ -102,7 +100,7 @@ def get_strain_context(strain_slug, strain_config):
             seq_df,
             f"dashboard/static/barplots/{strain_slug}_seq.html",
             title="Sequencing",
-            source_files=[SEQ_METADATA_PATH, plot_code_path, config_path],
+            source_files=[SEQ_METADATA_PATH, plot_code_path, *CONFIG_FILES],
             match_col="match_pcr",
             match_label="Match PCR",
         )
@@ -119,15 +117,15 @@ def get_strain_context(strain_slug, strain_config):
         Path(map_pcr_output).parent.mkdir(parents=True, exist_ok=True)
         if asset_is_stale(
             map_seq_output,
-            [SEQ_METADATA_PATH, "dashboard/static/swiss_cantons.geojson", plot_code_path, config_path],
+            [SEQ_METADATA_PATH, MAP_CONFIG["geojson"], plot_code_path, *CONFIG_FILES],
         ):
-            fig_map_seq = build_weekly_canton_map(seq_df)
+            fig_map_seq = build_weekly_location_map(seq_df)
             fig_map_seq.write_html(map_seq_output, include_plotlyjs="cdn")
         if asset_is_stale(
             map_pcr_output,
-            [PCR_METADATA_PATH, "dashboard/static/swiss_cantons.geojson", plot_code_path, config_path],
+            [PCR_METADATA_PATH, MAP_CONFIG["geojson"], plot_code_path, *CONFIG_FILES],
         ):
-            fig_map_pcr = build_weekly_canton_map(pcr_df)
+            fig_map_pcr = build_weekly_location_map(pcr_df)
             fig_map_pcr.write_html(map_pcr_output, include_plotlyjs="cdn")
 
     pileup_context = {"enabled": False, "available_views": []}
@@ -154,7 +152,7 @@ def get_strain_context(strain_slug, strain_config):
             PCR_METADATA_PATH,
             SEQ_METADATA_PATH,
             plot_code_path,
-            config_path,
+            *CONFIG_FILES,
             f"dashboard/static/barplots/{strain_slug}_seq.html",
             f"dashboard/static/barplots/{strain_slug}_pcr.html",
             f"dashboard/static/barplots/{strain_slug}_map_seq.html",
