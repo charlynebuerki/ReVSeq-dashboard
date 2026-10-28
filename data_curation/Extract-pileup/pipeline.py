@@ -159,13 +159,16 @@ def consensus_and_pileup(
     ]
     subprocess.run(cmd_consensus, check=True)
 
-    # Replace all FASTA headers in the output with the taxon_id
+    # Replace FASTA headers with the taxon_id; multi-record (segmented) references keep
+    # the reference record name so segments stay distinguishable: >{taxon_id}|{record}
     with open(consensus_path, "r") as f:
         lines = f.readlines()
+    n_records = sum(line.startswith(">") for line in lines)
     with open(consensus_path, "w") as f:
         for line in lines:
             if line.startswith(">"):
-                f.write(f">{taxon_id}\n")
+                record = line[1:].split()[0]
+                f.write(f">{taxon_id}|{record}\n" if n_records > 1 else f">{taxon_id}\n")
             else:
                 f.write(line)
 

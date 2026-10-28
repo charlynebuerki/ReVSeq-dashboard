@@ -1,0 +1,5 @@
+format: jb-book
+root: README
+chapters:
+  - file: 01_bioinformatics
+  - file: 02_dashboard

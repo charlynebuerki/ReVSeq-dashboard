@@ -22,6 +22,7 @@ Extract-pileup/
 Nextstrain-pipelines/
 data_curation/
 data_raw/
+tutorial/workdir/
 
 # Generated dashboard assets
 dashboard/static/pileup_html/

@@ -10,6 +10,7 @@ services:
       - "8000:8000"
     environment:
       - NEXTSTRAIN_BASE_URL=${NEXTSTRAIN_BASE_URL:-http://127.0.0.1:4000}
+      - REVSEQ_CONFIG=${REVSEQ_CONFIG:-}
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
   nextstrain:
