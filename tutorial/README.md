@@ -13,7 +13,9 @@ Every step is a notebook cell you can run, inspect and edit. All outputs go to `
 ## Open the tutorial
 
 **Option A — GitHub Codespaces (nothing to install).**
-On the repository page: *Code → Codespaces → Create codespace*. The environment is built automatically from `.devcontainer/`. Open `tutorial/01_bioinformatics.ipynb` and pick the `revseq-tutorial` kernel. When Part 2 starts the dashboard, set port 4001 to *Public* in the *Ports* tab so the embedded trees can load.
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/charlynebuerki/ReVSeq-dashboard?quickstart=1)
+
+Click the button (or, on the repository page, *Code → Codespaces → Create codespace*). The environment is built automatically from `.devcontainer/`. Open `tutorial/01_bioinformatics.ipynb` and pick the `revseq-tutorial` kernel. When Part 2 starts the dashboard, set port 4001 to *Public* in the *Ports* tab so the embedded trees can load.
 
 **Option B — your computer** (macOS or Linux, [conda](https://conda-forge.org/download/) required):
 
