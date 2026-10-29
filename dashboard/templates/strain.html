@@ -4,6 +4,7 @@
 <html>
 
 <head>
+    {% include "_head.html" with page_title=strain_name %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -142,10 +143,7 @@
 </head>
 
 <body>
-  <header class="banner">
-    <h1>{{ site_title }}</h1>
-    <p>Respiratory virus surveillance in {{ region_name }}</p>
-  </header>
+  {% include "_banner.html" %}
   <main class="page">
   <h2>Infections in {{ region_name }} - {{strain_name}}</h2>
 
