@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 from dna_features_viewer import BiopythonTranslator
 from matplotlib import pyplot as plt
 
-from dashboard.config import COLOR_BY_STRAIN
+from dashboard.config import COLOR_BY_STRAIN, MAP_CONFIG
 
 
 def pileup_plot(coverage_file, annotation_file, out_file, figsize=(20, 5), height_ratios=(4, 1.5)):
@@ -121,15 +121,18 @@ def make_weekly_substrain_figure(
 
 
 @lru_cache(maxsize=1)
-def _load_geojson(geojson_path: str):
+def _load_geojson(geojson_path: str, id_property: str, name_property: str):
     with open(geojson_path, "r", encoding="utf-8") as fh:
         geojson = json.load(fh)
-    canton_names = {f["properties"]["canton"]: f["properties"]["NAME"] for f in geojson["features"]}
-    canton_codes = sorted(canton_names.keys())
-    return geojson, canton_codes, canton_names
+    region_names = {
+        str(f["properties"][id_property]): f["properties"].get(name_property, f["properties"][id_property])
+        for f in geojson["features"]
+    }
+    region_codes = sorted(region_names.keys())
+    return geojson, region_codes, region_names
 
 
-def build_weekly_canton_map(df: pd.DataFrame, geojson_path: str = "dashboard/static/swiss_cantons.geojson"):
+def build_weekly_location_map(df: pd.DataFrame, map_config: dict | None = None):
     # Return an explicit empty-state chart so templates can always render an iframe.
     if df.empty:
         fig = go.Figure()
@@ -142,33 +145,40 @@ def build_weekly_canton_map(df: pd.DataFrame, geojson_path: str = "dashboard/sta
         )
         return fig
 
-    geojson, canton_codes, canton_names = _load_geojson(geojson_path)
-    data = df[["week", "canton"]].dropna().copy()
-    data = data[data["canton"].isin(canton_codes)]
+    map_config = map_config or MAP_CONFIG
+    geojson, region_codes, region_names = _load_geojson(
+        map_config["geojson"], map_config["id_property"], map_config["name_property"]
+    )
+    data = df[["week", "location"]].dropna().copy()
+    data = data[data["location"].isin(region_codes)]
     if data.empty:
-        return build_weekly_canton_map(pd.DataFrame())
+        return build_weekly_location_map(pd.DataFrame(), map_config)
 
-    counts = data.groupby(["week", "canton"]).size().reset_index(name="No. infections")
+    counts = data.groupby(["week", "location"]).size().reset_index(name="No. infections")
     weeks = sorted(counts["week"].unique().tolist())
-    full_index = pd.MultiIndex.from_product([weeks, canton_codes], names=["week", "canton"])
-    counts = counts.set_index(["week", "canton"]).reindex(full_index, fill_value=0).reset_index()
-    counts["NAME"] = counts["canton"].map(canton_names)
+    full_index = pd.MultiIndex.from_product([weeks, region_codes], names=["week", "location"])
+    counts = counts.set_index(["week", "location"]).reindex(full_index, fill_value=0).reset_index()
+    counts["NAME"] = counts["location"].map(region_names)
 
     max_count = int(counts["No. infections"].max()) if not counts.empty else 0
-    fig = px.choropleth_mapbox(
-        counts,
+    common = dict(
         geojson=geojson,
-        locations="canton",
-        featureidkey="properties.canton",
+        locations="location",
+        featureidkey=f"properties.{map_config['id_property']}",
         hover_name="NAME",
-        zoom=5.5,
-        center={"lat": 46.8, "lon": 8.3},
         color="No. infections",
         color_continuous_scale="viridis",
         animation_frame="week",
-        mapbox_style="carto-positron",
         range_color=[0, max(max_count, 1)],
     )
+    if map_config.get("style"):
+        # Regions on top of a tile basemap (e.g. "open-street-map"), fetched by the browser from the tile provider.
+        fig = px.choropleth_mapbox(counts, **common, mapbox_style=map_config["style"],
+                                   zoom=map_config["zoom"], center=map_config["center"])
+    else:
+        # Regions only, drawn from the GeoJSON: no external tile server involved.
+        fig = px.choropleth(counts, **common)
+        fig.update_geos(fitbounds="locations", visible=False, projection_type="mercator")
     fig.update_layout(
         margin={"l": 0, "r": 0, "t": 30, "b": 0},
         coloraxis_colorbar={"title": "Count"},

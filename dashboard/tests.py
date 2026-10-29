@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import MagicMock, patch
@@ -6,11 +7,12 @@ import pandas as pd
 from django.test import TestCase
 
 from dashboard import config as dashboard_config
-from dashboard.config import harmonize_canton, harmonize_detected_strain
+from dashboard.config import harmonize_location, harmonize_detected_strain
 from dashboard.services import data as data_service
 from dashboard.services.home import _aggregate_by_week, get_home_context
 from dashboard.services.mixed import get_mixed_context
 from dashboard.services import pileup as pileup_service
+from dashboard.services.plots import build_weekly_location_map
 from dashboard.services.strain import get_strain_context
 
 
@@ -38,11 +40,36 @@ class HarmonizationTests(TestCase):
         )
         self.assertEqual(harmonize_detected_strain("Unknown Virus", source="sequencing"), (None, None))
 
-    def test_harmonize_canton_aliases(self):
-        self.assertEqual(harmonize_canton("ZH"), "ZH")
-        self.assertEqual(harmonize_canton("Zürich"), "ZH")
-        self.assertEqual(harmonize_canton("Geneve"), "GE")
-        self.assertEqual(harmonize_canton("Unknown"), None)
+    def test_harmonize_location_aliases(self):
+        self.assertEqual(harmonize_location("ZH"), "ZH")
+        self.assertEqual(harmonize_location("Zürich"), "ZH")
+        self.assertEqual(harmonize_location("Geneve"), "GE")
+        self.assertEqual(harmonize_location("Unknown"), None)
+
+    def test_location_map_uses_configured_geojson(self):
+        with TemporaryDirectory() as tmpdir:
+            geojson_path = Path(tmpdir) / "regions.geojson"
+            square = {"type": "Polygon", "coordinates": [[[0, 0], [1, 0], [1, 1], [0, 0]]]}
+            geojson_path.write_text(json.dumps({
+                "type": "FeatureCollection",
+                "features": [
+                    {"type": "Feature", "properties": {"code": "R1", "label": "Region 1"}, "geometry": square},
+                    {"type": "Feature", "properties": {"code": "R2", "label": "Region 2"}, "geometry": square},
+                ],
+            }))
+            map_config = {
+                "geojson": str(geojson_path), "id_property": "code", "name_property": "label",
+                "center": {"lat": 0.5, "lon": 0.5}, "zoom": 6,
+            }
+            df = pd.DataFrame([{"week": "2024/01", "location": "R1"}, {"week": "2024/01", "location": "XX"}])
+            fig = build_weekly_location_map(df, map_config)
+            tiled = build_weekly_location_map(df, {**map_config, "style": "open-street-map"})
+
+        frame = fig.data[0]
+        self.assertEqual(frame.type, "choropleth")  # regions only, no tile server
+        self.assertEqual(sorted(frame.locations), ["R1", "R2"])
+        self.assertEqual(dict(zip(frame.locations, frame.z)), {"R1": 1, "R2": 0})
+        self.assertEqual(tiled.data[0].type, "choroplethmapbox")
 
 
 class MetadataPipelineTests(TestCase):
@@ -193,7 +220,7 @@ class StrainContextTests(TestCase):
             with patch.object(data_service, "PCR_METADATA_PATH", pcr_file), patch.object(
                 data_service, "SEQ_METADATA_PATH", seq_file
             ), patch("dashboard.services.strain._ensure_strain_barplot") as histogram_mock, patch(
-                "dashboard.services.strain.build_weekly_canton_map",
+                "dashboard.services.strain.build_weekly_location_map",
                 return_value=MagicMock(write_html=lambda *_args, **_kwargs: None),
             ):
                 context = get_strain_context("RSV", strain_config)

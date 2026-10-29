@@ -1,5 +1,10 @@
 from copy import deepcopy
+from functools import lru_cache
+import json
+import os
+from pathlib import Path
 import re
+import runpy
 import unicodedata
 
 DEFAULT_MODULES = {
@@ -138,10 +143,6 @@ STRAIN_CONFIG = {
     },
 }
 
-STRAIN_ORDER = list(STRAIN_CONFIG.keys())
-DASHBOARD_STRAIN_NAMES = {item["data_name"] for item in STRAIN_CONFIG.values()}
-SLUG_BY_DATA_NAME = {item["data_name"]: slug for slug, item in STRAIN_CONFIG.items()}
-
 COLOR_BY_STRAIN = {
     "Influenza A": "#6875D9",
     "Influenza B": "#E158D3",
@@ -157,6 +158,20 @@ COLOR_BY_STRAIN = {
     "coronavirus HKU1": "#BAE6B0",
     "coronavirus NL63": "#A968E1",
     "coronavirus OC43": "#65E0C8",
+}
+
+# Page header text.
+SITE_TITLE = "ReVSeq Dashboard"
+REGION_NAME = "Switzerland"
+
+# Map module: any GeoJSON whose features carry a region code matching the metadata `location`.
+MAP_CONFIG = {
+    "geojson": "dashboard/static/swiss_cantons.geojson",
+    "id_property": "canton",  # feature property matched against `location`
+    "name_property": "NAME",  # feature property shown on hover
+    # Optional tile basemap behind the regions, e.g. "open-street-map" (then also set "center" and "zoom").
+    # Tiles come from third-party servers with their own usage policies; None draws the regions only.
+    "style": None,
 }
 
 # Source-specific normalization maps.
@@ -222,7 +237,8 @@ def _normalize_location_key(value):
     return value.lower()
 
 
-_CANTON_BY_KEY = {
+# Location spellings -> GeoJSON region code. Codes already in the GeoJSON need no entry.
+LOCATION_ALIASES = {
     "ag": "AG",
     "ai": "AI",
     "ar": "AR",
@@ -287,6 +303,27 @@ _CANTON_BY_KEY = {
     "zurich canton": "ZH",
 }
 
+# Optional lab-specific overrides: point REVSEQ_CONFIG to a Python file that redefines any
+# of the settings above. STRAIN_ALIASES / LOCATION_ALIASES extend the defaults; the rest replace them.
+USER_CONFIG_PATH = os.getenv("REVSEQ_CONFIG")
+if USER_CONFIG_PATH:
+    _user = runpy.run_path(USER_CONFIG_PATH)
+    for _name in (
+        "DEFAULT_MODULES", "DEFAULT_PILEUP_LEVELS", "DEFAULT_PILEUP_MAX_INDIVIDUAL_TRACES",
+        "MIXED_PAGE_ENABLED", "STRAIN_CONFIG", "COLOR_BY_STRAIN", "SITE_TITLE", "REGION_NAME", "MAP_CONFIG",
+    ):
+        if _name in _user:
+            globals()[_name] = _user[_name]
+    _BASE_CANONICAL_BY_KEY.update({_normalize_key(k): v for k, v in _user.get("STRAIN_ALIASES", {}).items()})
+    LOCATION_ALIASES.update({_normalize_location_key(k): v for k, v in _user.get("LOCATION_ALIASES", {}).items()})
+
+# Files whose changes should invalidate cached data and rendered plots.
+CONFIG_FILES = [Path(__file__)] + ([Path(USER_CONFIG_PATH)] if USER_CONFIG_PATH else [])
+
+STRAIN_ORDER = list(STRAIN_CONFIG.keys())
+DASHBOARD_STRAIN_NAMES = {item["data_name"] for item in STRAIN_CONFIG.values()}
+SLUG_BY_DATA_NAME = {item["data_name"]: slug for slug, item in STRAIN_CONFIG.items()}
+
 
 def harmonize_detected_strain(raw_value, source: str):
     # Returns: (canonical_strain, display_label). Unknown values are dropped upstream.
@@ -332,11 +369,24 @@ def harmonize_detected_strain(raw_value, source: str):
     return canonical, canonical
 
 
-def harmonize_canton(raw_value):
+@lru_cache(maxsize=1)
+def _map_region_ids():
+    # Lower-cased region code -> region code, as defined in the configured GeoJSON.
+    path = Path(MAP_CONFIG["geojson"])
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8") as fh:
+        features = json.load(fh)["features"]
+    ids = (str(f["properties"][MAP_CONFIG["id_property"]]) for f in features)
+    return {_normalize_location_key(region_id): region_id for region_id in ids}
+
+
+def harmonize_location(raw_value):
+    # Returns the GeoJSON region code for a metadata location, or None if it cannot be mapped.
     key = _normalize_location_key(raw_value)
     if not key:
         return None
-    return _CANTON_BY_KEY.get(key, key.upper() if len(key) == 2 else None)
+    return LOCATION_ALIASES.get(key) or _map_region_ids().get(key)
 
 
 def get_strain_config(slug):
@@ -371,6 +421,11 @@ def get_strain_options():
     if MIXED_PAGE_ENABLED:
         options.append({"value": "/mixed", "label": "Mixed"})
     return options
+
+
+def get_page_context():
+    # Shared template context: navigation and header text.
+    return {"strain_options": get_strain_options(), "site_title": SITE_TITLE, "region_name": REGION_NAME}
 
 
 def is_mixed_page_enabled() -> bool:

@@ -2,9 +2,14 @@
 
 Web dashboard for respiratory virus surveillance, built with Django and Auspice.
 
+**New here?** The [tutorial](tutorial/README.md) walks through the whole workflow — from BAM files to a hosted dashboard — on a small synthetic dataset, as two runnable notebooks.
+
 ## Configuration (`dashboard/config.py`)
 
-The main dashboard behavior is controlled in `dashboard/config.py`.
+The main dashboard behavior is controlled in `dashboard/config.py`, which holds the defaults (the Swiss ReVSeq setup).
+To use your own settings without editing it, write them in a separate Python file and point `REVSEQ_CONFIG` to it
+(see `tutorial/toy_dashboard_config.py`). Settings you leave out keep their defaults; `STRAIN_ALIASES` and
+`LOCATION_ALIASES` are added to the defaults.
 
 ### Global settings
 
@@ -47,9 +52,14 @@ Each strain entry (for example `Influenza_A`, `RSV`, `SARS-CoV-2`) can define:
   - Controls strain ordering in UI/navigation
 - `COLOR_BY_STRAIN`
   - Plot color mapping by canonical strain
-- Harmonization helpers
-  - Strain label normalization
-  - Location normalization (for canton mapping)
+- `SITE_TITLE`, `REGION_NAME`
+  - Page header text
+- `STRAIN_ALIASES`
+  - Extra spellings of virus names in the metadata -> canonical strain
+- `MAP_CONFIG`
+  - `geojson`: region map; `id_property`: feature property holding the region codes used in the metadata `location` column; `name_property`: label shown on hover; `style`: optional tile basemap behind the regions (e.g. `"open-street-map"`, then also `center` and `zoom`); by default only the regions are drawn, with no external tile server
+- `LOCATION_ALIASES`
+  - Extra spellings of locations -> region code (codes present in the GeoJSON need no entry). Unmappable locations are kept in the time series but left off the map.
 
 ## Project Overview
 
@@ -82,13 +92,18 @@ Main environment variables:
 - `DJANGO_DEBUG` (`1` for local dev, `0` for deployment)
 - `DJANGO_ALLOWED_HOSTS` (comma-separated hostnames)
 - `DJANGO_SECRET_KEY` (required when `DJANGO_DEBUG=0`)
+- `REVSEQ_CONFIG` (optional path to your settings file, see Configuration)
 
 ## Run Locally (No Docker)
 
-Terminal 1 (Auspice):
+Terminal 1 (Auspice). `npm ci` installs the tree viewer once, at the versions pinned in `package-lock.json`:
 
 ```bash
-HOST=0.0.0.0 PORT=4001 npx auspice-revseq view --datasetDir dashboard/static/auspice
+npm ci
+```
+
+```bash
+HOST=0.0.0.0 PORT=4001 npx auspice view --datasetDir dashboard/static/auspice
 ```
 
 Terminal 2 (Django):

@@ -1,0 +1,22 @@
+{
+  "name": "ReVSeq tutorial",
+  "image": "mcr.microsoft.com/devcontainers/miniconda:1-3",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {"moby": false},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "conda env create -f tutorial/environment.yml && conda run -n revseq-tutorial python -m ipykernel install --user --name revseq-tutorial",
+  "forwardPorts": [8000, 4001],
+  "portsAttributes": {
+    "8000": {"label": "Dashboard"},
+    "4001": {"label": "Auspice trees"}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-toolsai.jupyter", "ms-python.python"]
+    },
+    "codespaces": {
+      "openFiles": ["tutorial/README.md"]
+    }
+  }
+}

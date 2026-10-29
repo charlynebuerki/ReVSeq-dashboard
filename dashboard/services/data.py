@@ -5,14 +5,13 @@ from pathlib import Path
 
 import pandas as pd
 
-from dashboard.config import harmonize_canton, harmonize_detected_strain
+from dashboard.config import CONFIG_FILES, harmonize_detected_strain, harmonize_location
 
 DATA_DIR = Path("dashboard/static/data")
 PCR_METADATA_PATH = DATA_DIR / "metadata_pcr.tsv"
 SEQ_METADATA_PATH = DATA_DIR / "metadata_sequencing.tsv"
 MIXED_PCR_PATH = DATA_DIR / "metadata_co_infection_pcr.tsv"
 MIXED_SEQ_PATH = DATA_DIR / "metadata_co_infection_sequencing.tsv"
-CONFIG_PATH = Path("dashboard/config.py")
 
 
 @dataclass
@@ -62,13 +61,13 @@ def _harmonize_column(df: pd.DataFrame, detected_col: str) -> pd.DataFrame:
     return df
 
 
-def _normalize_canton_column(df: pd.DataFrame, canton_col: str = "canton") -> pd.DataFrame:
-    if df.empty:
+def _normalize_location_column(df: pd.DataFrame, location_col: str = "location") -> pd.DataFrame:
+    if df.empty or location_col not in df.columns:
         return df
     df = df.copy()
-    df[canton_col] = df[canton_col].map(harmonize_canton)
-    # Keep only rows mappable to Swiss canton codes.
-    return df.dropna(subset=[canton_col])
+    # Unmappable locations become NaN: they still count in time series but are left off the map.
+    df[location_col] = df[location_col].map(harmonize_location)
+    return df
 
 
 def _normalize_match_flag(series: pd.Series) -> pd.Series:
@@ -88,12 +87,11 @@ def load_sequencing_metadata(path: Path | None = None) -> pd.DataFrame:
         columns={
             "strain": "sample_id",
             "virus_identified": "virus_identified_sequencing",
-            "location": "canton",
         }
     )
     df = _add_week(df)
     df = _harmonize_column(df, "virus_identified_sequencing")
-    df = _normalize_canton_column(df, "canton")
+    df = _normalize_location_column(df)
     if "Match_PCR" in df.columns:
         df["match_pcr"] = _normalize_match_flag(df["Match_PCR"])
     else:
@@ -112,12 +110,11 @@ def load_pcr_metadata(path: Path | None = None) -> pd.DataFrame:
         columns={
             "strain": "sample_id",
             "virus_identified_pcr": "virus_identified_pcr",
-            "location": "canton",
         }
     )
     df = _add_week(df)
     df = _harmonize_column(df, "virus_identified_pcr")
-    df = _normalize_canton_column(df, "canton")
+    df = _normalize_location_column(df)
     if "Match_Sequencing" in df.columns:
         df["match_sequencing"] = _normalize_match_flag(df["Match_Sequencing"])
     else:
@@ -129,7 +126,7 @@ def load_pcr_metadata(path: Path | None = None) -> pd.DataFrame:
 
 def load_dashboard_metadata() -> MetadataBundle:
     global _DASHBOARD_CACHE_KEY, _DASHBOARD_CACHE_BUNDLE
-    cache_key = (_mtime(PCR_METADATA_PATH), _mtime(SEQ_METADATA_PATH), _mtime(CONFIG_PATH))
+    cache_key = (_mtime(PCR_METADATA_PATH), _mtime(SEQ_METADATA_PATH), *map(_mtime, CONFIG_FILES))
     if _DASHBOARD_CACHE_BUNDLE is not None and _DASHBOARD_CACHE_KEY == cache_key:
         return MetadataBundle(
             pcr=_DASHBOARD_CACHE_BUNDLE.pcr.copy(),
