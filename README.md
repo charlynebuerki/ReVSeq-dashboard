@@ -4,6 +4,16 @@ Web dashboard for respiratory virus surveillance, built with Django and Auspice.
 
 **New here?** The [tutorial](tutorial/README.md) walks through the whole workflow — from BAM files to a hosted dashboard — on a small synthetic dataset, as two runnable notebooks.
 
+## Branches
+
+| Branch | Content |
+|---|---|
+| `main` | the generic code, without data |
+| `swiss-dashboard-implementation` | `main` plus the Swiss ReVSeq data (the deployed dashboard) |
+| `tutorial` | kept identical to `main` |
+
+Changes flow from `main` to the Swiss branch, never back: to update the Swiss dashboard, open a pull request with **base `swiss-dashboard-implementation` ← compare `main`**.
+
 ## Configuration (`dashboard/config.py`)
 
 The main dashboard behavior is controlled in `dashboard/config.py`, which holds the defaults (the Swiss ReVSeq setup).
