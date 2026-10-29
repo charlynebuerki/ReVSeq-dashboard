@@ -1,5 +1,6 @@
 title: ReVSeq Visuals tutorial
 author: Charlyne Bürki
+copyright: ""  # hide Jupyter Book's default "© Copyright 2023" footer
 exclude_patterns: [workdir/*, _build/*]
 
 execute:
