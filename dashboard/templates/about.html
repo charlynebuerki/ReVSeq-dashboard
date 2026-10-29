@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    {% include "_head.html" with page_title="About" %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --card: #ffffff;
+            --ink: #16212f;
+            --muted: #5b6b7f;
+            --accent: #0f7aa7;
+            --accent-2: #1d3f72;
+            --line: #d6dce5;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            background: radial-gradient(circle at top right, #d7edf5, #f3f5f8 45%);
+            color: var(--ink);
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        }
+
+        .banner {
+            background: linear-gradient(115deg, var(--accent-2), var(--accent));
+            color: #fff;
+            padding: 28px 34px;
+            box-shadow: 0 6px 18px rgba(16, 42, 79, 0.24);
+        }
+
+        .banner h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 0.02em;
+        }
+
+        .banner p {
+            margin: 6px 0 0;
+            opacity: 0.9;
+        }
+
+        .page {
+            max-width: 860px;
+            margin: 24px auto;
+            padding: 0 20px 36px;
+        }
+
+        .about {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 8px 28px 20px;
+            line-height: 1.6;
+        }
+
+        .about a {
+            color: var(--accent);
+        }
+
+        .about h2 {
+            margin-top: 24px;
+            font-size: 1.15rem;
+            color: var(--accent-2);
+        }
+    </style>
+</head>
+
+<body>
+    {% include "_banner.html" %}
+    <main class="page">
+        <article class="about">
+            {{ about_html|safe }}
+        </article>
+        <p><a href="{% url 'home' %}">&larr; Back to the dashboard</a></p>
+    </main>
+</body>
+
+</html>

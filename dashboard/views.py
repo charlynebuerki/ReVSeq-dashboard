@@ -1,6 +1,9 @@
+from pathlib import Path
+
 from django.http import Http404, JsonResponse
 from django.shortcuts import render
 
+from . import config
 from .config import get_page_context, get_strain_config, is_mixed_page_enabled
 from .services import get_home_context, get_mixed_context, get_mixed_pileup_context, get_strain_context
 
@@ -29,6 +32,15 @@ def mixed_view(request):
     context = get_mixed_context(selected_sample=request.GET.get("sample"))
     context.update(get_page_context())
     return render(request, "mixed.html", context)
+
+
+def about_view(request):
+    about_file = Path(config.ABOUT_FILE)
+    if not about_file.is_file():
+        raise Http404("No About page configured")
+    context = {"about_html": about_file.read_text(encoding="utf-8")}
+    context.update(get_page_context())
+    return render(request, "about.html", context)
 
 
 def mixed_pileup_data(request):

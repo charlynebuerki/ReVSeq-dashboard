@@ -163,6 +163,10 @@ COLOR_BY_STRAIN = {
 # Page header text.
 SITE_TITLE = "ReVSeq Dashboard"
 REGION_NAME = "Switzerland"
+# Summary shown by search engines under the page title (<meta name="description">); None builds one from REGION_NAME.
+SITE_DESCRIPTION = None
+# Optional About page: an HTML fragment shown at /about/. Without this file there is no About page.
+ABOUT_FILE = "dashboard/content/about.html"
 
 # Map module: any GeoJSON whose features carry a region code matching the metadata `location`.
 MAP_CONFIG = {
@@ -311,6 +315,7 @@ if USER_CONFIG_PATH:
     for _name in (
         "DEFAULT_MODULES", "DEFAULT_PILEUP_LEVELS", "DEFAULT_PILEUP_MAX_INDIVIDUAL_TRACES",
         "MIXED_PAGE_ENABLED", "STRAIN_CONFIG", "COLOR_BY_STRAIN", "SITE_TITLE", "REGION_NAME", "MAP_CONFIG",
+        "SITE_DESCRIPTION", "ABOUT_FILE",
     ):
         if _name in _user:
             globals()[_name] = _user[_name]
@@ -425,7 +430,16 @@ def get_strain_options():
 
 def get_page_context():
     # Shared template context: navigation and header text.
-    return {"strain_options": get_strain_options(), "site_title": SITE_TITLE, "region_name": REGION_NAME}
+    return {
+        "strain_options": get_strain_options(),
+        "site_title": SITE_TITLE,
+        "region_name": REGION_NAME,
+        "site_description": SITE_DESCRIPTION or (
+            f"Respiratory virus surveillance in {REGION_NAME}: weekly sequencing and PCR detections by region, "
+            "genome coverage, co-infections and phylogenetic trees."
+        ),
+        "about_enabled": Path(ABOUT_FILE).is_file(),
+    }
 
 
 def is_mixed_page_enabled() -> bool:
