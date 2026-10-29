@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ReVSeq Visuals: A Rapid, Modular Environment for Viral Sequence Visualization"
+type: software
+authors:
+  - given-names: Charlyne
+    family-names: Bürki
+    affiliation: "Department of Biosystems Science and Engineering, ETH Zürich; Swiss Institute of Bioinformatics, SIB Lausanne"
+    orcid: "https://orcid.org/0009-0007-3849-7795"
+  - given-names: Mara
+    family-names: Neacșu
+    affiliation: "ETH Zürich"
+    orcid: "https://orcid.org/0009-0006-3714-5491"
+  - given-names: Louis
+    family-names: du Plessis
+    affiliation: "Department of Biosystems Science and Engineering, ETH Zürich; Swiss Institute of Bioinformatics, SIB Lausanne"
+    orcid: "https://orcid.org/0000-0003-0352-6289"
+  - given-names: Tanja
+    family-names: Stadler
+    affiliation: "Department of Biosystems Science and Engineering, ETH Zürich; Swiss Institute of Bioinformatics, SIB Lausanne"
+    orcid: "https://orcid.org/0000-0001-6431-535X"
+repository-code: "https://github.com/charlynebuerki/ReVSeq-dashboard"
+url: "https://charlynebuerki.github.io/ReVSeq-dashboard/"
+license: MIT
+version: 1.0.0
+date-released: "2026-10-29"
+keywords:
+  - genomic surveillance
+  - viral genomics
+  - respiratory viruses
+  - dashboard
+  - Nextstrainque
