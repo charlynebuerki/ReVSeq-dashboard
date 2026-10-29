@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Tutorial](https://img.shields.io/badge/tutorial-online-brightgreen.svg)](https://charlynebuerki.github.io/ReVSeq-dashboard/)
 [![Live dashboard](https://img.shields.io/badge/live-revseq.charlynebuerki.com-0f7aa7.svg)](https://revseq.charlynebuerki.com/home/)
+[![DOI](https://zenodo.org/badge/811767132.svg)](https://doi.org/10.5281/zenodo.23779064)
 
 ReVSeq Visuals (*Rapid, Modular Environment for Viral Sequence Visualization*) builds a web dashboard from the outputs of viral sequencing: aligned reads, consensus genomes and sample metadata. It is made for multi-pathogen surveillance projects that want to share up-to-date results with collaborators, clinicians or public-health partners without extensive bioinformatic tools needed.
 
@@ -218,4 +219,4 @@ If deployed behind a reverse proxy, route:
 
 ## License and citation
 
-ReVSeq Visuals is released under the [MIT License](LICENSE). If you use it, please cite the ReVSeq Visuals paper (Bürki, Neacșu, du Plessis and Stadler; citation details will be added on publication).
+ReVSeq Visuals is released under the [MIT License](LICENSE). If you use it, please cite the ReVSeq Visuals DOI: [![DOI](https://zenodo.org/badge/811767132.svg)](https://doi.org/10.5281/zenodo.23779064).
