@@ -16,6 +16,8 @@ __pycache__/
 envs/
 .venv/
 venv/
+.claude/
+z_manuscript/
 
 # Large/unneeded project data for runtime images
 Extract-pileup/
