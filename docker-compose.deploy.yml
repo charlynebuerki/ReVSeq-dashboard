@@ -20,5 +20,5 @@ services:
       - "4000:4000"
     environment:
       - HOST=0.0.0.0
-    command: ["npx", "auspice-revseq", "view", "--datasetDir", "dashboard/static/auspice"]
+    command: ["npx", "auspice", "view", "--datasetDir", "dashboard/static/auspice"]
     restart: unless-stopped

@@ -11,7 +11,7 @@ COPY . .
 # Expose the port the Django app runs on
 EXPOSE 4000
 
-# Run the Django dashboard using your custom command
-RUN npm install -g auspice-revseq
+# Install the tree viewer at the exact versions in package-lock.json
+RUN npm ci --no-audit --no-fund
 ENV HOST=0.0.0.0
-CMD ["npx", "auspice-revseq", "view", "--datasetDir", "dashboard/static/auspice"]
+CMD ["npx", "auspice", "view", "--datasetDir", "dashboard/static/auspice"]

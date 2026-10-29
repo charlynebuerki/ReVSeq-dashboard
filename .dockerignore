@@ -47,3 +47,4 @@ logs/
 *.tar.gz
 *.tgz
 *.zip
+node_modules/

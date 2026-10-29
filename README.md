@@ -96,10 +96,14 @@ Main environment variables:
 
 ## Run Locally (No Docker)
 
-Terminal 1 (Auspice):
+Terminal 1 (Auspice). `npm ci` installs the tree viewer once, at the versions pinned in `package-lock.json`:
 
 ```bash
-HOST=0.0.0.0 PORT=4001 npx auspice-revseq view --datasetDir dashboard/static/auspice
+npm ci
+```
+
+```bash
+HOST=0.0.0.0 PORT=4001 npx auspice view --datasetDir dashboard/static/auspice
 ```
 
 Terminal 2 (Django):
