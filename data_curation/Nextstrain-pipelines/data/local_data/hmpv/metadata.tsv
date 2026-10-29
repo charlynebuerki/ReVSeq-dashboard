@@ -1,0 +1,33 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_22	Metapneumovirus hominis	3048148	8421308	metapneumovirus A PV178224.1	486997	99.47	NA	NA	Human metapneumovirus A	46814853	ETH_Plate1	F3	10.01.2025	SG	NA	resp_panel	Rhino-/Enterovirus, Metapneumovirus, Parainfluenza 2	NA
+51199_1_3	Metapneumovirus hominis	3048148	8421308	metapneumovirus A PV178224.1	2620349	100	NA	NA	Human metapneumovirus A	46731238	ETH_Plate1	C1	02.01.2025	BS	NA	resp_panel	Coronavirus NL63, Metapneumovirus	NA
+51607_1_50	Metapneumovirus hominis	3048148	8421308	metapneumovirus A PV178224.1	866770	100	A	A	Human metapneumovirus A	47581327	ETH_Plate3	B7	19.03.2025	AG	NA	sars_flu_rsv_panel	RSV - A/B	23
+m2-3MV28K	Human metapneumovirus	162145	NA	NA	7982	45	NA	NA	Human metapneumovirus	NA	010623RVS-m2	NA	2023-04-22	BE	NA	resp_panel	Metapneumovirus	NA
+m2-HXHQAT	Human metapneumovirus	162145	NA	NA	5032	40	NA	NA	Human metapneumovirus	NA	RVSeqPlate4-m2	NA	2023-12-20	BS	NA	resp_panel	Rhino- / Enterovirus, Metapneumovirus, RSV - A/B	NA
+m2-xMNGcb	Human metapneumovirus	162145	NA	NA	3648	84	NA	NA	Human metapneumovirus	NA	RVSeqPlate5-m2	NA	2024-01-18	BS	NA	resp_panel	Metapneumovirus	NA
+m2-BP5QSp	Human metapneumovirus	162145	NA	NA	444988	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate6-m2	NA	2024-01-24	BL	NA	resp_panel	Metapneumovirus	NA
+m2-4L3pXZ	Human metapneumovirus	162145	NA	NA	390742	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate6-m2	NA	2024-01-27	SG	NA	resp_panel	Metapneumovirus, Influenza A	NA
+m2-MQhF9c	Human metapneumovirus	162145	NA	NA	7128	47	NA	NA	Human metapneumovirus	NA	RVSeqPlate7-m2	NA	2024-02-16	BE	NA	resp_panel	Metapneumovirus	NA
+m2-jwkH9W	Human metapneumovirus	162145	NA	NA	398634	95	NA	NA	Human metapneumovirus	NA	RVSeqPlate8-m2	NA	2024-03-06	VD	NA	resp_panel	Metapneumovirus	NA
+m2-ZNTJLD	Human metapneumovirus	162145	NA	NA	169059	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate8-m2	NA	2024-02-29	AG	NA	resp_panel	Metapneumovirus	NA
+m2-6qaV6z	Human metapneumovirus	162145	NA	NA	8700	90	NA	NA	Human metapneumovirus	NA	RVSeqPlate8-m2	NA	2024-03-05	AG	NA	resp_panel	Metapneumovirus	NA
+m2-2kH55m	Human metapneumovirus	162145	NA	NA	811797	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-10	SG	NA	resp_panel	Metapneumovirus	NA
+m2-MM8MkA	Human metapneumovirus	162145	NA	NA	114504	93	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-11	ZH	NA	resp_panel	Metapneumovirus	NA
+m2-PVBn6f	Human metapneumovirus	162145	NA	NA	3954	83	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-20	VD	NA	resp_panel	Metapneumovirus	NA
+m2-xwByzt	Human metapneumovirus	162145	NA	NA	29348	92	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-27	ZH	NA	resp_panel	Metapneumovirus	NA
+m2-ozGf4E	Human metapneumovirus	162145	NA	NA	143056	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-28	ZH	NA	resp_panel	Adenovirus, Metapneumovirus	NA
+m2-yR5Hef	Human metapneumovirus	162145	NA	NA	13036	91	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-25	AG	NA	resp_panel	Rhino- / Enterovirus, Metapneumovirus	NA
+m2-STGkhE	Human metapneumovirus	162145	NA	NA	1379890	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-28	BL	stationär	resp_panel	Metapneumovirus	NA
+m2-V8dKQC	Human metapneumovirus	162145	NA	NA	21976	92	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-22	AG	NA	resp_panel	Adenovirus, Metapneumovirus	NA
+m2-W4ZnHe	Human metapneumovirus	162145	NA	NA	7710	91	NA	NA	Human metapneumovirus	NA	RVSeqPlate9-m2	NA	2024-03-25	BS	NA	resp_panel	Metapneumovirus	NA
+m2-gvJsdn	Human metapneumovirus	162145	NA	NA	566447	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate10-m2	NA	2024-03-30	BL	NA	resp_panel	Metapneumovirus	NA
+m2-39xr8K	Human metapneumovirus	162145	NA	NA	207536	95	NA	NA	Human metapneumovirus	NA	RVSeqPlate10-m2	NA	2024-04-17	ZH	NA	resp_panel	Metapneumovirus	NA
+m2-Ho9wQu	Human metapneumovirus	162145	NA	NA	194051	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate11-m2	NA	2024-05-20	SO	NA	resp_panel	Adenovirus, Metapneumovirus	NA
+m2-jM3n9w	Human metapneumovirus	162145	NA	NA	205528	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate11-m2	NA	2024-04-25	BS	NA	resp_panel	Metapneumovirus	NA
+m2-ToGSRe	Human metapneumovirus	162145	NA	NA	161226	95	NA	NA	Human metapneumovirus	NA	RVSeqPlate11-m2	NA	2024-04-29	AG	NA	resp_panel	Metapneumovirus	NA
+m2-kLPe6f	Human metapneumovirus	162145	NA	NA	967954	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate12-m2	NA	2024-05-27	BS	NA	resp_panel	Metapneumovirus	NA
+m2-oUUEge	Human metapneumovirus	162145	NA	NA	204164	94	NA	NA	Human metapneumovirus	NA	RVSeqPlate12-m2	NA	2024-06-14	TI	NA	resp_panel	Metapneumovirus	NA
+m2-X4aXWG	Human metapneumovirus	162145	NA	NA	5486	40	NA	NA	Human metapneumovirus	NA	RVSeqPlate12-m2	NA	2024-05-27	BS	NA	resp_panel	Metapneumovirus	NA
+m2-tDuWkr	Human metapneumovirus	162145	NA	NA	18174	53	NA	NA	Human metapneumovirus	NA	RVSeqPlate12-m2	NA	2024-05-27	BE	NA	resp_panel	Metapneumovirus	NA
+m2-HkLtpW	Human metapneumovirus	162145	NA	NA	51762	60	NA	NA	Human metapneumovirus	NA	RVSeqPlate12-m2	NA	2024-06-16	GR	NA	resp_panel	Rhino- / Enterovirus, Metapneumovirus	NA
+m2-n4CyR5	Human metapneumovirus	162145	NA	NA	1117166	95	NA	NA	Human metapneumovirus	NA	RVSeqPlate13-m2	NA	2024-06-20	AG	NA	resp_panel	Metapneumovirus	NA

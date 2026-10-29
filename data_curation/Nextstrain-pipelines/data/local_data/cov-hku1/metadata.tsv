@@ -1,0 +1,19 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_2_47	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	12136	75.71	NA	NA	Human coronavirus HKU1	47409594	ETH_Plate2	G6	04.03.2025	BS	NA	resp_panel	Coronavirus HKU1	NA
+51199_2_6	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	204095	83.22	NA	NA	Human coronavirus HKU1	47128615	ETH_Plate2	F1	06.02.2025	BL	NA	resp_panel, rsv_only_panel	Coronavirus HKU1	NA
+51199_2_71	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	3772	59.42	NA	NA	Human coronavirus HKU1	47326770	ETH_Plate2	G9	25.02.2025	VD	NA	resp_panel	Coronavirus HKU1	NA
+51199_2_72	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	14571867	99.99	NA	NA	Human coronavirus HKU1	47329865	ETH_Plate2	H9	25.02.2025	BL	NA	resp_panel	Coronavirus HKU1	NA
+51607_1_39	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	1023483	88.42	NA	NA	Human coronavirus HKU1	47937424	ETH_Plate3	G5	17.04.2025	VD	NA	resp_panel	Coronavirus HKU1	NA
+51607_1_51	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	309615	98.82	NA	NA	Human coronavirus HKU1	47590061	ETH_Plate3	C7	19.03.2025	BS	NA	resp_panel	Coronavirus HKU1, Metapneumovirus	NA
+51607_1_63	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	928626	87.28	NA	NA	Human coronavirus HKU1	47784160	ETH_Plate3	G8	04.04.2025	GR	NA	resp_panel	Coronavirus HKU1	NA
+51607_1_79	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	18580	97.32	NA	NA	Human coronavirus HKU1	47819015	ETH_Plate3	G10	07.04.2025	BS	NA	resp_panel	Coronavirus HKU1, Metapneumovirus	NA
+51607_2_29	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	2543426	88.8	NA	NA	Human coronavirus HKU1	47705479	ETH_Plate4	E4	28.03.2025	AG	NA	resp_panel	Coronavirus HKU1	NA
+51607_2_37	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	106060	98.16	NA	NA	Human coronavirus HKU1	47685852	ETH_Plate4	E5	26.03.2025	BS	NA	resp_panel	Coronavirus HKU1	NA
+51607_2_5	Betacoronavirus hongkongense	3433758	290028	Human coronavirus HKU1	72384	98.62	NA	NA	Human coronavirus HKU1	47536001	ETH_Plate4	E1	14.03.2025	BS	NA	resp_panel	Coronavirus HKU1, Metapneumovirus	NA
+m2-E6qgW7	Human coronavirus HKU1	290028	NA	NA	242764	99	NA	NA	Human coronavirus HKU1	NA	RVSeqPlate4-m2	NA	2023-12-25	GR	NA	resp_panel	coronavirus HKU1	
+m2-jQNpYD	Human coronavirus HKU1	290028	NA	NA	1164311	99	NA	NA	Human coronavirus HKU1	NA	RVSeqPlate5-m2	NA	2024-01-15	AG	NA	resp_panel	coronavirus HKU1, Adenovirus, Rhino- / Enterovirus	
+m2-dgZP3L	Human coronavirus HKU1	290028	NA	NA	32982	98	NA	NA	Human coronavirus HKU1	NA	RVSeqPlate6-m2	NA	2024-01-31	AG	NA	resp_panel	coronavirus HKU1, Rhino- / Enterovirus	
+m2-FAvEvi	Human coronavirus HKU1	290028	NA	NA	5897	62	NA	NA	Human coronavirus HKU1	NA	RVSeqPlate6-m2	NA	2024-01-28	SG	NA	resp_panel	coronavirus HKU1	
+m2-zhrVRY	Human coronavirus HKU1	290028	NA	NA	19088	83	NA	NA	Human coronavirus HKU1	NA	RVSeqPlate8-m2	NA	2024-03-05	BL	NA	resp_panel	coronavirus HKU1	
+m2-QPbjvy	Human coronavirus HKU1	290028	NA	NA	63914	89	NA	NA	Human coronavirus HKU1	NA	RVSeqPlate8-m2	NA	2024-03-04	BS	NA	resp_panel	coronavirus HKU1, SARS-CoV-2	
+m2-XHdiUs	Human coronavirus HKU1	290028	NA	NA	5325	65	NA	NA	Human coronavirus HKU1	NA	RVSeqPlate8-m2	NA	2024-03-01	SG	NA	resp_panel	coronavirus OC43, coronavirus HKU1	

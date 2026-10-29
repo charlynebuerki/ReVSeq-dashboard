@@ -1,0 +1,78 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_2_70	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	3114522	99.24	NA	NA	Human parainfluenza 3	47365413	ETH_Plate2	F9	28.02.2025	BL	NA	resp_panel	Parainfluenza 3	NA
+51607_1_13	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	18450	98.6	NA	NA	Human parainfluenza 3	47977622	ETH_Plate3	E2	24.04.2025	ZH	NA	resp_panel	Parainfluenza 3	NA
+51607_1_14	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	467576	99.04	NA	NA	Human parainfluenza 3	47994177	ETH_Plate3	F2	25.04.2025	SG	NA	resp_panel, flu_only_panel	Rhino-/Enterovirus, Parainfluenza 3	NA
+51607_1_27	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	8133422	99.89	NA	NA	Human parainfluenza 3	48155682	ETH_Plate3	C4	10.05.2025	AG	NA	resp_panel, sars_flu_rsv_panel	Parainfluenza 3	NA
+51607_1_28	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	21079	92.41	NA	NA	Human parainfluenza 3	47814665	ETH_Plate3	D4	07.04.2025	BL	NA	resp_panel	Parainfluenza 3	NA
+51607_1_55	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	90337	98.62	NA	NA	Human parainfluenza 3	47595579	ETH_Plate3	G7	20.03.2025	BL	NA	resp_panel	Adenovirus, Parainfluenza 3	NA
+51607_1_59	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	1356676	99.22	NA	NA	Human parainfluenza 3	47602372	ETH_Plate3	C8	20.03.2025	VS	NA	resp_panel	Parainfluenza 3	NA
+51607_1_73	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	1207941	99.76	NA	NA	Human parainfluenza 3	47827612	ETH_Plate3	A10	08.04.2025	GE	NA	resp_panel	Parainfluenza 3	NA
+51607_1_85	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	12092719	100	NA	NA	Human parainfluenza 3	48214545	ETH_Plate3	E11	15.05.2025	BL	NA	resp_panel	Rhino-/Enterovirus, Parainfluenza 3	NA
+51607_1_86	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	1392709	99.87	Unassigned	Unassigned	Human parainfluenza 3	48172413	ETH_Plate3	F11	12.05.2025	VD	NA	resp_panel	Rhino-/Enterovirus, Parainfluenza 3	NA
+51607_2_27	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	21914	93.62	NA	NA	Human parainfluenza 3	47709904	ETH_Plate4	C4	29.03.2025	AG	NA	resp_panel	Rhino-/Enterovirus, Parainfluenza 3	NA
+51607_2_32	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	130363	99.55	NA	NA	Human parainfluenza 3	47694988	ETH_Plate4	H4	27.03.2025	BS	NA	resp_panel	Parainfluenza 3	NA
+51607_2_38	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	339302	99.85	NA	NA	Human parainfluenza 3	48330363	ETH_Plate4	F5	26.05.2025	BL	NA	resp_panel	Adenovirus, Parainfluenza 3	NA
+51607_2_39	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	13496470	99.24	NA	NA	Human parainfluenza 3	48333177	ETH_Plate4	G5	26.05.2025	SO	NA	resp_panel	Rhino-/Enterovirus, Parainfluenza 3	NA
+51607_2_40	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	198128	99.73	NA	NA	Human parainfluenza 3	48371861	ETH_Plate4	H5	29.05.2025	BS	NA	resp_panel	Parainfluenza 3	NA
+51607_2_41	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	210332	99.68	NA	NA	Human parainfluenza 3	48332573	ETH_Plate4	A6	26.05.2025	SZ	NA	resp_panel	Rhino-/Enterovirus, Parainfluenza 3	NA
+51607_2_45	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	1178005	99.89	NA	NA	Human parainfluenza 3	48362289	ETH_Plate4	E6	27.05.2025	BS	NA	resp_panel	Rhino-/Enterovirus, Parainfluenza 3	NA
+51607_2_48	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	4774799	99.92	NA	NA	Human parainfluenza 3	48044323	ETH_Plate4	H6	29.04.2025	BL	stationär	resp_panel	Parainfluenza 3	NA
+51607_2_55	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	6307916	99.9	NA	NA	Human parainfluenza 3	48011628	ETH_Plate4	G7	28.04.2025	BE	NA	resp_panel	Coronavirus OC43, Parainfluenza 3	NA
+51607_2_67	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	14894745	99.42	NA	NA	Human parainfluenza 3	48302794	ETH_Plate4	C9	22.05.2025	SZ	NA	resp_panel, sars_flu_rsv_panel	Parainfluenza 3	NA
+51607_2_69	Respirovirus pneumoniae	3049953	11216	Human respirovirus 3	5862520	98.98	NA	NA	Human parainfluenza 3	48262949	ETH_Plate4	E9	20.05.2025	GE	NA	resp_panel	Parainfluenza 3	NA
+m2-UZk6rp	Human respirovirus 3	11216	NA	NA	118759	98	NA	NA	Human parainfluenza virus 3	NA	010623RVS-m2	NA	2023-04-24	BS	NA	resp_panel	Parainfluenza 3	
+m2-3H2Wig	Human respirovirus 3	11216	NA	NA	1460976	99	NA	NA	Human parainfluenza virus 3	NA	010623RVS-m2	NA	2023-05-08	BS	NA	resp_panel	Parainfluenza 3, RSV - A/B	
+m2-mVqwfv	Human respirovirus 3	11216	NA	NA	65740	98	NA	NA	Human parainfluenza virus 3	NA	010623RVS-m2	NA	2023-04-04	VS	NA	resp_panel	Parainfluenza 3	
+m2-9jS4Ro	Human respirovirus 3	11216	NA	NA	1835593	99	NA	NA	Human parainfluenza virus 3	NA	010623RVS-m2	NA	2023-05-09	BS	NA	resp_panel	Parainfluenza 3	
+m2-gYFizT	Human respirovirus 3	11216	NA	NA	51752	98	NA	NA	Human parainfluenza virus 3	NA	010623RVS-m2	NA	2023-04-14	AG	NA	resp_panel	Parainfluenza 3	
+m2-4PF58Q	Human respirovirus 3	11216	NA	NA	431656	99	NA	NA	Human parainfluenza virus 3	NA	RVSeq71123-m2	NA	2023-10-30	BS	NA	resp_panel	Parainfluenza 3	
+m2-BdNxPR	Human respirovirus 3	11216	NA	NA	961342	99	NA	NA	Human parainfluenza virus 3	NA	RVSeq71123-m2	NA	2023-10-30	BS	NA	resp_panel	Parainfluenza 3	
+m2-hU5TjU	Human respirovirus 3	11216	NA	NA	4548	88	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate4-m2	NA	2023-12-22	AG	NA	resp_panel	SARS-CoV-2, RSV - A/B	
+m2-sJs93G	Human respirovirus 3	11216	NA	NA	155674	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate5-m2	NA	2024-01-11	SG	NA	resp_panel	Parainfluenza 3	
+m2-sZ4qK3	Human respirovirus 3	11216	NA	NA	50678	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate6-m2	NA	2024-02-01	VD	NA	resp_panel	Adenovirus, Rhino- / Enterovirus, Parainfluenza 3	
+m2-KtHTz8	Human respirovirus 3	11216	NA	NA	36893	97	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate6-m2	NA	2024-01-29	BL	NA	resp_panel	Parainfluenza 3	
+m2-c4imMZ	Human respirovirus 3	11216	NA	NA	234580	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate7-m2	NA	2024-02-19	AG	NA	resp_panel	coronavirus HKU1, Parainfluenza 3	
+m2-Y4rZ7q	Human respirovirus 3	11216	NA	NA	230298	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate8-m2	NA	2024-02-27	AG	NA	resp_panel	coronavirus OC43, Rhino- / Enterovirus, Parainfluenza 3	
+m2-WydUVb	Human respirovirus 3	11216	NA	NA	66584	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate9-m2	NA	2024-03-08	SG	NA	resp_panel	Parainfluenza 3	
+m2-844sRF	Human respirovirus 3	11216	NA	NA	3970	83	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate9-m2	NA	2024-03-11	BE	NA	resp_panel	Parainfluenza 3	
+m2-LTGmFn	Human respirovirus 3	11216	NA	NA	9490	94	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate9-m2	NA	2024-03-20	GR	NA	resp_panel	Parainfluenza 3	
+m2-LX4eJE	Human respirovirus 3	11216	NA	NA	1140949	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate9-m2	NA	2024-03-21	SG	NA	resp_panel	Parainfluenza 3	
+m2-Mp25Fk	Human respirovirus 3	11216	NA	NA	1848421	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate9-m2	NA	2024-03-20	BS	NA	resp_panel	Parainfluenza 3	
+m2-WpJqxj	Human respirovirus 3	11216	NA	NA	411023	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-18	TI	NA	resp_panel	Parainfluenza 3	
+m2-LMD6ho	Human respirovirus 3	11216	NA	NA	113608	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-03	SG	NA	resp_panel	Rhino- / Enterovirus, Parainfluenza 3	
+m2-Kyii3a	Human respirovirus 3	11216	NA	NA	768184	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-03	BS	NA	resp_panel	Parainfluenza 3	
+m2-q8yvBm	Human respirovirus 3	11216	NA	NA	30824	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-18	BS	NA	resp_panel	Parainfluenza 3	
+m2-MjqpEV	Human respirovirus 3	11216	NA	NA	18082	97	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-05	SG	NA	resp_panel	Parainfluenza 3	
+m2-TUofv5	Human respirovirus 3	11216	NA	NA	15490	97	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-11	BE	Fk Aufkl	resp_panel	Parainfluenza 3	
+m2-RgZWrD	Human respirovirus 3	11216	NA	NA	11210	96	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-03	ZH	NA	resp_panel	Parainfluenza 3	
+m2-gxCe5X	Human respirovirus 3	11216	NA	NA	289193	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-03	TI	NA	resp_panel	Rhino- / Enterovirus, Parainfluenza 3	
+m2-wfEdma	Human respirovirus 3	11216	NA	NA	266602	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-18	ZH	NA	resp_panel	Parainfluenza 3	
+m2-3CuPYs	Human respirovirus 3	11216	NA	NA	690247	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-13	SG	NA	resp_panel	Parainfluenza 3	
+m2-PQ5aTg	Human respirovirus 3	11216	NA	NA	7110	94	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-11	GR	NA	resp_panel	Adenovirus, Parainfluenza 3	
+m2-P9mWJr	Human respirovirus 3	11216	NA	NA	384587	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate10-m2	NA	2024-04-12	BE	NA	resp_panel	Parainfluenza 3	
+m2-TcfHz7	Human respirovirus 3	11216	NA	NA	1783502	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-22	AG	stationär	resp_panel	Parainfluenza 3	
+m2-jCKGBv	Human respirovirus 3	11216	NA	NA	1280073	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-16	AG	stationär	resp_panel	Parainfluenza 3	
+m2-NaDTTs	Human respirovirus 3	11216	NA	NA	7124	93	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-21	AG	NA	resp_panel	Parainfluenza 3	
+m2-KaJ5Pe	Human respirovirus 3	11216	NA	NA	791991	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-04-24	AG	NA	resp_panel	Parainfluenza 3	
+m2-ujTsiu	Human respirovirus 3	11216	NA	NA	255960	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-04-25	AG	NA	resp_panel	Adenovirus, Parainfluenza 3	
+m2-y58Q75	Human respirovirus 3	11216	NA	NA	4930	90	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-21	AG	stationär	resp_panel	Parainfluenza 3	
+m2-34KSAo	Human respirovirus 3	11216	NA	NA	555355	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-22	AG	NA	resp_panel	Rhino- / Enterovirus, Parainfluenza 3	
+m2-ABxNA9	Human respirovirus 3	11216	NA	NA	12196	95	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-21	AG	NA	resp_panel	Parainfluenza 3	
+m2-aEURHb	Human respirovirus 3	11216	NA	NA	19964	97	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-21	AG	NA	resp_panel	Parainfluenza 3	
+m2-BvdErP	Human respirovirus 3	11216	NA	NA	376018	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-24	AG	NA	resp_panel	Parainfluenza 3	
+m2-F34WtX	Human respirovirus 3	11216	NA	NA	2356114	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate11-m2	NA	2024-05-21	AG	NA	resp_panel	Parainfluenza 3	
+m2-53qCwY	Human respirovirus 3	11216	NA	NA	85286	97	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-05-31	TI	NA	resp_panel	Parainfluenza 3	
+m2-fChozQ	Human respirovirus 3	11216	NA	NA	420693	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-06-17	AG	NA	resp_panel	Parainfluenza 3	
+m2-zhhg9e	Human respirovirus 3	11216	NA	NA	200487	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-05-24	AG	NA	resp_panel	Parainfluenza 3	
+m2-pCrZWV	Human respirovirus 3	11216	NA	NA	105160	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-05-27	AG	NA	resp_panel	Parainfluenza 3	
+m2-3UqUSN	Human respirovirus 3	11216	NA	NA	661819	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-06-14	BS	NA	resp_panel	Parainfluenza 3	
+m2-sSV2Bt	Human respirovirus 3	11216	NA	NA	101546	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-06-10	SH	NA	resp_panel	Parainfluenza 3	
+m2-v72khW	Human respirovirus 3	11216	NA	NA	180152	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-06-11	AG	NA	resp_panel	Parainfluenza 3	
+m2-ED6Fyo	Human respirovirus 3	11216	NA	NA	2566	54	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-05-28	BS	NA	resp_panel	Parainfluenza 3	
+m2-e3Nkuo	Human respirovirus 3	11216	NA	NA	12166	95	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-05-27	SG	NA	resp_panel	Parainfluenza 3	
+m2-h54gk9	Human respirovirus 3	11216	NA	NA	170799	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate12-m2	NA	2024-06-18	BS	NA	resp_panel	Parainfluenza 3	
+m2-SccDgj	Human respirovirus 3	11216	NA	NA	142124	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate13-m2	NA	2024-07-03	AG	stationär	resp_panel	Parainfluenza 3	
+m2-oDzvGR	Human respirovirus 3	11216	NA	NA	11116	94	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate13-m2	NA	2024-06-04	AG	stationär	resp_panel	Parainfluenza 3	
+m2-9KEquH	Human respirovirus 3	11216	NA	NA	508244	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate13-m2	NA	2024-06-30	AG	NA	resp_panel	Parainfluenza 3	
+m2-mzMRtV	Human respirovirus 3	11216	NA	NA	50474	98	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate13-m2	NA	2024-06-03	TI	NA	resp_panel	Rhino- / Enterovirus, Parainfluenza 3	
+m2-YztDkU	Human respirovirus 3	11216	NA	NA	177040	99	NA	NA	Human parainfluenza virus 3	NA	RVSeqPlate13-m2	NA	2024-06-04	AG	NA	resp_panel	Parainfluenza 3	

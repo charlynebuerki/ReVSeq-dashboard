@@ -1,0 +1,7 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_29	Orthorubulavirus laryngotracheitidis	3052557	2560525	Human orthorubulavirus 2	42864	99.85	NA	NA	Human parainfluenza 2	46890723	ETH_Plate1	E4	16.01.2025	VS	NA	resp_panel	Parainfluenza 2	NA
+51199_1_32	Orthorubulavirus laryngotracheitidis	3052557	2560525	Human orthorubulavirus 2	51126	99.87	NA	NA	Human parainfluenza 2	46726943	ETH_Plate1	H4	01.01.2025	ZH	NA	resp_panel	Coronavirus NL63, Parainfluenza 2	NA
+51199_1_91	Orthorubulavirus laryngotracheitidis	3052557	2560525	Human orthorubulavirus 2	1241475	99.97	NA	NA	Human parainfluenza 2	46312918	ETH_Plate1	C12	20.11.2024	ZH	NA	resp_panel	Parainfluenza 2	NA
+51199_2_43	Orthorubulavirus laryngotracheitidis	3052557	2560525	Human orthorubulavirus 2	5863675	99.99	NA	NA	Human parainfluenza 2	47437450	ETH_Plate2	C6	06.03.2025	AG	NA	resp_panel, flu_only_panel	Parainfluenza 2	NA
+m2-NqUrMx	Human orthorubulavirus 2	2560525	NA	NA	11954	98	NA	NA	Human parainfluenza virus 2	NA	RVSeqPlate9-m2	NA	2024-03-12	SG	NA	resp_panel	Rhino- / Enterovirus, Parainfluenza 2	
+m2-2NXwCk	Human orthorubulavirus 2	2560525	NA	NA	19750	98	NA	NA	Human parainfluenza virus 2	NA	RVSeqPlate13-m2	NA	2024-06-20	ZH	NA	resp_panel	Rhino- / Enterovirus, Parainfluenza 2	

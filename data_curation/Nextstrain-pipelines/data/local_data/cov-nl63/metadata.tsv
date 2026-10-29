@@ -1,0 +1,16 @@
+SampleID	Virus	Virus_Taxon_ID	Reference_Taxon_ID	Selected_Reference	total_mapped_reads	percentage_of_genome_covered	Type High Confidence	Type - Low Confidence	virus_identified	sample_id	Plate_ID	Well_Location	Sampled_Date	Canton	Hospital_Type	Panel_Type	Virus_PCR	CT_Value
+51199_1_19	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	14998897	99.99	NA	NA	Human coronavirus NL63	46770784	ETH_Plate1	C3	07.01.2025	AG	NA	resp_panel	Coronavirus NL63, Adenovirus	NA
+51199_1_2	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	11194997	99.99	NA	NA	Human coronavirus NL63	46729622	ETH_Plate1	B1	02.01.2025	ZH	NA	resp_panel	Coronavirus NL63	NA
+51199_1_20	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	903635	99.96	NA	NA	Human coronavirus NL63	46768516	ETH_Plate1	D3	07.01.2025	SO	NA	resp_panel	Coronavirus NL63	NA
+51199_1_32	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	446687	99.94	NA	NA	Human coronavirus NL63	46726943	ETH_Plate1	H4	01.01.2025	ZH	NA	resp_panel	Coronavirus NL63, Parainfluenza 2	NA
+51199_1_4	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	33949	99.9	NA	NA	Human coronavirus NL63	46736285	ETH_Plate1	D1	03.01.2025	ZH	NA	resp_panel	Coronavirus NL63, Rhino-/Enterovirus	NA
+51199_1_79	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	116632	99.93	NA	NA	Human coronavirus NL63	46490592	ETH_Plate1	G10	05.12.2024	ZH	NA	resp_panel	Coronavirus NL63	NA
+51199_2_50	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	588241	99.95	NA	NA	Human coronavirus NL63	47432849	ETH_Plate2	B7	06.03.2025	ZH	NA	resp_panel	Coronavirus NL63	NA
+51199_2_51	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	1620311	99.96	NA	NA	Human coronavirus NL63	47448403	ETH_Plate2	C7	07.03.2025	VD	NA	resp_panel, sars_flu_rsv_panel	Coronavirus OC43, Coronavirus NL63, Adenovirus	NA
+51607_1_76	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	6671246	99.99	NA	NA	Human coronavirus NL63	47835399	ETH_Plate3	D10	08.04.2025	BS	NA	resp_panel	Coronavirus NL63	NA
+51607_2_13	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	76107	99.93	NA	NA	Human coronavirus NL63	47500235	ETH_Plate4	E2	12.03.2025	BS	NA	resp_panel	Coronavirus NL63	NA
+51607_2_73	Alphacoronavirus amsterdamense	3433809	277944	Human coronavirus NL63	855747	99.96	NA	NA	Human coronavirus NL63	46738248	ETH_Plate4	A10	03.01.2025	ZH	NA	resp_panel	Coronavirus NL63	NA
+m2-m5XiUJ	Human coronavirus NL63	277944	NA	NA	40767	100	NA	NA	Human coronavirus NL63	NA	RVSeqPlate9-m2	NA	2024-03-22	GE	NA	resp_panel	coronavirus NL63, Rhino- / Enterovirus	
+m2-Uph9U3	Human coronavirus NL63	277944	NA	NA	1551729	100	NA	NA	Human coronavirus NL63	NA	RVSeqPlate10-m2	NA	2024-04-03	GR	NA	resp_panel	coronavirus NL63	
+m2-nHuJXs	Human coronavirus NL63	277944	NA	NA	45280	100	NA	NA	Human coronavirus NL63	NA	RVSeqPlate11-m2	NA	2024-05-23	TI	NA	resp_panel	coronavirus NL63	
+m2-HUBpy4	Human coronavirus NL63	277944	NA	NA	163819	100	NA	NA	Human coronavirus NL63	NA	RVSeqPlate11-m2	NA	2024-05-22	SG	NA	resp_panel	coronavirus NL63, Rhino- / Enterovirus	
