@@ -1,0 +1,55 @@
+<h2>About this dashboard</h2>
+<p>
+    This dashboard hosts the sequencing efforts and its results of the ReVSeq (Respiratory Virus Sequencing) study
+    carried out in Switzerland.
+    It brings together, for each sample, when and where it was sequenced, how well its genome was sequenced,
+    and how the sequences relate to known lineages. Relevant metadata are also attached to each sample.
+</p>
+
+<h2>The data</h2>
+<p>
+    The dashboard contains 649 viral genome sequences collected across Switzerland between 2023 and 2025,
+    covering 13 respiratory viruses (with RSV-A and RSV-B shown separately). The 2023/24 season was a
+    non-targeted survey of respiratory viruses; the 2024/25 season targeted specific viruses. Each sample
+    comes with its sampling date, canton and diagnostic PCR result, so sequencing and PCR detections can be
+    compared side by side. Nine samples were found by sequencing to carry more than one virus.
+</p>
+
+<h2>What you can see</h2>
+<ul>
+    <li><strong>Home:</strong> weekly sequencing and PCR detections of all viruses. Hover over a bar to see how
+        often sequencing and PCR agreed.</li>
+    <li><strong>Virus pages</strong> (choose one in the drop-down menu):
+        <ul>
+            <li>detections over time and a map by canton, with a weekly time slider;</li>
+            <li>sequencing depth along the annotated genome, for all samples, per subtype or per sample,
+                to spot poorly covered regions;</li>
+            <li>an interactive phylogenetic tree (Nextstrain/Auspice) placing the study samples among
+                publicly available genomes.</li>
+        </ul>
+    </li>
+    <li><strong>Co-infections:</strong> which viruses were found together in the same sample, and the
+        sequencing depth of each.</li>
+</ul>
+
+<h2>How it is built</h2>
+<p>
+    The dashboard is built with <a href="https://github.com/charlynebuerki/ReVSeq-dashboard">ReVSeq Visuals</a>,
+    an open-source framework for turning viral sequencing data into an interactive dashboard. It uses
+    Nextclade and Nextstrain for the phylogenies. Other groups can build a dashboard for their own data by
+    following the <a href="https://charlynebuerki.github.io/ReVSeq-dashboard/">step-by-step tutorial</a>.
+</p>
+
+<h2>Team</h2>
+<p>
+    Charlyne Bürki, Mara Neacșu, Louis du Plessis and Tanja Stadler from the <a
+        href="https://bsse.ethz.ch/cevo">Computational Evolution Group</a> at ETH Zürich
+</p>
+<!-- TODO (optional): add sections such as
+<h2>Funding</h2>
+<p>…</p>
+<h2>Contact</h2>
+<p>…</p>
+<h2>How to cite</h2>
+<p>…paper or Zenodo DOI once available…</p>
+-->
