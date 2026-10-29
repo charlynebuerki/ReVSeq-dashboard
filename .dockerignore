@@ -1,4 +1,6 @@
 .git
+.claude/
+z_manuscript/
 .gitignore
 .DS_Store
 __pycache__/
