@@ -939,3 +939,20 @@ ORIGIN
             self.assertEqual(len(assets), 1)
             self.assertTrue(assets[0]["available"])
             self.assertTrue((out_dir / "mixed_m2-sample-z_2026-03-05_ZH_SARS-CoV-2.html").exists())
+
+
+class AboutPageTests(TestCase):
+    def test_no_about_page_without_file(self):
+        with patch.object(dashboard_config, "ABOUT_FILE", "does/not/exist.html"):
+            self.assertEqual(self.client.get("/about/").status_code, 404)
+
+    def test_about_page_shows_file_with_title_and_description(self):
+        with TemporaryDirectory() as tmpdir:
+            about_file = Path(tmpdir) / "about.html"
+            about_file.write_text("<p>Run by the test lab.</p>")
+            with patch.object(dashboard_config, "ABOUT_FILE", str(about_file)):
+                html = self.client.get("/about/").content.decode()
+        self.assertIn("<p>Run by the test lab.</p>", html)
+        self.assertIn(f"<title>About | {dashboard_config.SITE_TITLE}</title>", html)
+        self.assertIn('<meta name="description"', html)
+        self.assertIn('href="/about/"', html)

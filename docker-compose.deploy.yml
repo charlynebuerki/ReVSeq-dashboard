@@ -7,7 +7,7 @@ services:
     environment:
       - DJANGO_ALLOWED_HOSTS=revseq.charlynebuerki.com,localhost,127.0.0.1
       - DJANGO_DEBUG=0
-      - DJANGO_SECRET_KEY=<long-random-secret>
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
       - NEXTSTRAIN_BASE_URL=/nextstrain
       - REVSEQ_CONFIG=${REVSEQ_CONFIG:-}
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]

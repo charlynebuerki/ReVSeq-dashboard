@@ -1,0 +1,5 @@
+<header class="banner">
+    {% if about_enabled %}<a class="banner-nav" href="{% url 'about' %}">About</a>{% endif %}
+    <h1><a href="{% url 'home' %}">{{ site_title }}</a></h1>
+    <p>Respiratory virus surveillance in {{ region_name }}</p>
+</header>
