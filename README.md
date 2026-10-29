@@ -1,12 +1,12 @@
 # ReVSeq Visuals
 
-**Turn viral sequencing data into an interactive surveillance dashboard.**
+**Framework to turn viral sequencing data into an interactive surveillance dashboard.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Tutorial](https://img.shields.io/badge/tutorial-online-brightgreen.svg)](https://charlynebuerki.github.io/ReVSeq-dashboard/)
 [![Live dashboard](https://img.shields.io/badge/live-revseq.charlynebuerki.com-0f7aa7.svg)](https://revseq.charlynebuerki.com/home/)
 
-ReVSeq Visuals (*Rapid, Modular Environment for Viral Sequence Visualization*) builds a web dashboard from the outputs of a viral sequencing study: aligned reads, consensus genomes and sample metadata. It is made for multi-pathogen surveillance projects that want to share up-to-date results with collaborators, clinicians or public-health partners without each of them running bioinformatics tools.
+ReVSeq Visuals (*Rapid, Modular Environment for Viral Sequence Visualization*) builds a web dashboard from the outputs of viral sequencing: aligned reads, consensus genomes and sample metadata. It is made for multi-pathogen surveillance projects that want to share up-to-date results with collaborators, clinicians or public-health partners without extensive bioinformatic tools needed.
 
 ![RSV page of the tutorial dashboard: detections over time, a map by region and sequencing depth along the genome](tutorial/images/rsv_page.jpg)
 
@@ -14,13 +14,13 @@ ReVSeq Visuals (*Rapid, Modular Environment for Viral Sequence Visualization*) b
 
 ## Features
 
-- **Home page:** weekly sequencing and PCR detections of all viruses, with sequencing/PCR agreement on hover.
+- **Home page:** weekly sequencing and PCR detections of all viruses, with number of sequencing/PCR agreement on hover.
 - **One page per virus**, each built from modules you switch on or off:
   - *time series and map* by week and region, for any region map (GeoJSON);
   - *genome quality:* sequencing depth along the annotated genome, for all samples, per subtype or per sample, to spot poorly covered regions; segmented viruses supported;
-  - *phylogeny:* interactive Nextstrain/Auspice trees placing your samples among public genomes (official Nextclade datasets, or your own built from GenBank).
+  - *phylogeny:* interactive Nextstrain/Auspice trees placing samples among public genomes (official Nextclade datasets, or your own built from GenBank).
 - **Co-infection page:** which viruses occur together in a sample, and the sequencing depth of each.
-- **Data curation pipelines** (Snakemake/Python) that produce every input from BAM files, consensus genomes and metadata.
+- **Basic data curation pipelines** (Snakemake/Python) that produce every input from BAM files, consensus genomes and metadata.
 - **Configuration in one Python file:** viruses, modules, colours, map and text; no code changes needed.
 
 ## Quick start
@@ -36,7 +36,7 @@ Then open <http://localhost:8000/home/>. The repository ships without data; the 
 ## Repository layout
 
 | Path | Content |
-|---|---|
+| --- | --- |
 | `dashboard/` | Django app: pages, plot modules, configuration (`config.py`) |
 | `data_curation/Extract-pileup/` | BAM → sequencing depth and consensus genomes |
 | `data_curation/Nextstrain-pipelines/` | consensus genomes + metadata → trees and dashboard metadata (Snakemake) |
@@ -45,7 +45,7 @@ Then open <http://localhost:8000/home/>. The repository ships without data; the 
 ## Branches
 
 | Branch | Content |
-|---|---|
+| --- | --- |
 | `main` | the generic code, without data |
 | `swiss-dashboard-implementation` | `main` plus the Swiss ReVSeq data (the deployed dashboard) |
 | `tutorial` | kept identical to `main` |
