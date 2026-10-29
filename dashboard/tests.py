@@ -63,10 +63,13 @@ class HarmonizationTests(TestCase):
             }
             df = pd.DataFrame([{"week": "2024/01", "location": "R1"}, {"week": "2024/01", "location": "XX"}])
             fig = build_weekly_location_map(df, map_config)
+            tiled = build_weekly_location_map(df, {**map_config, "style": "open-street-map"})
 
         frame = fig.data[0]
+        self.assertEqual(frame.type, "choropleth")  # regions only, no tile server
         self.assertEqual(sorted(frame.locations), ["R1", "R2"])
         self.assertEqual(dict(zip(frame.locations, frame.z)), {"R1": 1, "R2": 0})
+        self.assertEqual(tiled.data[0].type, "choroplethmapbox")
 
 
 class MetadataPipelineTests(TestCase):

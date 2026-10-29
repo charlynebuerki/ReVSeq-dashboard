@@ -169,9 +169,9 @@ MAP_CONFIG = {
     "geojson": "dashboard/static/swiss_cantons.geojson",
     "id_property": "canton",  # feature property matched against `location`
     "name_property": "NAME",  # feature property shown on hover
-    "center": {"lat": 46.8, "lon": 8.3},
-    "zoom": 5.5,
-    "style": "open-street-map",  # basemap; needs no API key (carto-* styles now do)
+    # Optional tile basemap behind the regions, e.g. "open-street-map" (then also set "center" and "zoom").
+    # Tiles come from third-party servers with their own usage policies; None draws the regions only.
+    "style": None,
 }
 
 # Source-specific normalization maps.

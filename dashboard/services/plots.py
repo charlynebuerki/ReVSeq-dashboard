@@ -161,20 +161,24 @@ def build_weekly_location_map(df: pd.DataFrame, map_config: dict | None = None):
     counts["NAME"] = counts["location"].map(region_names)
 
     max_count = int(counts["No. infections"].max()) if not counts.empty else 0
-    fig = px.choropleth_mapbox(
-        counts,
+    common = dict(
         geojson=geojson,
         locations="location",
         featureidkey=f"properties.{map_config['id_property']}",
         hover_name="NAME",
-        zoom=map_config["zoom"],
-        center=map_config["center"],
         color="No. infections",
         color_continuous_scale="viridis",
         animation_frame="week",
-        mapbox_style=map_config.get("style", "open-street-map"),
         range_color=[0, max(max_count, 1)],
     )
+    if map_config.get("style"):
+        # Regions on top of a tile basemap (e.g. "open-street-map"), fetched by the browser from the tile provider.
+        fig = px.choropleth_mapbox(counts, **common, mapbox_style=map_config["style"],
+                                   zoom=map_config["zoom"], center=map_config["center"])
+    else:
+        # Regions only, drawn from the GeoJSON: no external tile server involved.
+        fig = px.choropleth(counts, **common)
+        fig.update_geos(fitbounds="locations", visible=False, projection_type="mercator")
     fig.update_layout(
         margin={"l": 0, "r": 0, "t": 30, "b": 0},
         coloraxis_colorbar={"title": "Count"},

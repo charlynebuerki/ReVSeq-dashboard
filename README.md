@@ -57,7 +57,7 @@ Each strain entry (for example `Influenza_A`, `RSV`, `SARS-CoV-2`) can define:
 - `STRAIN_ALIASES`
   - Extra spellings of virus names in the metadata -> canonical strain
 - `MAP_CONFIG`
-  - `geojson`: region map; `id_property`: feature property holding the region codes used in the metadata `location` column; `name_property`: label shown on hover; `center`, `zoom`, `style` (basemap)
+  - `geojson`: region map; `id_property`: feature property holding the region codes used in the metadata `location` column; `name_property`: label shown on hover; `style`: optional tile basemap behind the regions (e.g. `"open-street-map"`, then also `center` and `zoom`); by default only the regions are drawn, with no external tile server
 - `LOCATION_ALIASES`
   - Extra spellings of locations -> region code (codes present in the GeoJSON need no entry). Unmappable locations are kept in the time series but left off the map.
 

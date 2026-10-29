@@ -60,9 +60,6 @@ MAP_CONFIG = {
     "geojson": "dashboard/static/swiss_cantons.geojson",
     "id_property": "canton",
     "name_property": "NAME",
-    "center": {"lat": 46.8, "lon": 8.3},
-    "zoom": 5.5,
-    "style": "open-street-map",
 }
 
 # Extra location spellings -> region code (added to the defaults). Case and accents are ignored.
