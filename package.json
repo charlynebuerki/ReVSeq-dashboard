@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "description": "Phylogenetic tree viewer for the dashboard; install with `npm ci`.",
+  "dependencies": {
+    "auspice-revseq": "2.56.0"
+  },
+  "overrides": {
+    "webpack": "5.93.0",
+    "@types/react": "17.0.93"
+  }
+}

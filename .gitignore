@@ -93,3 +93,4 @@ data_curation/Extract-pileup/all_pileups/
 data_curation/Extract-pileup/processed_pileup/
 data_curation/Extract-pileup/bam_only/
 data_curation/**/__pycache__/
+node_modules/
