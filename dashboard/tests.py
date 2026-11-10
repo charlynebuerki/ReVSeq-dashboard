@@ -388,6 +388,16 @@ class MixedContextTests(TestCase):
             pileup_builder.assert_called_once()
             self.assertEqual(pileup_builder.call_args[0][0], "sample-seq-2")
 
+    def test_source_switch_only_shown_with_both_sources(self):
+        from django.template.loader import render_to_string
+
+        for pcr_count, shown in [(0, False), (3, True)]:
+            html = render_to_string(
+                "mixed.html",
+                {"no_co_infections_seq": 4, "no_co_infections_pcr": pcr_count, "default_source": "sequencing"},
+            )
+            self.assertEqual('id="mixed_source_pcr"' in html, shown)
+
 
 class MixedPageConfigTests(TestCase):
     def test_mixed_page_can_be_disabled_from_config(self):
