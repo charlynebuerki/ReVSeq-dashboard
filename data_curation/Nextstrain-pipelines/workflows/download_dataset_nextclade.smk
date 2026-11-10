@@ -46,6 +46,21 @@ rule fetch_nextclade_datasets:
         """
 
 
+# keep one sequence per sample listed in the virus's metadata
+rule select_sequences:
+    conda:
+        "../envs/python-genetic-data.yaml"
+    log:
+        "logs/select_sequences/{virus}.log",
+    input:
+        sequences="data/local_data/{virus}/sequences.fasta",
+        metadata="data/local_data/{virus}/metadata.tsv",
+    output:
+        sequences=temp("results/nextclade/{virus}/selected_sequences.fasta"),
+    script:
+        "scripts/select_sequences.py"
+
+
 rule calculate_tree:
     conda:
         "../envs/python-genetic-data.yaml"
@@ -53,7 +68,7 @@ rule calculate_tree:
         "logs/calculate_nextclade_tree/{virus}.log",
     input:
         dataset_ready="data/nextclade/{virus}/.dataset_ready",
-        local_sequences="data/local_data/{virus}/sequences.fasta",
+        local_sequences="results/nextclade/{virus}/selected_sequences.fasta",
     output:
         fasta="results/nextclade/{virus}/sequences.fasta",
         metadata="results/nextclade/{virus}/metadata.tsv",
