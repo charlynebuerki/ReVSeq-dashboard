@@ -6,6 +6,8 @@ Usage:
 
 Reads all depth files in:
     Extract-pileup/all_pileups/<virus_name>/
+named <sample>_depth.tsv or pileup_<sample>_<taxon>.txt (as written by pipeline.py);
+each trace is named after its sample.
 Writes:
     Extract-pileup/all_pileups/<virus_name>/<virus_name>_indiv.json
 
@@ -75,7 +77,9 @@ def _sample_id_from_path(path: Path) -> str:
     # Typical files: <sample>_depth.tsv
     if stem.endswith("_depth"):
         return stem[: -len("_depth")]
-    # Keep full stem for pileup_<...>.txt
+    # Pipeline output: pileup_<sample>_<taxon>.txt
+    if stem.startswith("pileup_") and "_" in stem[len("pileup_"):]:
+        return stem[len("pileup_"):].rsplit("_", 1)[0]
     return stem
 
 
