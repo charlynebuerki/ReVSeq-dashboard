@@ -184,6 +184,7 @@ var selectStrain = document.getElementById('strain');
           
       };
 </script>
+{% if no_co_infections_seq and no_co_infections_pcr %}
 <div class="wrapper">
   <div class="custom-input">
     <input type="radio" id="mixed_source_seq" name="mixed_source"
@@ -198,6 +199,7 @@ var selectStrain = document.getElementById('strain');
     <label for="mixed_source_pcr">PCR</label>
   </div>
 </div>
+{% endif %}
 <h3 class="module-subtitle">Co-infection Heatmap</h3>
 <div id="mixed_heatmap_seq" {% if default_source == "pcr" %}style="display:none;"{% endif %}>
   {% autoescape off %}

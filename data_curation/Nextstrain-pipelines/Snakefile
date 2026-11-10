@@ -28,6 +28,7 @@ rule all:
         ),
         "results/dashboard-metadata/metadata_sequencing.tsv",
         "results/dashboard-metadata/metadata_pcr.tsv",
+        "results/dashboard-metadata/metadata_co_infection_sequencing.tsv",
 
 
 rule clean:

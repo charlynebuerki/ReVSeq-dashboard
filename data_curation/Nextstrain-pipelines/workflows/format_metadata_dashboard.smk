@@ -24,6 +24,7 @@ rule assemble_metadata:
     output:
         metadata_sequencing="results/dashboard-metadata/metadata_sequencing.tsv",
         metadata_pcr="results/dashboard-metadata/metadata_pcr.tsv",
+        metadata_co_infection="results/dashboard-metadata/metadata_co_infection_sequencing.tsv",
     run:
         # concatenate metadata files for all strains into a single file for the dashboard
         import pandas as pd
@@ -34,6 +35,13 @@ rule assemble_metadata:
         )
         all_metadata_sequencing.to_csv(
             output.metadata_sequencing, sep="\t", index=False
+        )
+
+        # co-infections: samples with more than one virus, for the dashboard's Mixed page
+        sample = all_metadata_sequencing["strain"].str.split("|").str[0]
+        n_viruses = all_metadata_sequencing.groupby(sample)["virus_identified"].transform("nunique")
+        all_metadata_sequencing[n_viruses > 1].to_csv(
+            output.metadata_co_infection, sep="\t", index=False
         )
 
         all_metadata_pcr = pd.concat(
